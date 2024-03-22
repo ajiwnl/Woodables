@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    >
+
+    <ImageView
+        android:id="@+id/backbutton"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/backbutton"
+        android:background="@color/background"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="15dp"/>
+
+    <SearchView
+        android:id="@+id/searchBarProfile"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/textbox_4curvedcorners"
+        android:layout_toRightOf="@+id/backbutton"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="50dp"
+        />
+
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="1dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="12dp"
+        android:background="@color/background"
+        android:src="@drawable/settings" />
+
+    <ImageView
+        android:id="@+id/profilebackground"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/woodworker"
+        android:scaleType="fitXY"
+        android:layout_below="@id/searchBarProfile" />
+
+    <ImageView
+        android:id="@+id/profilepicture"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="200dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/catprofile"
+        android:adjustViewBounds="true"
+        android:background="@drawable/rounded_corners"
+        android:clipToOutline="true"
+        android:contentDescription="@string/logo"
+        android:cropToPadding="true"
+        android:scaleType="centerCrop"/>
+
+    <ImageView
+        android:id="@+id/camerlogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/camera"
+        android:layout_marginLeft="230dp"
+        android:layout_below="@+id/profilebackground"/>
+    <TextView
+        android:id="@+id/profileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:text="Aj Von Krieger"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_below="@+id/profilepicture"
+        android:textSize="18dp"/> <!-- Profile Name -->
+    <ImageView
+        android:id="@+id/verified"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/accept"
+        android:layout_toRightOf="@id/profileName"
+        android:layout_below="@id/profilepicture"
+        android:layout_marginLeft="10dp"/>
+    <TextView
+        android:id="@+id/profileCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/profileName"
+        android:text="Advance Carpenter"/>
+    <Button
+        android:id="@+id/openToButton"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_below="@id/profileCategory"
+        android:backgroundTint="@color/btnColor"
+        android:shadowColor="@color/peach"
+        android:layout_marginLeft="30dp"
+        android:text="Open to"/>
+    <Button
+        android:id="@+id/editProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_below="@+id/profileCategory"
+        android:layout_toEndOf="@+id/openToButton"
+        android:backgroundTint="@color/btnColor"
+        android:layout_marginLeft="5dp"
+        android:text="Edit Profile"/>
+    <Button
+        android:id="@+id/moreButton"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_below="@id/profileCategory"
+        android:layout_marginLeft="5dp"
+        android:layout_toEndOf="@id/editProfile"
+        android:backgroundTint="@color/btnColor"
+        android:text="..."/>
+    <ImageView
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/view"
+        android:layout_marginLeft="10dp"
+
+        android:layout_marginTop="4dp"
+        android:layout_below="@id/openToButton"/>
+    <TextView
+        android:id="@+id/visitors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="1dp"
+        android:textColor="@color/white"
+        android:layout_toRightOf="@+id/view"
+        android:layout_below="@id/openToButton"
+        android:text="69 Unique Profile Visitors"/>
+    <View
+        android:id="@+id/breakline"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/white"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/visitors"/>
+    <TextView
+        android:id="@+id/introduction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:text="Intro"
+        android:layout_below="@id/breakline"/>
+    <ImageView
+        android:id="@+id/starlogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/star"
+        android:layout_below="@+id/introduction"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"/>
+    <TextView
+        android:id="@+id/profileDesc1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/starlogo"
+        android:text="4.8 out of 5.0 Job and Project Ratings"
+        android:layout_below="@id/introduction"/>
+    <ImageView
+        android:id="@+id/carpenterlogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profileDesc1"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/toolslogo"/>
+    <TextView
+        android:id="@+id/profileDesc2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/carpenterlogo"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:text="Freelance Carpenter at 3di s4 pus0 mo.."
+        android:layout_below="@id/profileDesc1"/>
+    <ImageView
+        android:id="@+id/carpenterlogo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/toolslogo"
+        android:layout_below="@id/profileDesc2"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"/>
+    <TextView
+        android:id="@+id/profileDesc3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/carpenterlogo2"
+        android:textColor="@color/white"
+        android:text="Former Carpenter at Company A"
+        android:layout_below="@id/profileDesc2"/>
+    <ImageView
+        android:id="@+id/graduationcap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profileDesc3"
+        android:src="@drawable/graduationcap"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"/>
+    <TextView
+        android:id="@+id/profileDesc4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/white"
+        android:layout_toRightOf="@+id/graduationcap"
+        android:text="Studied Carpentry Mastering at TESDA Region VII"
+        android:layout_below="@id/profileDesc3"/>
+    <ImageView
+        android:id="@+id/paperdocu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profileDesc4"
+        android:src="@drawable/paper"
+        android:layout_marginTop="15dp"
+
+        android:layout_marginLeft="10dp"/>
+    <TextView
+        android:id="@+id/profileDesc5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profileDesc4"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:text="Completed a Self-learning course for Advance Carpentry at Woodables Learning Course System"/>
+
+    <ImageView
+        android:id="@+id/locationlogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profileDesc5"
+        android:src="@drawable/location"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        />
+    <TextView
+        android:id="@+id/profileDesc6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/white"
+        android:layout_toRightOf="@+id/locationlogo"
+        android:text="From City B"
+        android:layout_below="@id/profileDesc5"/>
+    <ImageView
+        android:id="@+id/clock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profileDesc6"
+        android:src="@drawable/clock"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"/>
+    <TextView
+        android:id="@+id/profileDesc7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/clock"
+        android:textColor="@color/white"
+        android:text="Joined 2023"
+        android:layout_below="@id/profileDesc6"/>
+
+    <View
+        android:id="@+id/breakline3"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:layout_below="@id/profileDesc7"
+        android:background="@color/white"/>
+
+    <!-- Navigation bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="15dp"
+        android:layout_alignParentBottom="true"
+        >
+
+        <ImageView
+            android:id="@+id/home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/home"
+            />
+        <ImageView
+            android:id="@+id/chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:src="@drawable/chat"
+            />
+        <ImageView
+            android:id="@+id/hammer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:src="@drawable/hammer"
+            />
+        <ImageView
+            android:id="@+id/messenger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:src="@drawable/messenger"
+            />
+        <ImageView
+            android:id="@+id/documents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:src="@drawable/approve"
+            />
+    </LinearLayout>
+    <!--Ari ra kutob ang navagation bar -->
+
+
+
+
+</RelativeLayout>
+
+
