@@ -74,4 +74,6 @@
     <string name="msg1">Hello! How Are You?</string>
     <string name="dollar_pls">Can i have a dollar please?</string>
     <string name="msg3">When are you coming back?</string>
+    <string name="todo">TODO</string>
+    <string name="middle_name">MIDDLE NAME</string>
 </resources>
