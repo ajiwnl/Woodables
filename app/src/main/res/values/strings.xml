@@ -74,4 +74,13 @@
     <string name="msg1">Hello! How Are You?</string>
     <string name="dollar_pls">Can i have a dollar please?</string>
     <string name="msg3">When are you coming back?</string>
+    <string name="sampleLongText">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices mattis odio.
+        Integer ullamcorper nulla sed consectetur vestibulum. Donec rutrum congue leo eget malesuada.
+        Nulla justo libero, sit amet facilisis nisl sed euismod in hac habitasse platea dictumst.
+        Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+        Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam.
+        Pellentesque lorem quam, pede libero cursus neque, eget faucibus tortor neque eu erat.
+        Aliquam erat volutpat.
+    </string>
 </resources>
