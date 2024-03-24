@@ -1,448 +1,456 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#161804"
-    android:orientation="vertical"
-    tools:context=".MessageChatViewActivity">
+    android:fillViewport="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:paddingStart="30dp"
-        android:paddingEnd="30dp">
-
-        <ImageView
-            android:layout_height="35dp"
-            android:layout_width="35dp"
-            android:layout_centerVertical="true"
-            android:src="@drawable/leftarrow"
-            android:contentDescription="@string/left_arrow" />
-
-        <ImageView
-            android:layout_height="35dp"
-            android:layout_width="35dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/tzuyuu"
-            android:background="@drawable/profile_corners"
-            android:layout_centerVertical="true"
-            android:scaleType="centerCrop"
-            android:contentDescription="@string/pfp"
-            android:adjustViewBounds="true"
-            android:cropToPadding="true"
-            android:clipToOutline="true"
-            tools:ignore="UnusedAttribute" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:fontFamily="@font/spartan_bold"
-            android:text="@string/chats"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="100dp"
-            android:textColor="#ffff"
-            android:textSize="20sp" />
-
-        <ImageView
-            android:layout_height="35dp"
-            android:layout_width="35dp"
-            android:src="@drawable/search"
-            android:layout_marginEnd="60dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:contentDescription="@string/search"/>
-
-        <ImageView
-            android:layout_height="45dp"
-            android:layout_width="45dp"
-            android:src="@drawable/menu"
-            android:layout_alignParentEnd="true"
-            android:contentDescription="@string/menu"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="80dp">
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="30dp"
-            android:background="@drawable/rounded_corners"
-            android:fontFamily="@font/spartan_medium"
-            android:gravity="center"
-            android:padding="3dp"
-            android:text="@string/all"
-            android:textColor="#000000" />
-
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:fontFamily="@font/spartan_medium"
-            android:gravity="center"
-            android:text="@string/direct"
-            android:textColor="#ffff" />
-
-        <TextView
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:fontFamily="@font/spartan_medium"
-            android:gravity="center"
-            android:text="@string/project_discussion"
-            android:textColor="#ffff"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="20dp"
-            tools:ignore="TextSizeCheck" />
-
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="540dp"
-        android:layout_marginTop="120dp"
-        android:background="#ffffff"
+        android:background="#161804"
         android:orientation="vertical"
-        tools:ignore="TextSizeCheck">
+        tools:context=".MessageChatViewActivity">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/border_bottom"
             android:orientation="horizontal"
-            android:paddingBottom="5dp"
-            tools:ignore="UselessParent">
+            android:layout_marginTop="20dp"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp">
 
             <ImageView
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/rounded_corners"
-                android:clipToOutline="true"
-                android:contentDescription="@string/logo"
-                android:cropToPadding="true"
+                android:layout_height="35dp"
+                android:layout_width="35dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/leftarrow"
+                android:contentDescription="@string/left_arrow" />
+
+            <ImageView
+                android:layout_height="35dp"
+                android:layout_width="35dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/tzuyuu"
+                android:background="@drawable/profile_corners"
+                android:layout_centerVertical="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/woodableslogo"
+                android:contentDescription="@string/pfp"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                android:clipToOutline="true"
                 tools:ignore="UnusedAttribute" />
 
-            <LinearLayout
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/spartan_bold"
+                android:text="@string/chats"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="100dp"
+                android:textColor="#ffff"
+                android:textSize="20sp" />
 
-                <TextView
+            <ImageView
+                android:layout_height="35dp"
+                android:layout_width="35dp"
+                android:src="@drawable/search"
+                android:layout_marginEnd="60dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:contentDescription="@string/search"/>
+
+            <ImageView
+                android:layout_height="45dp"
+                android:layout_width="45dp"
+                android:src="@drawable/menu"
+                android:layout_alignParentEnd="true"
+                android:contentDescription="@string/menu"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="80dp">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="30dp"
+                android:background="@drawable/rounded_corners"
+                android:fontFamily="@font/spartan_medium"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="@string/all"
+                android:textColor="#000000" />
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/spartan_medium"
+                android:gravity="center"
+                android:text="@string/direct"
+                android:textColor="#ffff" />
+
+            <TextView
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/spartan_medium"
+                android:gravity="center"
+                android:text="@string/project_discussion"
+                android:textColor="#ffff"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"
+                tools:ignore="TextSizeCheck" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="540dp"
+            android:layout_marginTop="120dp"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            tools:ignore="TextSizeCheck">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/rounded_corners"
+                    android:clipToOutline="true"
+                    android:contentDescription="@string/logo"
+                    android:cropToPadding="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/woodableslogo"
+                    tools:ignore="UnusedAttribute" />
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/spartan_bold"
-                    android:text="@string/woodables_team"
-                    android:textColor="#000000" />
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
 
-                <TextView
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spartan_bold"
+                        android:text="@string/woodables_team"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spartan_medium"
+                        android:text="@string/bjorg_thank_you"
+                        android:textColor="#000000" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/rounded_corners"
+                    android:clipToOutline="true"
+                    android:contentDescription="@string/logo"
+                    android:cropToPadding="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/krustykrab"
+                    tools:ignore="UnusedAttribute,ImageContrastCheck" />
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/spartan_medium"
-                    android:text="@string/bjorg_thank_you"
-                    android:textColor="#000000" />
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spartan_bold"
+                        android:text="@string/krusty_krab_project"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spartan_medium"
+                        android:text="@string/patrick"
+                        android:textColor="#000000" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/rounded_corners"
+                    android:clipToOutline="true"
+                    android:contentDescription="@string/logo"
+                    android:cropToPadding="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/nue"
+                    tools:ignore="UnusedAttribute,ImageContrastCheck" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spartan_bold"
+                        android:text="@string/weebify_project"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spartan_medium"
+                        android:text="@string/message1"
+                        android:textColor="#000000" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/rounded_corners"
+                    android:clipToOutline="true"
+                    android:contentDescription="@string/logo"
+                    android:cropToPadding="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/hazzaf"
+                    tools:ignore="UnusedAttribute,ImageContrastCheck" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spartan_bold"
+                        android:text="@string/hazzaf_aladeen"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spartan_medium"
+                        android:text="@string/message2"
+                        android:textColor="#000000" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/rounded_corners"
+                    android:clipToOutline="true"
+                    android:contentDescription="@string/logo"
+                    android:cropToPadding="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ome5"
+                    tools:ignore="UnusedAttribute,ImageContrastCheck" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spartan_bold"
+                        android:text="@string/amabatu_basst"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spartan_medium"
+                        android:text="@string/message3"
+                        android:textColor="#000000" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/rounded_corners"
+                    android:clipToOutline="true"
+                    android:contentDescription="@string/logo"
+                    android:cropToPadding="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/anita"
+                    tools:ignore="UnusedAttribute,ImageContrastCheck" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spartan_bold"
+                        android:text="@string/anita_max_wynn"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spartan_medium"
+                        android:text="@string/message4"
+                        android:textColor="#000000" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/border_bottom"
             android:orientation="horizontal"
-            android:paddingBottom="5dp"
-            tools:ignore="UselessParent">
+            android:layout_alignParentBottom="true"
+
+            android:paddingBottom="10dp">
 
             <ImageView
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/rounded_corners"
-                android:clipToOutline="true"
-                android:contentDescription="@string/logo"
-                android:cropToPadding="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/krustykrab"
-                tools:ignore="UnusedAttribute,ImageContrastCheck" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/spartan_bold"
-                    android:text="@string/krusty_krab_project"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/spartan_medium"
-                    android:text="@string/patrick"
-                    android:textColor="#000000" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/border_bottom"
-            android:orientation="horizontal"
-            android:paddingBottom="5dp"
-            tools:ignore="UselessParent">
-
+                android:id="@+id/home"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="-2dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/home"
+                android:layout_marginStart="40dp"
+                android:clickable="true"
+                android:contentDescription="@string/home"/>
             <ImageView
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:id="@+id/chat"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="-2dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/chat"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/rounded_corners"
-                android:clipToOutline="true"
-                android:contentDescription="@string/logo"
-                android:cropToPadding="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/nue"
-                tools:ignore="UnusedAttribute,ImageContrastCheck" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/spartan_bold"
-                    android:text="@string/weebify_project"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/spartan_medium"
-                    android:text="@string/message1"
-                    android:textColor="#000000" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/border_bottom"
-            android:orientation="horizontal"
-            android:paddingBottom="5dp"
-            tools:ignore="UselessParent">
-
+                android:contentDescription="@string/message" />
             <ImageView
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:id="@+id/hammer"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="-2dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/hammer"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/rounded_corners"
-                android:clipToOutline="true"
-                android:contentDescription="@string/logo"
-                android:cropToPadding="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/hazzaf"
-                tools:ignore="UnusedAttribute,ImageContrastCheck" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/spartan_bold"
-                    android:text="@string/hazzaf_aladeen"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/spartan_medium"
-                    android:text="@string/message2"
-                    android:textColor="#000000" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/border_bottom"
-            android:orientation="horizontal"
-            android:paddingBottom="5dp"
-            tools:ignore="UselessParent">
-
+                android:clickable="true"
+                android:contentDescription="@string/woodworker" />
             <ImageView
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:id="@+id/messenger"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="-2dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/messenger"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/rounded_corners"
-                android:clipToOutline="true"
-                android:contentDescription="@string/logo"
-                android:cropToPadding="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ome5"
-                tools:ignore="UnusedAttribute,ImageContrastCheck" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/spartan_bold"
-                    android:text="@string/amabatu_basst"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/spartan_medium"
-                    android:text="@string/message3"
-                    android:textColor="#000000" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/border_bottom"
-            android:orientation="horizontal"
-            android:paddingBottom="5dp"
-            tools:ignore="UselessParent">
-
+                android:clickable="true"
+                android:contentDescription="@string/message" />
             <ImageView
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:id="@+id/documents"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="-2dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/approve"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/rounded_corners"
-                android:clipToOutline="true"
-                android:contentDescription="@string/logo"
-                android:cropToPadding="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/anita"
-                tools:ignore="UnusedAttribute,ImageContrastCheck" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/spartan_bold"
-                    android:text="@string/anita_max_wynn"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/spartan_medium"
-                    android:text="@string/message4"
-                    android:textColor="#000000" />
-            </LinearLayout>
+                android:clickable="true"
+                android:contentDescription="@string/listing" />
         </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
+</ScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-
-        android:paddingBottom="10dp">
-
-        <ImageView
-            android:id="@+id/home"
-            android:layout_width="40dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="-2dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/home"
-            android:layout_marginStart="40dp"
-            android:clickable="true"
-            android:contentDescription="@string/home"/>
-        <ImageView
-            android:id="@+id/chat"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginBottom="-2dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/chat"
-            android:layout_marginStart="30dp"
-            android:contentDescription="@string/message" />
-        <ImageView
-            android:id="@+id/hammer"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginBottom="-2dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/hammer"
-            android:layout_marginStart="30dp"
-            android:clickable="true"
-            android:contentDescription="@string/woodworker" />
-        <ImageView
-            android:id="@+id/messenger"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginBottom="-2dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/messenger"
-            android:layout_marginStart="30dp"
-            android:clickable="true"
-            android:contentDescription="@string/message" />
-        <ImageView
-            android:id="@+id/documents"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginBottom="-2dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/approve"
-            android:layout_marginStart="30dp"
-            android:clickable="true"
-            android:contentDescription="@string/listing" />
-    </LinearLayout>
-</RelativeLayout>
