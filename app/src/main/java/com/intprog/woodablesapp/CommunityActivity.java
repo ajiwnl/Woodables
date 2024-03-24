@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 public class CommunityActivity extends AppCompatActivity {
 
-    ImageView homeclick, communityclick, postingclick, chatclick, docclick;
+    ImageView homeclick, communityclick, postingclick, chatclick, docclick, addPost;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +20,7 @@ public class CommunityActivity extends AppCompatActivity {
         postingclick = findViewById(R.id.hammer);
         chatclick = findViewById(R.id.messenger);
         docclick = findViewById(R.id.documents);
+        addPost = findViewById(R.id.addpost);
 
         homeclick.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +60,14 @@ public class CommunityActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent toDocs = new Intent(CommunityActivity.this, LearnCourseActivity.class);
                 startActivity(toDocs);
+            }
+        });
+
+        addPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toPost = new Intent(CommunityActivity.this, CreatePostActivity.class);
+                startActivity(toPost);
             }
         });
     }
