@@ -1,500 +1,507 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#161804"
-    tools:context=".JobListingActivity">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:paddingStart="30dp"
-        android:paddingEnd="30dp">
-
-        <ImageView
-            android:layout_height="30dp"
-            android:layout_width="30dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/leftarrow"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="3dp"
-            android:contentDescription="@string/left_arrow" />
-
-        <EditText
-            android:layout_width="250dp"
-            android:layout_height="35dp"
-            android:autofillHints="Search"
-            android:background="@drawable/rounded_corners"
-            android:fontFamily="@font/spartan_medium"
-            android:inputType="text"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:text="@string/search"
-            android:textSize="15sp"
-            android:layout_centerInParent="true"
-            tools:ignore="LabelFor,TouchTargetSizeCheck" />
-
-        <ImageView
-            android:layout_height="35dp"
-            android:layout_width="35dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="10dp"
-            android:src="@drawable/pfp2"
-            android:layout_alignParentEnd="true"
-            android:background="@drawable/rounded_corners"
-            android:scaleType="centerCrop"
-            android:contentDescription="@string/pfp"
-            android:adjustViewBounds="true"
-            android:cropToPadding="true"
-            android:clipToOutline="true"
-            tools:ignore="UnusedAttribute" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        tools:ignore="UseCompoundDrawables">
-
-        <TextView
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:fontFamily="@font/spartan_bold"
-            android:paddingTop="4dp"
-            android:text="@string/listing_view"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:layout_centerInParent="true"
-            tools:ignore="TextSizeCheck" />
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/filterwhite"
-            android:layout_marginEnd="30dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:contentDescription="@string/filter" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_margin="20dp"
-        android:layout_height="125dp"
-        android:background="@drawable/listing"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp">
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/anita"
-                android:background="@drawable/rounded_corners"
-                android:scaleType="centerCrop"
-                android:contentDescription="@string/pfp"
-                android:adjustViewBounds="true"
-                android:cropToPadding="true"
-                android:clipToOutline="true"
-                tools:ignore="UnusedAttribute" />
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="8dp"
-            android:orientation="vertical"
-            android:paddingStart="80dp"
-            android:paddingEnd="30dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/spartan_medium"
-                android:text="@string/anita_project"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/spartan_medium"
-                android:text="@string/lorem_ipsum"
-                android:textSize="10sp"
-                android:layout_marginTop="20dp"
-                tools:ignore="SmallSp" />
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:contentDescription="@string/woodworker"
-                android:src="@drawable/paperplane"
-                tools:ignore="ImageContrastCheck" />
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="60dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:contentDescription="@string/woodworker"
-                android:src="@drawable/linkblack"
-                tools:ignore="ImageContrastCheck" />
-
-            <Button
-                android:layout_width="60dp"
-                android:layout_height="36dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="180dp"
-                android:text="@string/apply"
-                android:textSize="8sp"
-                tools:ignore="SmallSp,TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
-
-            <Button
-                android:layout_width="60dp"
-                android:layout_height="36dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="110dp"
-                android:text="@string/save"
-                android:textSize="8sp"
-                tools:ignore="SmallSp,TouchTargetSizeCheck,DuplicateSpeakableTextCheck,DuplicateSpeakableTextCheck" />
-
-            <Button
-                android:layout_width="95dp"
-                android:layout_height="36dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:text="@string/interested"
-                android:textSize="8sp"
-                tools:ignore="SmallSp,TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
-        </RelativeLayout>
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_margin="20dp"
-        android:layout_height="125dp"
-        android:background="@drawable/listing"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp">
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/hazzaf"
-                android:background="@drawable/rounded_corners"
-                android:scaleType="centerCrop"
-                android:contentDescription="@string/pfp"
-                android:adjustViewBounds="true"
-                android:cropToPadding="true"
-                android:clipToOutline="true"
-                tools:ignore="UnusedAttribute" />
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="8dp"
-            android:orientation="vertical"
-            android:paddingStart="80dp"
-            android:paddingEnd="30dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:fontFamily="@font/spartan_medium"
-                android:text="@string/job_title_wood_bustas_project"
-                android:layout_centerHorizontal="true"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/spartan_medium"
-                android:text="@string/lorem_ipsum"
-                android:textSize="10sp"
-                tools:ignore="SmallSp" />
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:contentDescription="@string/woodworker"
-                android:src="@drawable/paperplane"
-                tools:ignore="ImageContrastCheck" />
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="60dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:contentDescription="@string/woodworker"
-                android:src="@drawable/linkblack"
-                tools:ignore="ImageContrastCheck" />
-
-            <Button
-                android:layout_width="60dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="40dp"
-                android:text="@string/apply"
-                android:textSize="8sp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="180dp"
-                tools:ignore="SmallSp,TouchTargetSizeCheck" />
-
-            <Button
-                android:layout_width="60dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="10dp"
-                android:text="@string/save"
-                android:textSize="8sp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="110dp"
-                tools:ignore="SmallSp,TouchTargetSizeCheck" />
-
-            <Button
-                android:layout_width="95dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="10dp"
-                android:text="@string/interested"
-                android:textSize="8sp"
-                android:layout_marginEnd="10dp"
-                android:layout_alignParentEnd="true"
-                tools:ignore="SmallSp,TouchTargetSizeCheck" />
-        </RelativeLayout>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_margin="20dp"
-        android:layout_height="125dp"
-        android:background="@drawable/listing"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp">
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/krustykrab"
-                android:background="@drawable/rounded_corners"
-                android:scaleType="centerCrop"
-                android:contentDescription="@string/pfp"
-                android:adjustViewBounds="true"
-                android:cropToPadding="true"
-                android:clipToOutline="true"
-                tools:ignore="UnusedAttribute" />
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="8dp"
-            android:orientation="vertical"
-            android:paddingStart="80dp"
-            android:paddingEnd="30dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:fontFamily="@font/spartan_medium"
-                android:text="@string/krusty_krab_project"
-                android:layout_centerHorizontal="true"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/spartan_medium"
-                android:text="@string/lorem_ipsum"
-                android:textSize="10sp"
-                android:layout_marginTop="20dp"
-                tools:ignore="SmallSp" />
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:contentDescription="@string/woodworker"
-                android:src="@drawable/paperplane"
-                tools:ignore="ImageContrastCheck" />
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="60dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:contentDescription="@string/woodworker"
-                android:src="@drawable/linkblack"
-                tools:ignore="ImageContrastCheck" />
-
-            <Button
-                android:layout_width="60dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="40dp"
-                android:text="@string/apply"
-                android:textSize="8sp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="180dp"
-                tools:ignore="SmallSp,TouchTargetSizeCheck" />
-
-            <Button
-                android:layout_width="60dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="10dp"
-                android:text="@string/save"
-                android:textSize="8sp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="110dp"
-                tools:ignore="SmallSp,TouchTargetSizeCheck" />
-
-            <Button
-                android:layout_width="95dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="10dp"
-                android:text="@string/interested"
-                android:textSize="8sp"
-                android:layout_marginEnd="10dp"
-                android:layout_alignParentEnd="true"
-                tools:ignore="SmallSp,TouchTargetSizeCheck" />
-        </RelativeLayout>
-    </RelativeLayout>
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="60dp"
-        android:paddingBottom="10dp">
+        android:orientation="vertical"
+        android:background="#161804"
+        tools:context=".JobListingActivity">
 
-        <ImageView
-            android:id="@+id/home"
-            android:layout_width="40dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="40dp"
-            android:layout_marginBottom="-2dp"
-            android:contentDescription="@string/home"
-            android:src="@drawable/home" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp">
 
-        <ImageView
-            android:id="@+id/chat"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="-2dp"
-            android:contentDescription="@string/message"
-            android:src="@drawable/chat" />
+            <ImageView
+                android:layout_height="30dp"
+                android:layout_width="30dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/leftarrow"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="3dp"
+                android:contentDescription="@string/left_arrow" />
 
-        <ImageView
-            android:id="@+id/hammer"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="-2dp"
-            android:contentDescription="@string/woodworker"
-            android:src="@drawable/hammer" />
+            <EditText
+                android:layout_width="250dp"
+                android:layout_height="35dp"
+                android:autofillHints="Search"
+                android:background="@drawable/rounded_corners"
+                android:fontFamily="@font/spartan_medium"
+                android:inputType="text"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/search"
+                android:textSize="15sp"
+                android:layout_centerInParent="true"
+                tools:ignore="LabelFor,TouchTargetSizeCheck" />
 
-        <ImageView
-            android:id="@+id/messenger"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="-2dp"
-            android:contentDescription="@string/message"
-            android:src="@drawable/messenger" />
+            <ImageView
+                android:layout_height="35dp"
+                android:layout_width="35dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/pfp2"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/rounded_corners"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/pfp"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                android:clipToOutline="true"
+                tools:ignore="UnusedAttribute" />
+        </RelativeLayout>
 
-        <ImageView
-            android:id="@+id/documents"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="-2dp"
-            android:contentDescription="@string/listing"
-            android:src="@drawable/approve" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables">
+
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/spartan_bold"
+                android:paddingTop="4dp"
+                android:text="@string/listing_view"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_centerInParent="true"
+                tools:ignore="TextSizeCheck" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/filterwhite"
+                android:layout_marginEnd="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/filter" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_margin="20dp"
+            android:layout_height="125dp"
+            android:background="@drawable/listing"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/anita"
+                    android:background="@drawable/rounded_corners"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/pfp"
+                    android:adjustViewBounds="true"
+                    android:cropToPadding="true"
+                    android:clipToOutline="true"
+                    tools:ignore="UnusedAttribute" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                android:paddingStart="80dp"
+                android:paddingEnd="30dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/spartan_medium"
+                    android:text="@string/anita_project"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/spartan_medium"
+                    android:text="@string/lorem_ipsum"
+                    android:textSize="10sp"
+                    android:layout_marginTop="20dp"
+                    tools:ignore="SmallSp" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:contentDescription="@string/woodworker"
+                    android:src="@drawable/paperplane"
+                    tools:ignore="ImageContrastCheck" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:contentDescription="@string/woodworker"
+                    android:src="@drawable/linkblack"
+                    tools:ignore="ImageContrastCheck" />
+
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="180dp"
+                    android:text="@string/apply"
+                    android:textSize="8sp"
+                    tools:ignore="SmallSp,TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
+
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="110dp"
+                    android:text="@string/save"
+                    android:textSize="8sp"
+                    tools:ignore="SmallSp,TouchTargetSizeCheck,DuplicateSpeakableTextCheck,DuplicateSpeakableTextCheck" />
+
+                <Button
+                    android:layout_width="95dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/interested"
+                    android:textSize="8sp"
+                    tools:ignore="SmallSp,TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_margin="20dp"
+            android:layout_height="125dp"
+            android:background="@drawable/listing"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/hazzaf"
+                    android:background="@drawable/rounded_corners"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/pfp"
+                    android:adjustViewBounds="true"
+                    android:cropToPadding="true"
+                    android:clipToOutline="true"
+                    tools:ignore="UnusedAttribute" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                android:paddingStart="80dp"
+                android:paddingEnd="30dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:fontFamily="@font/spartan_medium"
+                    android:text="@string/job_title_wood_bustas_project"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/spartan_medium"
+                    android:text="@string/lorem_ipsum"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:contentDescription="@string/woodworker"
+                    android:src="@drawable/paperplane"
+                    tools:ignore="ImageContrastCheck" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:contentDescription="@string/woodworker"
+                    android:src="@drawable/linkblack"
+                    tools:ignore="ImageContrastCheck" />
+
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="40dp"
+                    android:text="@string/apply"
+                    android:textSize="8sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="180dp"
+                    tools:ignore="SmallSp,TouchTargetSizeCheck" />
+
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/save"
+                    android:textSize="8sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="110dp"
+                    tools:ignore="SmallSp,TouchTargetSizeCheck" />
+
+                <Button
+                    android:layout_width="95dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/interested"
+                    android:textSize="8sp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentEnd="true"
+                    tools:ignore="SmallSp,TouchTargetSizeCheck" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_margin="20dp"
+            android:layout_height="125dp"
+            android:background="@drawable/listing"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/krustykrab"
+                    android:background="@drawable/rounded_corners"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/pfp"
+                    android:adjustViewBounds="true"
+                    android:cropToPadding="true"
+                    android:clipToOutline="true"
+                    tools:ignore="UnusedAttribute" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                android:paddingStart="80dp"
+                android:paddingEnd="30dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:fontFamily="@font/spartan_medium"
+                    android:text="@string/krusty_krab_project"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/spartan_medium"
+                    android:text="@string/lorem_ipsum"
+                    android:textSize="10sp"
+                    android:layout_marginTop="20dp"
+                    tools:ignore="SmallSp" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:contentDescription="@string/woodworker"
+                    android:src="@drawable/paperplane"
+                    tools:ignore="ImageContrastCheck" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:contentDescription="@string/woodworker"
+                    android:src="@drawable/linkblack"
+                    tools:ignore="ImageContrastCheck" />
+
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="40dp"
+                    android:text="@string/apply"
+                    android:textSize="8sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="180dp"
+                    tools:ignore="SmallSp,TouchTargetSizeCheck" />
+
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/save"
+                    android:textSize="8sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="110dp"
+                    tools:ignore="SmallSp,TouchTargetSizeCheck" />
+
+                <Button
+                    android:layout_width="95dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/interested"
+                    android:textSize="8sp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentEnd="true"
+                    tools:ignore="SmallSp,TouchTargetSizeCheck" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="60dp"
+            android:paddingBottom="10dp">
+
+            <ImageView
+                android:id="@+id/home"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="40dp"
+                android:layout_marginBottom="-2dp"
+                android:contentDescription="@string/home"
+                android:src="@drawable/home" />
+
+            <ImageView
+                android:id="@+id/community"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="-2dp"
+                android:contentDescription="@string/message"
+                android:src="@drawable/chat" />
+
+            <ImageView
+                android:id="@+id/hammer"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="-2dp"
+                android:contentDescription="@string/woodworker"
+                android:src="@drawable/hammer" />
+
+            <ImageView
+                android:id="@+id/messenger"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="-2dp"
+                android:contentDescription="@string/message"
+                android:src="@drawable/messenger" />
+
+            <ImageView
+                android:id="@+id/documents"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="-2dp"
+                android:contentDescription="@string/listing"
+                android:src="@drawable/approve" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</ScrollView>
