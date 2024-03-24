@@ -1,25 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:orientation="vertical"
+    android:id="@+id/mainlayout"
     tools:context=".CreatePostActivity">
 
-    <!-- Mao ni ang Bottom Navigation Bar copy paste   -->
+       <ImageView
+           android:id="@+id/backbutton"
+           android:layout_width="25dp"
+           android:layout_height="25dp"
+           android:src="@drawable/backbutton"
+           android:background="@color/background"
+           android:layout_marginTop="16dp"
+           android:layout_marginLeft="15dp"/>
+
+       <SearchView
+           android:id="@+id/searchBarProfile"
+           android:layout_width="match_parent"
+           android:layout_height="35dp"
+           android:layout_marginTop="10dp"
+           android:layout_marginBottom="10dp"
+           android:background="@drawable/textbox_4curvedcorners"
+           android:layout_toRightOf="@+id/backbutton"
+           android:layout_marginLeft="15dp"
+           android:layout_marginRight="50dp"
+           />
+
+
+       <ImageView
+           android:layout_width="50dp"
+           android:layout_height="wrap_content"
+           android:layout_alignParentEnd="true"
+           android:layout_marginEnd="1dp"
+           android:layout_alignParentTop="true"
+           android:layout_marginTop="12dp"
+           android:background="@color/background"
+           android:src="@drawable/settings" />
+    <View
+        android:id="@+id/breakline2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/backbutton"
+        android:background="@color/white"/>
+
+    <ImageView
+        android:id="@+id/close"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+       android:src="@drawable/baseline_close_24"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/breakline2"/>
+
+    <Button
+        android:id="@+id/postbtn"
+        android:layout_width="120dp"
+        android:layout_height="35dp"
+        android:background="@drawable/rounded_corners"
+        android:layout_below="@id/breakline2"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="180dp"
+        android:text="Post"
+        android:textColor="@color/white"
+        android:layout_toRightOf="@id/close"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/prof"
+        android:layout_width="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/close"
+        android:src="@drawable/tzuyuu"
+        android:background="@drawable/rounded_img"/>
+
+    <EditText
+        android:id="@+id/titletxt"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/postbtn"
+        android:inputType="text"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="80dp"
+        android:textStyle="bold"
+        android:textColorHint="@color/white"
+        android:fontFamily="@font/spartan_medium"
+        android:gravity="center"
+        android:hint="Create Post (Title here)"/>
+
+    <EditText
+        android:id="@+id/contenttxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titletxt"
+        android:inputType="text"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"
+        android:textColorHint="@color/white"
+        android:fontFamily="@font/spartan_medium" />
+
+    <ImageView
+        android:id="@+id/toCamera"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="270dp"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@+id/contenttxt"
+        android:src="@drawable/baseline_camera_alt_24"
+        android:background="@drawable/textbox_4curvedcorners"/>
+
+    <ImageView
+        android:id="@+id/toGallery"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="270dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/contenttxt"
+        android:layout_toRightOf="@+id/toCamera"
+        android:src="@drawable/baseline_browse_gallery_24"
+        android:background="@drawable/textbox_4curvedcorners"/>
+
+    <!--Nav bar start -->
 
     <View
         android:id="@+id/breakline"
         android:layout_width="match_parent"
         android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/toCamera"
         android:background="@color/white"/>
+
     <LinearLayout
+        android:id="@+id/nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_below="@+id/breakline"
         android:gravity="center_vertical"
+
         android:padding="15dp">
 
         <ImageView
@@ -60,4 +183,6 @@
     </LinearLayout>
     <!--Ari ra kutob ang navagation bar -->
 
-</LinearLayout>
+
+
+   </RelativeLayout>
