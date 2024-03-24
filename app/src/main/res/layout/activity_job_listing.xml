@@ -464,7 +464,7 @@
                 android:src="@drawable/home" />
 
             <ImageView
-                android:id="@+id/chat"
+                android:id="@+id/community"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
@@ -505,4 +505,3 @@
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
-

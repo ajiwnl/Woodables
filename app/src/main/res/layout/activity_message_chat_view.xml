@@ -65,6 +65,7 @@
                 android:contentDescription="@string/search"/>
 
             <ImageView
+                android:id="@+id/toSetting"
                 android:layout_height="45dp"
                 android:layout_width="45dp"
                 android:src="@drawable/menu"
@@ -209,6 +210,13 @@
                         android:fontFamily="@font/spartan_medium"
                         android:text="@string/patrick"
                         android:textColor="#000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spartan_medium"
+                        android:text="@string/message2"
+                        android:textColor="#000000" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -293,12 +301,6 @@
                         android:text="@string/hazzaf_aladeen"
                         android:textColor="#000000" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/spartan_medium"
-                        android:text="@string/message2"
-                        android:textColor="#000000" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -412,7 +414,7 @@
                 android:clickable="true"
                 android:contentDescription="@string/home"/>
             <ImageView
-                android:id="@+id/chat"
+                android:id="@+id/community"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginBottom="-2dp"
@@ -453,4 +455,3 @@
         </LinearLayout>
     </RelativeLayout>
 </ScrollView>
-
