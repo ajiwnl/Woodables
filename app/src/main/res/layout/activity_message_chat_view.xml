@@ -59,6 +59,7 @@
             android:contentDescription="@string/search"/>
 
         <ImageView
+            android:id="@+id/toSetting"
             android:layout_height="45dp"
             android:layout_width="45dp"
             android:src="@drawable/menu"
@@ -406,7 +407,7 @@
             android:clickable="true"
             android:contentDescription="@string/home"/>
         <ImageView
-            android:id="@+id/chat"
+            android:id="@+id/community"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginBottom="-2dp"

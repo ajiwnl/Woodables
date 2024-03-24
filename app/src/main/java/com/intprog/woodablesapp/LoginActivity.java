@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.google.android.material.snackbar.Snackbar;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -66,9 +67,9 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(navprofile);
                 }else {
                     if (!inUser.equals(username)) {
-                        showInvalidUsernameDialog();
+                        Snackbar.make(v, "Invalid Credentials, please try again", Snackbar.LENGTH_LONG).show();
                     } else {
-                        showInvalidPasswordDialog();
+                        Snackbar.make(v, "Invalid Credentials, please try again", Snackbar.LENGTH_LONG).show();
                     }
                 }
             }
