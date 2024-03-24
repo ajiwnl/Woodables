@@ -18,7 +18,8 @@
             android:layout_height="25dp"
             android:layout_marginLeft="15dp"
             android:src="@drawable/backbutton"
-            android:background="@color/background"/>
+            android:background="@color/background"
+            android:clickable="true"/>
 
         <SearchView
             android:id="@+id/searchView"
@@ -243,7 +244,7 @@
             android:src="@drawable/home"
             />
         <ImageView
-            android:id="@+id/chat"
+            android:id="@+id/community"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"

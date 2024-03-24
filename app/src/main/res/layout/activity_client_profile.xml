@@ -45,14 +45,14 @@
         android:scaleType="fitXY"
         android:layout_below="@id/searchBarProfile" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/profilepicture"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="200dp"
         android:layout_centerHorizontal="true"
         android:adjustViewBounds="true"
-        android:background="@drawable/rounded_corners"
+        android:background="@drawable/rounded_img"
         android:clipToOutline="true"
         android:contentDescription="@string/logo"
         android:cropToPadding="true"
