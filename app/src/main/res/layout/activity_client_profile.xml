@@ -44,7 +44,8 @@
         android:src="@drawable/krustykrab"
         android:scaleType="fitXY"
         android:layout_below="@id/searchBarProfile" />
-    <ImageView
+
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profilepicture"
         android:layout_width="100dp"
         android:layout_height="100dp"

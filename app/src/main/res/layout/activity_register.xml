@@ -43,19 +43,21 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:background="@drawable/background_curved_corners"
         android:scrollbars="vertical">
 
 
         <ScrollView
+            android:id="@+id/scrollableview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:descendantFocusability="blocksDescendants">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -139,6 +141,27 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="80dp"
                         android:layout_marginTop="15dp"
+                        android:text="Email"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="266dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="79dp"
+                        android:background="@drawable/textbox_4curvedcorners"
+                        android:hint="Enter email"
+                        android:inputType= "textEmailAddress"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:textColor="@color/white"
+                        tools:ignore="LabelFor" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="80dp"
+                        android:layout_marginTop="15dp"
                         android:text="@string/last_name"
                         android:textStyle="bold"
                         tools:ignore="LabelFor" />
@@ -208,6 +231,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
                         android:layout_marginStart="80dp"
                         android:textStyle="bold"
                         android:text="@string/gender" />
@@ -217,16 +241,17 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="580dp"
                     android:orientation="horizontal">
 
                     <RadioButton
+                        android:id="@+id/malerad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="60dp"
                         android:text="@string/male" />
 
                     <RadioButton
+                        android:id="@+id/femrad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="35dp"
@@ -234,11 +259,96 @@
                 </LinearLayout>
 
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/ratherrad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="60dp"
+                        android:text="@string/rather_not_say" />
+                </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:text="@string/birthdate"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/dobpick"
+                    android:layout_width="266dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="79dp"
+                    android:background="@drawable/textbox_4curvedcorners"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:inputType="datetime"
+                    android:hint="@string/mm_dd_yy"
+                    android:textColor="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/address"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/address"
+                    android:layout_width="269dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="79dp"
+                    android:background="@drawable/textbox_4curvedcorners"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:hint="@string/enter_address"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/mobile_number"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/phonenum"
+                    android:layout_width="267dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="79dp"
+                    android:background="@drawable/textbox_4curvedcorners"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:hint="@string/_63"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/regclick"
+                    android:layout_width="200dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/textbox_4curvedcorners"
+                    android:text="@string/register"
+                    android:textStyle="bold" >
+                </Button>
+
             </LinearLayout>
 
+            </LinearLayout>
 
         </ScrollView>
-
 
     </RelativeLayout>
 </LinearLayout>
