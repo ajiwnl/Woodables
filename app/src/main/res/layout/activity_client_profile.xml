@@ -11,7 +11,7 @@
         android:src="@drawable/backbutton"
         android:background="@color/background"
         android:layout_marginTop="16dp"
-        android:layout_marginLeft="15dp"/>
+        android:layout_marginStart="15dp"/>
 
     <SearchView
         android:id="@+id/searchBarProfile"
@@ -78,8 +78,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/camera"
-                android:layout_below="@id/profilebackground"
-                android:layout_marginLeft="230dp"/>
+                android:layout_toEndOf="@id/profilepicture"
+                android:layout_alignBottom="@id/profilepicture"
+                android:layout_marginStart="-30dp"/>
 
             <TextView
                 android:id="@+id/profileName"
@@ -90,16 +91,18 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:layout_below="@+id/profilepicture"
+                android:paddingTop="10dp"
                 android:textSize="18dp"/> <!-- Profile Name -->
 
             <ImageView
                 android:id="@+id/verified"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/profilepicture"
-                android:layout_toRightOf="@id/profileName"
-                android:src="@drawable/accept"
-                android:layout_marginLeft="10dp"/>
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_alignBottom="@id/profileName"
+                android:layout_toEndOf="@id/profileName"
+                android:src="@drawable/accept" />
             <TextView
                 android:id="@+id/profileCategory"
                 android:layout_width="wrap_content"
@@ -165,144 +168,137 @@
                 android:id="@+id/introduction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
+                android:layout_below="@id/breakline"
                 android:textColor="@color/white"
-                android:text="Intro"
-                android:layout_below="@id/breakline"/>
+                android:text="Intro"/>
+
             <ImageView
                 android:id="@+id/starlogo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/star"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
                 android:layout_below="@+id/introduction"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"/>
+                android:src="@drawable/star"/>
             <TextView
                 android:id="@+id/profileDesc1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@id/starlogo"
+                android:layout_alignBottom="@id/starlogo"
                 android:textColor="@color/white"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/starlogo"
-                android:text="4.8 out of 5.0 Job and Project Ratings"
-                android:layout_below="@id/introduction"/>
-
+                android:text="4.8 out of 5.0 Job and Project Ratings"/>
 
             <ImageView
                 android:id="@+id/locationlogo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_below="@id/profileDesc1"
-                android:src="@drawable/location"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="10dp"
-                />
+                android:src="@drawable/location"/>
             <TextView
                 android:id="@+id/profileDesc2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/locationlogo"
+                android:layout_alignBottom="@id/locationlogo"
                 android:textColor="@color/white"
-                android:layout_toRightOf="@+id/locationlogo"
-                android:text="From City B"
-                android:layout_below="@id/profileDesc1"/>
+                android:text="From City B"/>
+
             <ImageView
                 android:id="@+id/clock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/profileDesc2"
-                android:src="@drawable/clock"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginStart="10dp"
+                android:layout_below="@id/profileDesc2"
+                android:src="@drawable/clock"/>
             <TextView
                 android:id="@+id/profileDesc3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/clock"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@id/clock"
+                android:layout_alignBottom="@id/clock"
                 android:textColor="@color/white"
-                android:text="Joined 2023"
-                android:layout_below="@id/profileDesc2"/>
+                android:text="Joined 2023"/>
+
             <ImageView
                 android:id="@+id/facebook"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/facebook"
-                android:layout_below="@+id/clock"/>
+                android:layout_marginStart="10dp"
+                android:layout_below="@+id/clock"
+                android:src="@drawable/facebook"/>
             <TextView
                 android:id="@+id/profileDesc4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/facebook"
-                android:layout_below="@id/profileDesc3"
-                android:layout_marginTop="5dp"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/facebook"
+                android:layout_alignBottom="@id/facebook"
                 android:textColor="@color/white"
-                android:layout_marginLeft="15dp"
                 android:text="fb.me/testfblink"/>
 
             <ImageView
                 android:id="@+id/emailLogo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/facebook"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_below="@id/facebook"
                 android:src="@drawable/mail" />
             <TextView
                 android:id="@+id/profileDesc5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="test@gmail.com"
-                android:layout_toRightOf="@id/emailLogo"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@id/emailLogo"
+                android:layout_alignBottom="@id/emailLogo"
                 android:textColor="@color/white"
-                android:layout_below="@id/profileDesc4"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"/>
+                android:text="test@gmail.com"/>
+
             <ImageView
                 android:id="@+id/telephone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/telephonecall"
-                android:layout_below="@id/emailLogo"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                />
+                android:layout_marginStart="10dp"
+                android:layout_below="@id/emailLogo"
+                android:src="@drawable/telephonecall" />
             <TextView
                 android:id="@+id/profileDesc6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/profileDesc5"
-                android:layout_toRightOf="@+id/telephone"
-                android:text="+63917-470-1282"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/telephone"
+                android:layout_alignBottom="@id/telephone"
                 android:textColor="@color/white"
-                />
+                android:text="+63917-470-1282" />
+
             <ImageView
                 android:id="@+id/linksforlink"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/telephone"
-                android:src="@drawable/link"
-                android:layout_marginLeft="10dp"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
                 android:layout_marginTop="10dp"
-                />
+                android:layout_marginStart="10dp"
+                android:layout_below="@id/telephone"
+                android:src="@drawable/link" />
             <TextView
                 android:id="@+id/profileDesc7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/profileDesc6"
-                android:layout_toRightOf="@id/linksforlink"
-                android:textColor="@color/white"
-                android:text="testlink.me"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"/>
+                android:layout_toEndOf="@id/linksforlink"
+                android:layout_alignBottom="@id/linksforlink"
+                android:textColor="@color/white"
+                android:text="testlink.me"/>
 
             <TextView
                 android:id="@+id/ratingTextView"
@@ -491,54 +487,65 @@
 
     <!-- Navigation bar -->
     <LinearLayout
+        android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/background"
-        android:id="@+id/bottom_nav"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="15dp">
+        android:orientation="horizontal">
 
 
         <ImageView
             android:id="@+id/home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="15dp"
             android:clickable="true"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
             android:src="@drawable/home" />
 
         <ImageView
             android:id="@+id/community"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="15dp"
             android:clickable="true"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
             android:src="@drawable/chat" />
 
         <ImageView
             android:id="@+id/hammer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="15dp"
+            android:clickable="true"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
             android:src="@drawable/hammer" />
 
         <ImageView
             android:id="@+id/messenger"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="15dp"
+            android:baselineAligned="false"
             android:clickable="true"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
             android:src="@drawable/messenger" />
 
         <ImageView
             android:id="@+id/documents"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:src="@drawable/approve"
-            android:clickable="true"/>
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="15dp"
+            android:clickable="true"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:src="@drawable/approve" />
     </LinearLayout>
     <!--Ari ra kutob ang navagation bar -->
 

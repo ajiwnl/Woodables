@@ -31,7 +31,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="15dp"
             android:background="@color/background"
-            android:src="@drawable/WoodablesLogo" />
+            android:src="@drawable/woodableslogo" />
 
         <TextView
             android:layout_width="250dp"
@@ -492,19 +492,7 @@
 
             </LinearLayout>
 
-
-
-
-
-
-
         </LinearLayout>
-
-
-
-
-
-
     </ScrollView>
 
     <View
