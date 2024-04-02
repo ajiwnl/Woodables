@@ -327,7 +327,7 @@
             android:src="@drawable/home"
             />
         <ImageView
-            android:id="@+id/chat"
+            android:id="@+id/community"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
