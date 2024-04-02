@@ -17,14 +17,6 @@ public class StartUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start_up);
         loginbtn = findViewById(R.id.loginBtn);
         regbtn = findViewById(R.id.regBtn);
-        loginbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent navlogin = new Intent(StartUpActivity.this,LoginActivity.class);
-                startActivity(navlogin);
-            }
-        });
-
         regbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,6 +24,12 @@ public class StartUpActivity extends AppCompatActivity {
                 startActivity(navreg);
             }
         });
-
+        loginbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent navlogin = new Intent(StartUpActivity.this,LoginActivity.class);
+                startActivity(navlogin);
+            }
+        });
     }
 }

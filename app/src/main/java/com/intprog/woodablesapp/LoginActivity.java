@@ -9,11 +9,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.google.android.material.snackbar.Snackbar;
 
 public class LoginActivity extends AppCompatActivity {
 
-    public static final String username = "bonk";
-    public static final String password = "alvin123";
+    //Default Credential
+    public static String username = "bonk";
+    public static String password = "alvin123";
+    public static String email;
+    public static String lastname;
+    public static String firstname;
+    public static String middlename;
+    public static String dateofbirth;
+    public static String address;
+    public static String phonenum;
 
     EditText userEditText;
     EditText passEditText;
@@ -51,6 +60,20 @@ public class LoginActivity extends AppCompatActivity {
         toForgot = findViewById(R.id.forgotpassword);
         toRegister = findViewById(R.id.register);
 
+        Intent intent = getIntent();
+        if(intent != null) {
+            //Overwrite Data
+            username = intent.getStringExtra("Username");
+            password = intent.getStringExtra("Password");
+            email = intent.getStringExtra("Email");
+            lastname = intent.getStringExtra("LName");
+            firstname = intent.getStringExtra("FName");
+            middlename = intent.getStringExtra("MName");
+            dateofbirth = intent.getStringExtra("DOB");
+            address = intent.getStringExtra("Address");
+            phonenum = intent.getStringExtra("Phone");
+        }
+
         toProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,10 +85,8 @@ public class LoginActivity extends AppCompatActivity {
                 Log.d("LoginActivity", "Entered password: " + inPass);
 
                 if(inUser.equals(username) && inPass.equals(password)) {
-<<<<<<< Updated upstream
-                    Intent navprofile = new Intent(LoginActivity.this,ClientProfileActivity.class);
-=======
                     Intent navprofile = new Intent(LoginActivity.this,ProfileActivity.class);
+                  
                     navprofile.putExtra("Username", username);
                     navprofile.putExtra("Password", password);
                     navprofile.putExtra("Email", email);
@@ -75,13 +96,12 @@ public class LoginActivity extends AppCompatActivity {
                     navprofile.putExtra("DOB", dateofbirth);
                     navprofile.putExtra("Address", address);
                     navprofile.putExtra("Phone", phonenum);
->>>>>>> Stashed changes
                     startActivity(navprofile);
                 }else {
                     if (!inUser.equals(username)) {
-                        showInvalidUsernameDialog();
+                        Snackbar.make(v, "Invalid Credentials, please try again", Snackbar.LENGTH_LONG).show();
                     } else {
-                        showInvalidPasswordDialog();
+                        Snackbar.make(v, "Invalid Credentials, please try again", Snackbar.LENGTH_LONG).show();
                     }
                 }
             }

@@ -5,10 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ClientProfileActivity extends AppCompatActivity {
         ImageView homeclick, communityclick, postingclick, chatclick, docclick;
+        Button followBtn;
+        TextView clientName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +24,15 @@ public class ClientProfileActivity extends AppCompatActivity {
         postingclick = findViewById(R.id.hammer);
         chatclick = findViewById(R.id.messenger);
         docclick = findViewById(R.id.documents);
+
+        followBtn = findViewById(R.id.openToButton);
+        clientName = findViewById(R.id.profileName);
+
+        followBtn.setOnClickListener(v ->{
+            Intent followClient = new Intent(ClientProfileActivity.this,ClientProfileFollowedDummy.class);
+            followClient.putExtra("client_name", clientName.getText().toString());
+            startActivity(followClient);
+        });
 
         homeclick.setOnClickListener(new View.OnClickListener() {
             @Override
