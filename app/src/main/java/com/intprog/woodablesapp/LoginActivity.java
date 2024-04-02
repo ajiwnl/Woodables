@@ -85,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                 Log.d("LoginActivity", "Entered password: " + inPass);
 
                 if(inUser.equals(username) && inPass.equals(password)) {
-                    Intent navprofile = new Intent(LoginActivity.this,ClientProfileActivity.class);
+                    Intent navprofile = new Intent(LoginActivity.this,ProfileActivity.class);
                     navprofile.putExtra("Username", username);
                     navprofile.putExtra("Password", password);
                     navprofile.putExtra("Email", email);
