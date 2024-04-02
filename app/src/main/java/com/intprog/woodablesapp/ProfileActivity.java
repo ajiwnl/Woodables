@@ -17,6 +17,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView profileDesc6;
     private TextView profileDesc7;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,15 +38,17 @@ public class ProfileActivity extends AppCompatActivity {
             startActivityForResult(intent, 1);
         });
 
+        // Retrieve first name and last name from intent extras if available
         Intent intent = getIntent();
         String fname = intent.getStringExtra("FName");
         String lname = intent.getStringExtra("LName");
 
+        // Concatenate first name and last name with a space in between
         String fullName = fname + " " + lname;
 
+        // Set the concatenated name to the profile name TextView
         profileName.setText(fullName);
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

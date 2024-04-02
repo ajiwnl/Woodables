@@ -74,6 +74,7 @@
     <string name="msg1">Hello! How Are You?</string>
     <string name="dollar_pls">Can i have a dollar please?</string>
     <string name="msg3">When are you coming back?</string>
+    <string name="krustykrabprof">Krusty Crab Co.</string>
     <string name="sampleLongText">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices mattis odio.
         Integer ullamcorper nulla sed consectetur vestibulum. Donec rutrum congue leo eget malesuada.
@@ -83,7 +84,6 @@
         Pellentesque lorem quam, pede libero cursus neque, eget faucibus tortor neque eu erat.
         Aliquam erat volutpat.
     </string>
-    <string name="krustykrabprof">Krusty Crab Co.</string>
     <string name="companykrusty">Company</string>
     <string name="aj_von">Aj Von Krieger</string>
     <string name="adv_carpenter">Advance Carpenter</string>

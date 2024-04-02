@@ -14,7 +14,6 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-
         Button saveButton = findViewById(R.id.saveEdit);
         EditText nameEditText = findViewById(R.id.editName1);
         EditText desc2EditText = findViewById(R.id.profileDesc2);
