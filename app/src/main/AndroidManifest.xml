@@ -2,6 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+<<<<<<< Updated upstream
+=======
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+>>>>>>> Stashed changes
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +23,24 @@
         android:theme="@style/Theme.WoodablesApp"
         tools:targetApi="31">
         <activity
+<<<<<<< Updated upstream
+=======
+            android:name=".EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DummyGetImageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DummyCreatePostActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateJobCard"
+            android:exported="false" />
+        <activity
+            android:name=".CourseCatalog"
+            android:exported="false" />
+        <activity
+>>>>>>> Stashed changes
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity
@@ -20,7 +48,19 @@
             android:exported="false" />
         <activity
             android:name=".CreatePostActivity"
+<<<<<<< Updated upstream
             android:exported="false" />
+=======
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.PICK" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+>>>>>>> Stashed changes
         <activity
             android:name=".MessageSettingActivity"
             android:exported="false" />

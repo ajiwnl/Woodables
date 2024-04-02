@@ -225,6 +225,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/profileDesc3"
         android:src="@drawable/graduationcap"
+        android:contentDescription="@string/studied_in"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"/>
 
@@ -364,5 +365,4 @@
 
 
 </RelativeLayout>
-
 
