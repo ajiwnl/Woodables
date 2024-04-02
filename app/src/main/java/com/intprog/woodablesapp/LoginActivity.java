@@ -63,8 +63,8 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if(intent != null) {
             //Overwrite Data
-            username = intent.getStringExtra("Username");
-            password = intent.getStringExtra("Password");
+/*            username = intent.getStringExtra("Username");
+            password = intent.getStringExtra("Password");*/
             email = intent.getStringExtra("Email");
             lastname = intent.getStringExtra("LName");
             firstname = intent.getStringExtra("FName");
