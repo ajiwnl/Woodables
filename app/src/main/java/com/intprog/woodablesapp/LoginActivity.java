@@ -14,8 +14,8 @@ import com.google.android.material.snackbar.Snackbar;
 public class LoginActivity extends AppCompatActivity {
 
     //Default Credential
-    public static String username = "bonk";
-    public static String password = "alvin123";
+    public static String username;
+    public static String password;
     public static String email;
     public static String lastname;
     public static String firstname;
@@ -85,7 +85,8 @@ public class LoginActivity extends AppCompatActivity {
                 Log.d("LoginActivity", "Entered password: " + inPass);
 
                 if(inUser.equals(username) && inPass.equals(password)) {
-                    Intent navprofile = new Intent(LoginActivity.this,ClientProfileActivity.class);
+                    Intent navprofile = new Intent(LoginActivity.this,ProfileActivity.class);
+                  
                     navprofile.putExtra("Username", username);
                     navprofile.putExtra("Password", password);
                     navprofile.putExtra("Email", email);

@@ -74,6 +74,7 @@
     <string name="msg1">Hello! How Are You?</string>
     <string name="dollar_pls">Can i have a dollar please?</string>
     <string name="msg3">When are you coming back?</string>
+    <string name="krustykrabprof">Krusty Crab Co.</string>
     <string name="sampleLongText">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices mattis odio.
         Integer ullamcorper nulla sed consectetur vestibulum. Donec rutrum congue leo eget malesuada.
@@ -83,4 +84,24 @@
         Pellentesque lorem quam, pede libero cursus neque, eget faucibus tortor neque eu erat.
         Aliquam erat volutpat.
     </string>
+    <string name="companykrusty">Company</string>
+    <string name="aj_von">Aj Von Krieger</string>
+    <string name="adv_carpenter">Advance Carpenter</string>
+    <string name="visitortext">69 Unique Profile Visitors</string>
+    <string name="introtext">Intro</string>
+    <string name="project_ratings">4.8 out of 5.0 Job and Project Ratings</string>
+    <string name="freelance_carpenter">Freelance Carpenter at 3di s4 pus0 mo..</string>
+    <string name="former_carpenter">Former Carpenter at Company A</string>
+    <string name="studied_in">Studied Carpentry Mastering at TESDA Region VII</string>
+    <string name="completed_selflearning">Completed a Self-learning course for Advance Carpentry at Woodables Learning Course System</string>
+    <string name="City_b">From City B.</string>
+    <string name="joined">Joined 2023</string>
+    <string name="setting">settings</string>
+    <string name="profilebg">profilebg</string>
+    <string name="editprofilephoto">editphoto</string>
+    <string name="verified">verified</string>
+    <string name="opento">Open to</string>
+    <string name="edit_prof">Edit Profile</string>
+    <string name="dotdot">...</string>
+    <string name="saveprofile">Save Profile</string>
 </resources>
