@@ -14,8 +14,8 @@ import com.google.android.material.snackbar.Snackbar;
 public class LoginActivity extends AppCompatActivity {
 
     //Default Credential
-    public static String username = "bonk";
-    public static String password = "alvin123";
+    public static String username;
+    public static String password;
     public static String email;
     public static String lastname;
     public static String firstname;
@@ -63,8 +63,8 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if(intent != null) {
             //Overwrite Data
-/*            username = intent.getStringExtra("Username");
-            password = intent.getStringExtra("Password");*/
+            username = intent.getStringExtra("Username");
+            password = intent.getStringExtra("Password");
             email = intent.getStringExtra("Email");
             lastname = intent.getStringExtra("LName");
             firstname = intent.getStringExtra("FName");
