@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/wholeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
@@ -59,6 +60,19 @@
                 android:layout_height="200dp"
                 android:src="@drawable/krustykrab"
                 android:scaleType="fitXY" />
+
+            <ImageView
+                android:id="@+id/cameralogobackground"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toEndOf="@id/profilebackground"
+                android:layout_alignBottom="@id/profilebackground"
+                android:layout_marginStart="-50dp"
+                android:padding="8dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/popupdialogbkg"
+                android:src="@drawable/camera"/>
+
             <ImageView
                 android:id="@+id/profilepicture"
                 android:layout_width="100dp"
@@ -66,7 +80,6 @@
                 android:layout_marginTop="150dp"
                 android:layout_centerHorizontal="true"
                 android:adjustViewBounds="true"
-                android:background="@drawable/rounded_corners"
                 android:clipToOutline="true"
                 android:contentDescription="@string/logo"
                 android:cropToPadding="true"
@@ -74,13 +87,17 @@
                 android:src="@drawable/krustykrab" />
 
             <ImageView
-                android:id="@+id/cameralogo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/camera"
+                android:id="@+id/cameralogoprofile"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_toEndOf="@id/profilepicture"
                 android:layout_alignBottom="@id/profilepicture"
-                android:layout_marginStart="-30dp"/>
+                android:layout_marginStart="-40dp"
+                android:padding="8dp"
+                android:scaleType="centerCrop"
+                android:clickable="true"
+                android:background="@drawable/popupdialogbkg"
+                android:src="@drawable/camera"/>
 
             <TextView
                 android:id="@+id/profileName"
@@ -208,7 +225,7 @@
                 android:layout_toEndOf="@+id/locationlogo"
                 android:layout_alignBottom="@id/locationlogo"
                 android:textColor="@color/white"
-                android:text="From City B"/>
+                android:text="From Krusty Krab Restaurant"/>
 
             <ImageView
                 android:id="@+id/clock"
