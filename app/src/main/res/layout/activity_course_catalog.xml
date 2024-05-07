@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
-    tools:context=".CourseCatalog">
+    tools:context=".CourseCatalogActivity">
 
     <View
         android:layout_width="match_parent"
@@ -85,17 +85,19 @@
             android:layout_weight="0"
             android:background="@drawable/textbox_4curvedcorners"
             android:text="Browse Coursing Catalog"
-            android:textSize="7sp" />
+            android:textSize="6sp"/>
+
 
         <Button
-            android:id="@+id/skillasses"
+            android:id="@+id/skillassess"
             android:layout_width="100dp"
             android:layout_height="35dp"
             android:layout_marginLeft="5dp"
             android:layout_weight="0"
             android:background="@drawable/textbox_4curvedcorners"
             android:text="Skill Assesment"
-            android:textSize="8sp" />
+            android:textSize="6sp"/>
+
 
     </LinearLayout>
 

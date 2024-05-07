@@ -19,7 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WoodablesApp"
         tools:targetApi="31">
-
+        <activity
+            android:name=".AssessmentActivity"
+            android:exported="false" />
         <activity
             android:name=".EditProfileActivity"
             android:exported="false" />
@@ -30,10 +32,10 @@
             android:name=".DummyCreatePostActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateJobCard"
+            android:name=".CreateJobCardActivity"
             android:exported="false" />
         <activity
-            android:name=".CourseCatalog"
+            android:name=".CourseCatalogActivity"
             android:exported="false" />
         <activity
             android:name=".ProfileActivity"
@@ -43,16 +45,7 @@
             android:exported="false" />
         <activity
             android:name=".CreatePostActivity"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.intent.action.PICK" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <data android:mimeType="image/*" />
-            </intent-filter>
-        </activity>
-
+            android:exported="false" />
         <activity
             android:name=".MessageSettingActivity"
             android:exported="false" />
@@ -73,13 +66,7 @@
             android:exported="false" />
         <activity
             android:name=".ClientProfileActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".ClientProfileFollowedDummy"
             android:exported="false" />
@@ -88,10 +75,23 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
+            android:exported="true">
+<!--            android:screenOrientation="portrait">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
         <activity
             android:name=".StartUpActivity"
             android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

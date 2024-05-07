@@ -90,7 +90,7 @@
             android:textSize="7sp"/>
 
         <Button
-            android:id="@+id/skillasses"
+            android:id="@+id/skillassess"
             android:layout_width="100dp"
             android:layout_height="35dp"
             android:layout_marginLeft="5dp"

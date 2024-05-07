@@ -91,7 +91,8 @@
                     android:textStyle="bold"
                     android:text="@string/are_you_a" />
 
-                <LinearLayout
+                <RadioGroup
+                    android:id="@+id/userType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -109,7 +110,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="35dp"
                         android:text="@string/woodworker" />
-                </LinearLayout>
+                </RadioGroup>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -260,7 +261,8 @@
 
                 </LinearLayout>
 
-                <LinearLayout
+                <RadioGroup
+                    android:id="@+id/genderType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -278,21 +280,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="35dp"
                         android:text="@string/female" />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/ratherrad"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="60dp"
-                        android:text="@string/rather_not_say" />
-                </LinearLayout>
+                </RadioGroup>
 
             <LinearLayout
                 android:layout_width="match_parent"
