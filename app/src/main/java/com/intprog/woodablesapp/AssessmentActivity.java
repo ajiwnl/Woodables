@@ -8,7 +8,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AsessmentActivity extends AppCompatActivity {
+public class AssessmentActivity extends AppCompatActivity {
 
     EditText lNameIn, fNameIn, mNameIn, doaIn, expertiseIn;
     Button sendBtn, getSendBtn;
@@ -19,7 +19,7 @@ public class AsessmentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_asessment);
+        setContentView(R.layout.activity_assessment);
         sharedPreferences = getSharedPreferences("UserData", MODE_PRIVATE);
         lNameIn = findViewById(R.id.assesslName);
         fNameIn = findViewById(R.id.assessfName);
@@ -35,7 +35,7 @@ public class AsessmentActivity extends AppCompatActivity {
     }
 
     // Method to save user data in SharedPreferences
-    private void saveUserData() {
+    public void saveUserData() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("lastName", lNameIn.getText().toString());
         editor.putString("firstName", fNameIn.getText().toString());
@@ -47,7 +47,7 @@ public class AsessmentActivity extends AppCompatActivity {
 
     // Method to display user data from SharedPreferences
     // Method to display user data from SharedPreferences
-    private void displayUserData() {
+    public void displayUserData() {
         String lastName = sharedPreferences.getString("lastName", "");
         String firstName = sharedPreferences.getString("firstName", "");
         String middleName = sharedPreferences.getString("middleName", "");
