@@ -1,9 +1,12 @@
 package com.intprog.woodablesapp;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +15,8 @@ public class AssessmentActivity extends AppCompatActivity {
 
     EditText lNameIn, fNameIn, mNameIn, doaIn, expertiseIn;
     Button sendBtn, getSendBtn;
+
+    ImageView backBtn;
 
     // SharedPreferences instance
     SharedPreferences sharedPreferences;
@@ -28,10 +33,19 @@ public class AssessmentActivity extends AppCompatActivity {
         expertiseIn = findViewById(R.id.assessExpertise);
         sendBtn = findViewById(R.id.bookBtn);
         getSendBtn = findViewById(R.id.getDataBtn);
+        backBtn = findViewById(R.id.backbutton);
 
         sendBtn.setOnClickListener(v -> saveUserData());
 
         getSendBtn.setOnClickListener(v -> displayUserData());
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent backtocourse = new Intent(AssessmentActivity.this, LearnCourseActivity.class);
+                startActivity(backtocourse);
+            }
+        });
     }
 
     // Method to save user data in SharedPreferences
