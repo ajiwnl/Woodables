@@ -5,42 +5,48 @@
     android:layout_height="match_parent"
     android:background="@color/background">
 
-    <ImageView
-        android:id="@+id/backbutton"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:src="@drawable/backbutton"
-        android:background="@color/background"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="15dp"/>
-
-    <SearchView
-        android:id="@+id/searchBarProfile"
+    <LinearLayout
+        android:id="@+id/searchbargroup"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/textbox_4curvedcorners"
-        android:layout_toEndOf="@+id/backbutton"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="50dp"/>
-
-
-    <ImageView
-        android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="1dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="12dp"
-        android:background="@color/background"
-        android:src="@drawable/settings" />
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/backbutton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:layout_weight="0.5"
+            android:src="@drawable/backbutton"
+            android:background="@color/background"/>
+
+        <SearchView
+            android:id="@+id/searchBarProfile"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="3"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/textbox_4curvedcorners"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="5dp"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:layout_weight="0.5"
+            android:src="@drawable/settings"
+            android:background="@color/background"/>
+
+    </LinearLayout>
+
 
     <View
         android:id="@+id/breaklinetop"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_below="@+id/searchBarProfile"
+        android:layout_below="@+id/searchbargroup"
         android:background="@color/white" />
 
     <ScrollView
@@ -59,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:src="@drawable/krustykrab"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"/>
 
             <ImageView
                 android:id="@+id/cameralogobackground"
@@ -497,7 +503,6 @@
     <View
         android:id="@+id/breaklinebottom"
         android:layout_width="match_parent"
-        android:layout_marginTop="5dp"
         android:layout_height="2dp"
         android:layout_above="@id/bottom_nav"
         android:background="@color/white"/>
