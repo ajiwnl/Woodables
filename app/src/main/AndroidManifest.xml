@@ -20,7 +20,7 @@
         android:theme="@style/Theme.WoodablesApp"
         tools:targetApi="31">
         <activity
-            android:name=".AsessmentActivity"
+            android:name=".AssessmentActivity"
             android:exported="false" />
         <activity
             android:name=".EditProfileActivity"
@@ -32,10 +32,10 @@
             android:name=".DummyCreatePostActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateJobCard"
+            android:name=".CreateJobCardActivity"
             android:exported="false" />
         <activity
-            android:name=".CourseCatalog"
+            android:name=".CourseCatalogActivity"
             android:exported="false" />
         <activity
             android:name=".ProfileActivity"
@@ -75,17 +75,24 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true"
-            android:screenOrientation="portrait">
+            android:exported="true">
+<!--            android:screenOrientation="portrait">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".StartUpActivity"
+            android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".StartUpActivity"
-            android:exported="true"></activity>
     </application>
 
 </manifest>

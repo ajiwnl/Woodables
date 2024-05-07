@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -23,6 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText addText;
     EditText phoneText;
     Intent tologin;
+    RadioGroup userTypeGroup, genderTypeGroup;
 
 
     @Override
@@ -41,7 +43,32 @@ public class RegisterActivity extends AppCompatActivity {
         dobText = findViewById(R.id.dobpick);
         addText = findViewById(R.id.address);
         phoneText = findViewById(R.id.phonenum);
+        userTypeGroup = findViewById(R.id.userType);
+        genderTypeGroup = findViewById(R.id.genderType);
 
+        userTypeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // Handle RadioButton selection here
+                if (checkedId == R.id.clientrad) {
+                    // Client RadioButton selected
+                } else if (checkedId == R.id.workerrad) {
+                    // Worker RadioButton selected
+                }
+            }
+        });
+
+        genderTypeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // Handle RadioButton selection here
+                if (checkedId == R.id.malerad) {
+                    // Client RadioButton selected
+                } else if (checkedId == R.id.femrad) {
+                    // Worker RadioButton selected
+                }
+            }
+        });
 
         logclick.setOnClickListener(new View.OnClickListener() {
             @Override
