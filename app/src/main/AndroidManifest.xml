@@ -19,7 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WoodablesApp"
         tools:targetApi="31">
-
+        <activity
+            android:name=".AsessmentActivity"
+            android:exported="false" />
         <activity
             android:name=".EditProfileActivity"
             android:exported="false" />
@@ -43,8 +45,7 @@
             android:exported="false" />
         <activity
             android:name=".CreatePostActivity"
-            android:exported="false"/>
-
+            android:exported="false" />
         <activity
             android:name=".MessageSettingActivity"
             android:exported="false" />
@@ -65,7 +66,7 @@
             android:exported="false" />
         <activity
             android:name=".ClientProfileActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".ClientProfileFollowedDummy"
             android:exported="false" />
@@ -84,8 +85,7 @@
         </activity>
         <activity
             android:name=".StartUpActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>

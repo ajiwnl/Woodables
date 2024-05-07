@@ -87,7 +87,7 @@
             android:layout_weight="0"
             android:background="@drawable/textbox_4curvedcorners"
             android:text="Browse Coursing Catalog"
-            android:textSize="7sp"/>
+            android:textSize="6sp"/>
 
         <Button
             android:id="@+id/skillasses"
@@ -97,7 +97,7 @@
             android:layout_weight="0"
             android:background="@drawable/textbox_4curvedcorners"
             android:text="Skill Assesment"
-            android:textSize="8sp"/>
+            android:textSize="6sp"/>
 
     </LinearLayout>
 
