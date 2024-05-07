@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,7 +10,8 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/white"/>
+        android:background="@color/white" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -36,13 +37,13 @@
         <TextView
             android:layout_width="250dp"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:paddingEnd="50dp"
             android:text="I'm Learning"
             android:textAlignment="center"
-            android:gravity="center"
             android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/burgermenu"
@@ -54,13 +55,10 @@
 
     </LinearLayout>
 
-
-
-
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/white"/>
+        android:background="@color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -72,9 +70,9 @@
             android:id="@+id/searchView"
             android:layout_width="180dp"
             android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginLeft= "10dp"
             android:background="@drawable/textbox_4curvedcorners"
 
             android:queryHint="Search" />
@@ -87,7 +85,7 @@
             android:layout_weight="0"
             android:background="@drawable/textbox_4curvedcorners"
             android:text="Browse Coursing Catalog"
-            android:textSize="7sp"/>
+            android:textSize="7sp" />
 
         <Button
             android:id="@+id/skillasses"
@@ -97,56 +95,56 @@
             android:layout_weight="0"
             android:background="@drawable/textbox_4curvedcorners"
             android:text="Skill Assesment"
-            android:textSize="8sp"/>
+            android:textSize="8sp" />
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/white"/>
+        android:background="@color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="320dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
             android:text="Course Catalog"
             android:textColor="@color/white"
-            android:textSize="19sp"
-            android:layout_marginLeft="25dp"/>
+            android:textSize="19sp" />
 
         <ImageButton
             android:id="@+id/moreopt"
             android:layout_width="40dp"
             android:layout_height="match_parent"
             android:background="@color/background"
-            android:src="@drawable/approve"/>
+            android:src="@drawable/approve" />
 
     </LinearLayout>
 
     <View
         android:layout_width="370dp"
-        android:layout_gravity="center"
         android:layout_height="2dp"
-        android:background="#D6AE80"/>
+        android:layout_gravity="center"
+        android:background="#D6AE80" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            android:orientation="vertical"
+            android:background="@color/background"
             android:gravity=""
-            android:background="@color/background">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -156,79 +154,80 @@
                 <LinearLayout
                     android:layout_width="190dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
-                    android:orientation="vertical"
-                    android:background="@color/background">
+                    android:background="@color/background"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
-                        android:src="@drawable/woodworker"
-                        android:scaleType="centerCrop"/>
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/woodworker" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
+                        android:background="@color/white"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp"
-                        android:background="@color/white"
                         android:text="Course - 001" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@color/white"
-                        android:textSize="9sp"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp"
-                        android:text="Lorem Ipsum Dimsum Lumpsum Inksum Rescom Hascom Lascom Dascom" />
+                        android:text="Lorem Ipsum Dimsum Lumpsum Inksum Rescom Hascom Lascom Dascom"
+                        android:textSize="9sp" />
 
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:background="@color/white"
-                        android:text="Enroll"/>
+                        android:text="Enroll" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="190dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
-                    android:orientation="vertical"
-                    android:background="@color/background">
+                    android:background="@color/background"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
-                        android:src="@drawable/woodworker"
-                        android:scaleType="centerCrop"/>
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/woodworker" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
+                        android:background="@color/white"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp"
-                        android:background="@color/white"
                         android:text="Course - 001" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@color/white"
-                        android:textSize="9sp"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp"
-                        android:text="Lorem Ipsum Dimsum Lumpsum Inksum Rescom Hascom Lascom Dascom" />
+                        android:text="Lorem Ipsum Dimsum Lumpsum Inksum Rescom Hascom Lascom Dascom"
+                        android:textSize="9sp" />
 
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:background="@color/white"
-                        android:text="Enroll"/>
+                        android:text="Enroll" />
 
                 </LinearLayout>
 
@@ -242,79 +241,80 @@
                 <LinearLayout
                     android:layout_width="190dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
-                    android:orientation="vertical"
-                    android:background="@color/background">
+                    android:background="@color/background"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
-                        android:src="@drawable/woodworker"
-                        android:scaleType="centerCrop"/>
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/woodworker" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
+                        android:background="@color/white"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp"
-                        android:background="@color/white"
                         android:text="Course - 001" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@color/white"
-                        android:textSize="9sp"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp"
-                        android:text="Lorem Ipsum Dimsum Lumpsum Inksum Rescom Hascom Lascom Dascom" />
+                        android:text="Lorem Ipsum Dimsum Lumpsum Inksum Rescom Hascom Lascom Dascom"
+                        android:textSize="9sp" />
 
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:background="@color/white"
-                        android:text="Enroll"/>
+                        android:text="Enroll" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="190dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
-                    android:orientation="vertical"
-                    android:background="@color/background">
+                    android:background="@color/background"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
-                        android:src="@drawable/woodworker"
-                        android:scaleType="centerCrop"/>
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/woodworker" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
+                        android:background="@color/white"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp"
-                        android:background="@color/white"
                         android:text="Course - 001" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@color/white"
-                        android:textSize="9sp"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp"
-                        android:text="Lorem Ipsum Dimsum Lumpsum Inksum Rescom Hascom Lascom Dascom" />
+                        android:text="Lorem Ipsum Dimsum Lumpsum Inksum Rescom Hascom Lascom Dascom"
+                        android:textSize="9sp" />
 
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:background="@color/white"
-                        android:text="Enroll"/>
+                        android:text="Enroll" />
 
                 </LinearLayout>
 
@@ -328,169 +328,85 @@
                 <LinearLayout
                     android:layout_width="190dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
-                    android:orientation="vertical"
-                    android:background="@color/background">
+                    android:background="@color/background"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
-                        android:src="@drawable/woodworker"
-                        android:scaleType="centerCrop"/>
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/woodworker" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
+                        android:background="@color/white"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp"
-                        android:background="@color/white"
                         android:text="Course - 001" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@color/white"
-                        android:textSize="9sp"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp"
-                        android:text="Lorem Ipsum Dimsum Lumpsum Inksum Rescom Hascom Lascom Dascom" />
+                        android:text="Lorem Ipsum Dimsum Lumpsum Inksum Rescom Hascom Lascom Dascom"
+                        android:textSize="9sp" />
 
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:background="@color/white"
-                        android:text="Enroll"/>
+                        android:text="Enroll" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="190dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
-                    android:orientation="vertical"
-                    android:background="@color/background">
+                    android:background="@color/background"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
-                        android:src="@drawable/woodworker"
-                        android:scaleType="centerCrop"/>
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/woodworker" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
+                        android:background="@color/white"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp"
-                        android:background="@color/white"
                         android:text="Course - 001" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@color/white"
-                        android:textSize="9sp"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp"
-                        android:text="Lorem Ipsum Dimsum Lumpsum Inksum Rescom Hascom Lascom Dascom" />
+                        android:text="Lorem Ipsum Dimsum Lumpsum Inksum Rescom Hascom Lascom Dascom"
+                        android:textSize="9sp" />
 
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:background="@color/white"
-                        android:text="Enroll"/>
+                        android:text="Enroll" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="190dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:orientation="vertical"
-                    android:background="@color/background">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:src="@drawable/woodworker"
-                        android:scaleType="centerCrop"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp"
-                        android:paddingStart="5dp"
-                        android:paddingEnd="5dp"
-                        android:background="@color/white"
-                        android:text="Course - 001" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:background="@color/white"
-                        android:textSize="9sp"
-                        android:paddingStart="5dp"
-                        android:paddingEnd="5dp"
-                        android:text="Lorem Ipsum Dimsum Lumpsum Inksum Rescom Hascom Lascom Dascom" />
-
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp"
-                        android:background="@color/white"
-                        android:text="Enroll"/>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="190dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:orientation="vertical"
-                    android:background="@color/background">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:src="@drawable/woodworker"
-                        android:scaleType="centerCrop"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp"
-                        android:paddingStart="5dp"
-                        android:paddingEnd="5dp"
-                        android:background="@color/white"
-                        android:text="Course - 001" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:background="@color/white"
-                        android:textSize="9sp"
-                        android:paddingStart="5dp"
-                        android:paddingEnd="5dp"
-                        android:text="Lorem Ipsum Dimsum Lumpsum Inksum Rescom Hascom Lascom Dascom" />
-
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp"
-                        android:background="@color/white"
-                        android:text="Enroll"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
@@ -498,50 +414,68 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/white"/>
+        android:background="@color/white" />
 
+    <!-- Navigation bar -->
     <LinearLayout
+        android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:padding="15dp">
+        android:layout_alignParentBottom="true"
+        android:background="@color/background"
+        android:orientation="horizontal">
+
 
         <ImageView
             android:id="@+id/home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:src="@drawable/home"
-            />
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:src="@drawable/home" />
+
         <ImageView
-            android:id="@+id/chat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:src="@drawable/chat"
-            />
+            android:id="@+id/community"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:src="@drawable/chat" />
+
         <ImageView
             android:id="@+id/hammer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:src="@drawable/hammer"
-            />
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:src="@drawable/hammer" />
+
         <ImageView
             android:id="@+id/messenger"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:src="@drawable/messenger"
-            />
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:src="@drawable/messenger" />
+
         <ImageView
             android:id="@+id/documents"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:src="@drawable/approve"
-            />
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:src="@drawable/approve" />
     </LinearLayout>
+    <!--Ari ra kutob ang navagation bar -->
 
-</LinearLayout>
+</RelativeLayout>

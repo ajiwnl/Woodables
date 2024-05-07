@@ -395,63 +395,67 @@
             </LinearLayout>
         </LinearLayout>
 
+        <!-- Navigation bar -->
         <LinearLayout
+            android:id="@+id/bottom_nav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_alignParentBottom="true"
+            android:background="@color/background"
+            android:orientation="horizontal">
 
-            android:paddingBottom="10dp">
 
             <ImageView
                 android:id="@+id/home"
-                android:layout_width="40dp"
-                android:layout_height="50dp"
-                android:layout_marginBottom="-2dp"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/home"
-                android:layout_marginStart="40dp"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
                 android:clickable="true"
-                android:contentDescription="@string/home"/>
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:src="@drawable/home" />
+
             <ImageView
                 android:id="@+id/community"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginBottom="-2dp"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/chat"
-                android:layout_marginStart="30dp"
-                android:contentDescription="@string/message" />
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:src="@drawable/chat" />
+
             <ImageView
                 android:id="@+id/hammer"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginBottom="-2dp"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/hammer"
-                android:layout_marginStart="30dp"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
                 android:clickable="true"
-                android:contentDescription="@string/woodworker" />
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:src="@drawable/hammer" />
+
             <ImageView
                 android:id="@+id/messenger"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginBottom="-2dp"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/messenger"
-                android:layout_marginStart="30dp"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
                 android:clickable="true"
-                android:contentDescription="@string/message" />
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:src="@drawable/messenger" />
+
             <ImageView
                 android:id="@+id/documents"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginBottom="-2dp"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/approve"
-                android:layout_marginStart="30dp"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
                 android:clickable="true"
-                android:contentDescription="@string/listing" />
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:src="@drawable/approve" />
         </LinearLayout>
+        <!--Ari ra kutob ang navagation bar -->
+
     </RelativeLayout>
 </ScrollView>

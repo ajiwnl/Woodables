@@ -509,7 +509,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/background"
-        android:gravity="center_vertical"
         android:orientation="horizontal">
 
 
@@ -517,51 +516,50 @@
             android:id="@+id/home"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:layout_marginStart="15dp"
+            android:layout_weight="1"
             android:clickable="true"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
             android:src="@drawable/home" />
 
         <ImageView
             android:id="@+id/community"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:layout_marginStart="15dp"
+            android:layout_weight="1"
             android:clickable="true"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
             android:src="@drawable/chat" />
 
         <ImageView
             android:id="@+id/hammer"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:layout_marginStart="15dp"
+            android:layout_weight="1"
             android:clickable="true"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
             android:src="@drawable/hammer" />
 
         <ImageView
             android:id="@+id/messenger"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:layout_marginStart="15dp"
-            android:baselineAligned="false"
+            android:layout_weight="1"
             android:clickable="true"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
             android:src="@drawable/messenger" />
 
         <ImageView
             android:id="@+id/documents"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:layout_marginStart="15dp"
+            android:layout_weight="1"
             android:clickable="true"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
             android:src="@drawable/approve" />
     </LinearLayout>
     <!--Ari ra kutob ang navagation bar -->
