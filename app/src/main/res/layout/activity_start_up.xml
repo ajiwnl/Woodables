@@ -1,90 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StartUpActivity"
     android:orientation="vertical"
-    android:background="#161804">
+    android:background="@drawable/startupbkg">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_weight="0.80"
+        android:orientation="vertical"
+        android:gravity="center">
 
         <ImageView
             android:id="@+id/imgview"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="150dp"
-            android:src="@drawable/woodables" />
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:src="@drawable/woodableslogo" />
 
         <TextView
+            android:id="@+id/appname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/spartan_medium"
-            android:layout_marginTop="180dp"
+
+            android:fontFamily="@font/spartan_bold"
             android:text="@string/app_name"
             android:textStyle="bold"
-            android:textColor="#d6ae80"
-            android:textSize="30sp"
-            android:layout_toRightOf="@id/imgview"
-            />
-
+            android:textColor="@color/white"
+            android:textSize="30sp"/>
 
         <TextView
+            android:id="@+id/appcatchphrase"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.230"
+
             android:fontFamily="@font/spartan_medium"
-            android:layout_marginTop="225dp"
-            android:layout_toRightOf="@id/imgview"
+            android:letterSpacing="0.07"
             android:text="@string/description"
-            android:textStyle="bold"
             android:textColor="#ffff"
             android:textSize="14sp"
-            android:letterSpacing="0.07"
-            />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="400dp"
-            android:background="@drawable/background_curved_corners">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/loginBtn"
-                    android:layout_width="250dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="85dp"
-                    android:layout_marginTop="85dp"
-                    android:gravity="center"
-                    android:background="@drawable/textbox_4curvedcorners"
-                    android:text="@string/login" />
-
-                <Button
-                    android:id="@+id/regBtn"
-                    android:layout_width="250dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="85dp"
-                    android:layout_marginTop="50dp"
-                    android:background="@drawable/textbox_4curvedcorners"
-                    android:text="@string/register" />
-
-            </LinearLayout>
-
-        </RelativeLayout>
+            android:textStyle="bold"/>
 
 
 
-    </RelativeLayout>
 
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_weight="0.20">
+
+        <Button
+            android:id="@+id/loginBtn"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
+            android:backgroundTint="@color/cinnamon"
+            android:textColor="@color/white"
+            android:text="@string/login" />
+
+        <Button
+            android:id="@+id/regBtn"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
+            android:background="#00FFFFFF"
+            android:textColor="@color/white"
+            android:text="@string/register" />
+
+    </LinearLayout>
 
 </LinearLayout>
