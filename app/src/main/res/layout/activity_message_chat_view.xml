@@ -14,6 +14,7 @@
         <ImageView
             android:layout_width="35dp"
             android:layout_height="match_parent"
+            android:padding="6dp"
             android:src="@drawable/leftarrow"
             android:contentDescription="@string/left_arrow" />
 
