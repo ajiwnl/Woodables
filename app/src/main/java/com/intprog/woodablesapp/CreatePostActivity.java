@@ -16,7 +16,7 @@ import com.google.android.material.snackbar.Snackbar;
 public class CreatePostActivity extends AppCompatActivity {
 
     private static final int CAMERA_REQUEST_CODE = 1;
-    private static final int GALLERY_REQUEST_CODE = 1;
+    private static final int GALLERY_REQUEST_CODE = 2;
     EditText title, content;
     Button clickPost;
     ImageView closeview, toCam, toGal;
