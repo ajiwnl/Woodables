@@ -37,14 +37,14 @@ public class RegisterActivity extends AppCompatActivity {
         userText = findViewById(R.id.userName);
         passText = findViewById(R.id.password);
         emailText = findViewById(R.id.email);
-        lNameText = findViewById(R.id.lName);
-        fNameText = findViewById(R.id.fName);
-        mNameText = findViewById(R.id.mName);
-        dobText = findViewById(R.id.dobpick);
-        addText = findViewById(R.id.address);
-        phoneText = findViewById(R.id.phonenum);
+//        lNameText = findViewById(R.id.lName);
+//        fNameText = findViewById(R.id.fName);
+//        mNameText = findViewById(R.id.mName);
+//        dobText = findViewById(R.id.dobpick);
+//        addText = findViewById(R.id.address);
+//        phoneText = findViewById(R.id.phonenum);
         userTypeGroup = findViewById(R.id.userType);
-        genderTypeGroup = findViewById(R.id.genderType);
+//        genderTypeGroup = findViewById(R.id.genderType);
 
         userTypeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -58,17 +58,17 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        genderTypeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                // Handle RadioButton selection here
-                if (checkedId == R.id.malerad) {
-                    // Client RadioButton selected
-                } else if (checkedId == R.id.femrad) {
-                    // Worker RadioButton selected
-                }
-            }
-        });
+//        genderTypeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//                // Handle RadioButton selection here
+//                if (checkedId == R.id.malerad) {
+//                    // Client RadioButton selected
+//                } else if (checkedId == R.id.femrad) {
+//                    // Worker RadioButton selected
+//                }
+//            }
+//        });
 
         logclick.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,23 +84,23 @@ public class RegisterActivity extends AppCompatActivity {
                 String username = userText.getText().toString();
                 String password = passText.getText().toString();
                 String email = emailText.getText().toString();
-                String lname = lNameText.getText().toString();
-                String fname = fNameText.getText().toString();
-                String mname = mNameText.getText().toString();
-                String dob = dobText.getText().toString();
-                String address = addText.getText().toString();
-                String pnumber = phoneText.getText().toString();
+//                String lname = lNameText.getText().toString();
+//                String fname = fNameText.getText().toString();
+//                String mname = mNameText.getText().toString();
+//                String dob = dobText.getText().toString();
+//                String address = addText.getText().toString();
+//                String pnumber = phoneText.getText().toString();
 
                 tologin = new Intent(RegisterActivity.this, LoginActivity.class);
                 tologin.putExtra("Username", username);
                 tologin.putExtra("Password", password);
                 tologin.putExtra("Email", email);
-                tologin.putExtra("LName", lname);
-                tologin.putExtra("FName", fname);
-                tologin.putExtra("MName", mname);
-                tologin.putExtra("DOB", dob);
-                tologin.putExtra("Address", address);
-                tologin.putExtra("Phone", pnumber);
+//                tologin.putExtra("LName", lname);
+//                tologin.putExtra("FName", fname);
+//                tologin.putExtra("MName", mname);
+//                tologin.putExtra("DOB", dob);
+//                tologin.putExtra("Address", address);
+//                tologin.putExtra("Phone", pnumber);
                 startActivity(tologin);
             }
         });
