@@ -5,158 +5,162 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".RegisterActivity"
-    android:background="@color/white">
+    android:gravity="center"
+    android:background="@drawable/startupbkg">
 
-
-    <TextView
-        android:id="@+id/createacctext"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_centerHorizontal="true"
-        android:text="@string/create_new_account"
-        android:textColor="@color/black"
-        android:textSize="28sp"
-        android:textStyle="bold" />
-
-
-
-
-
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/createacctext"
-        android:orientation="vertical">
+        android:padding="20dp"
+        android:background="@drawable/textbox_4curvedcorners">
 
         <TextView
-            android:id="@+id/typetext"
+            android:id="@+id/createacctext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_centerHorizontal="true"
-            android:textStyle="bold"
-            android:text="@string/are_you_a" />
-
-        <RadioGroup
-            android:id="@+id/userType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/typetext"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/clientrad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.20"
-                android:text="@string/client" />
-
-            <RadioButton
-                android:id="@+id/workerrad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.20"
-                android:text="@string/woodworker" />
-        </RadioGroup>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/username"
-            android:textColor="@color/cola"
+            android:text="@string/create_new_account"
+            android:textColor="@color/black"
+            android:textSize="28sp"
             android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/userName"
-            android:layout_width="266dp"
-            android:layout_height="48dp"
-            android:hint="@string/enter_username"
-            android:inputType="text"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:textColor="@color/white"
-            tools:ignore="LabelFor" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/password"
-            android:textColor="@color/cola"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="266dp"
-            android:layout_height="48dp"
-            android:hint="@string/enter_password"
-            android:inputType="textPassword"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:textColor="@color/white"
-            tools:ignore="LabelFor" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:textColor="@color/cola"
-            android:textStyle="bold"
-            android:text="Email"/>
-
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="266dp"
-            android:layout_height="48dp"
-            android:hint="Enter email"
-            android:inputType="textEmailAddress"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:textColor="@color/white"
-            tools:ignore="LabelFor" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/createacctext"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/alredyregtext"
+                android:id="@+id/typetext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="@string/already_registered" />
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:text="@string/are_you_a" />
+
+            <RadioGroup
+                android:id="@+id/userType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/typetext"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/clientrad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.20"
+                    android:text="@string/client" />
+
+                <RadioButton
+                    android:id="@+id/workerrad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.20"
+                    android:text="@string/woodworker" />
+            </RadioGroup>
 
             <TextView
-                android:id="@+id/loginhere"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:layout_weight="1"
+                android:text="@string/username"
+                android:textColor="@color/cola"
+                android:textStyle="bold" />
 
-                android:text="@string/login_here"
-                android:textColor="#2437e7"
+            <EditText
+                android:id="@+id/userName"
+                android:layout_width="266dp"
+                android:layout_height="48dp"
+                android:hint="@string/enter_username"
+                android:inputType="text"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:textColor="@color/white"
+                tools:ignore="LabelFor" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/password"
+                android:textColor="@color/cola"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="266dp"
+                android:layout_height="48dp"
+                android:hint="@string/enter_password"
+                android:inputType="textPassword"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:textColor="@color/white"
+                tools:ignore="LabelFor" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textColor="@color/cola"
                 android:textStyle="bold"
-                android:clickable="true"/>
+                android:text="Email"/>
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="266dp"
+                android:layout_height="48dp"
+                android:hint="Enter email"
+                android:inputType="textEmailAddress"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:textColor="@color/white"
+                tools:ignore="LabelFor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/alredyregtext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/already_registered" />
+
+                <TextView
+                    android:id="@+id/loginhere"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textEnd"
+                    android:layout_weight="1"
+
+                    android:text="@string/login_here"
+                    android:textColor="#2437e7"
+                    android:textStyle="bold"
+                    android:clickable="true"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
 
+        <Button
+            android:id="@+id/regclick"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_below="@+id/linearLayout"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/cinnamon"
+            android:textColor="@color/white"
+            android:text="@string/register"
+            android:textStyle="bold"/>
 
-    <Button
-        android:id="@+id/regclick"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_below="@+id/linearLayout"
-        android:layout_centerHorizontal="true"
-        android:backgroundTint="@color/cinnamon"
-        android:textColor="@color/schoolbusyellow"
-        android:text="@string/register"
-        android:textStyle="bold"/>
+    </RelativeLayout>
+
 
 
 
