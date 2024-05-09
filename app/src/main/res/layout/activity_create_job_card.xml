@@ -23,7 +23,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="15dp"
             android:background="@color/background"
-            android:src="@drawable/backbutton" />
+            android:src="@drawable/leftarrow" />
 
 
 

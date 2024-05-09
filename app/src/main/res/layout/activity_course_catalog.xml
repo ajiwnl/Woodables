@@ -25,7 +25,7 @@
             android:layout_weight="0.70"
             android:padding="10dp"
             android:background="@color/background"
-            android:src="@drawable/backbutton" />
+            android:src="@drawable/leftarrow" />
 
         <ImageView
             android:id="@+id/applogo"
@@ -80,6 +80,7 @@
             android:layout_marginBottom="10dp"
             android:layout_marginStart= "10dp"
             android:background="@drawable/textbox_4curvedcorners"
+            android:backgroundTint="@color/white"
             android:queryHint="Search" />
 
         <Button
@@ -89,7 +90,7 @@
             android:padding="5dp"
             android:layout_marginStart="5dp"
             android:layout_weight="0.25"
-            android:backgroundTint="@color/btnColor"
+            android:backgroundTint="@color/cinnamon"
             android:text="Browse"
 
             android:textSize="11sp"/>
@@ -101,7 +102,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="0.25"
-            android:backgroundTint="@color/btnColor"
+            android:backgroundTint="@color/cinnamon"
             android:text="Assesment"
             android:textSize="8sp"/>
 
