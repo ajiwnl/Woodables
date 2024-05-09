@@ -25,7 +25,7 @@
             android:layout_height="25dp"
             android:layout_marginLeft="15dp"
             android:background="@color/background"
-            android:src="@drawable/backbutton" />
+            android:src="@drawable/leftarrow" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="34dp"
