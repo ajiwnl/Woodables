@@ -34,7 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         logclick = findViewById(R.id.loginhere);
         registerbtn = findViewById(R.id.regclick);
-        userText = findViewById(R.id.userName);
+//      userText = findViewById(R.id.userName);
         passText = findViewById(R.id.password);
         emailText = findViewById(R.id.email);
 //        lNameText = findViewById(R.id.lName);
@@ -43,20 +43,20 @@ public class RegisterActivity extends AppCompatActivity {
 //        dobText = findViewById(R.id.dobpick);
 //        addText = findViewById(R.id.address);
 //        phoneText = findViewById(R.id.phonenum);
-        userTypeGroup = findViewById(R.id.userType);
+//        userTypeGroup = findViewById(R.id.userType);
 //        genderTypeGroup = findViewById(R.id.genderType);
 
-        userTypeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                // Handle RadioButton selection here
-                if (checkedId == R.id.clientrad) {
-                    // Client RadioButton selected
-                } else if (checkedId == R.id.workerrad) {
-                    // Worker RadioButton selected
-                }
-            }
-        });
+//        userTypeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//                // Handle RadioButton selection here
+//                if (checkedId == R.id.clientrad) {
+//                    // Client RadioButton selected
+//                } else if (checkedId == R.id.workerrad) {
+//                    // Worker RadioButton selected
+//                }
+//            }
+//        });
 
 //        genderTypeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 //            @Override

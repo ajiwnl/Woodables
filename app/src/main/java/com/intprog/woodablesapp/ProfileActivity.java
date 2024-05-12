@@ -19,58 +19,14 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView profileDesc6;
     private TextView profileDesc7;
 
-    ImageView homeclick, communityclick, postingclick, chatclick, docclick;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        homeclick = findViewById(R.id.home);
-        communityclick = findViewById(R.id.community);
-        postingclick = findViewById(R.id.hammer);
-        chatclick = findViewById(R.id.messenger);
-        docclick = findViewById(R.id.documents);
 
-        homeclick.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent toHome = new Intent(ProfileActivity.this, ProfileActivity.class);
-                startActivity(toHome);
-            }
-        });
-
-        communityclick.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent toClient = new Intent(ProfileActivity.this, CommunityActivity.class);
-                startActivity(toClient);
-            }
-        });
-
-        postingclick.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent toPosting = new Intent(ProfileActivity.this, JobListingActivity.class);
-                startActivity(toPosting);
-            }
-        });
-
-        chatclick.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent toChats = new Intent(ProfileActivity.this, MessageChatViewActivity.class);
-                startActivity(toChats);
-            }
-        });
-
-        docclick.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent toDocs = new Intent(ProfileActivity.this, LearnCourseActivity.class);
-                startActivity(toDocs);
-            }
-        });
 
         profileName = findViewById(R.id.profileName);
         profileDesc2 = findViewById(R.id.profileDesc2);

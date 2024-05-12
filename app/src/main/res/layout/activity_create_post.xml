@@ -8,45 +8,6 @@
     android:id="@+id/mainlayout"
     tools:context=".CreatePostActivity">
 
-       <ImageView
-           android:id="@+id/backbutton"
-           android:layout_width="25dp"
-           android:layout_height="25dp"
-           android:src="@drawable/leftarrow"
-           android:background="@color/background"
-           android:layout_marginTop="16dp"
-           android:layout_marginLeft="15dp"/>
-
-       <SearchView
-           android:id="@+id/searchBarProfile"
-           android:layout_width="match_parent"
-           android:layout_height="35dp"
-           android:layout_marginTop="10dp"
-           android:layout_marginBottom="10dp"
-           android:background="@drawable/textbox_4curvedcorners"
-           android:backgroundTint="@color/white"
-           android:layout_toRightOf="@+id/backbutton"
-           android:layout_marginLeft="15dp"
-           android:layout_marginRight="50dp"
-           />
-
-
-       <ImageView
-           android:layout_width="50dp"
-           android:layout_height="30dp"
-           android:layout_alignParentEnd="true"
-           android:layout_marginEnd="1dp"
-           android:layout_alignParentTop="true"
-           android:layout_marginTop="12dp"
-           android:background="@color/background"
-           android:src="@drawable/whitesetting" />
-    <View
-        android:id="@+id/breakline2"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/backbutton"
-        android:background="@color/white"/>
 
     <ImageView
         android:id="@+id/close"
@@ -55,19 +16,8 @@
        android:src="@drawable/close"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="5dp"
-        android:layout_below="@+id/breakline2"/>
+        android:layout_marginBottom="5dp"/>
 
-    <Button
-        android:id="@+id/postbtnno"
-        android:layout_width="120dp"
-        android:layout_height="35dp"
-        android:layout_below="@id/breakline2"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="180dp"
-        android:backgroundTint="@color/background"
-        android:textColor="@color/white"
-        android:layout_toRightOf="@id/close"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/prof"
@@ -83,7 +33,6 @@
         android:id="@+id/titletxt"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/postbtnno"
         android:inputType="text"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="80dp"
@@ -98,7 +47,7 @@
         android:id="@+id/contenttxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/titletxt"
+        android:layout_below="@+id/prof"
         android:inputType="text"
         android:textColor="@color/white"
         android:layout_marginTop="15dp"
@@ -109,108 +58,31 @@
 
     <ImageView
         android:id="@+id/toCamera"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="270dp"
-        android:layout_marginLeft="15dp"
-        android:layout_below="@+id/contenttxt"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:padding="10dp"
+        android:layout_alignParentBottom="true"
         android:src="@drawable/whitecamera"
         />
 
     <ImageView
         android:id="@+id/toGallery"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="270dp"
-        android:layout_marginLeft="20dp"
-        android:layout_below="@+id/contenttxt"
-        android:layout_toRightOf="@+id/toCamera"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:padding="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/toCamera"
         android:src="@drawable/whitegallery"
         />
     <Button
         android:id="@+id/postbtn"
         android:layout_width="120dp"
-        android:layout_height="46dp"
-        android:layout_below="@id/contenttxt"
-        android:layout_toRightOf="@+id/toGallery"
-        android:layout_marginTop="270dp"
-        android:layout_marginStart="150dp"
+        android:layout_height="64dp"
+        android:layout_marginEnd="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
         android:text="Post"
         android:backgroundTint="@color/cinnamon"/>
-
-    <!--Nav bar start -->
-
-    <View
-        android:id="@+id/breakline"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/toCamera"
-        android:background="@color/white"/>
-
-    <!-- Navigation bar -->
-    <LinearLayout
-        android:id="@+id/bottom_nav"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/background"
-        android:orientation="horizontal">
-
-
-        <ImageView
-            android:id="@+id/home"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:src="@drawable/home" />
-
-        <ImageView
-            android:id="@+id/community"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:src="@drawable/chat" />
-
-        <ImageView
-            android:id="@+id/hammer"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:src="@drawable/hammer" />
-
-        <ImageView
-            android:id="@+id/messenger"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:src="@drawable/messenger" />
-
-        <ImageView
-            android:id="@+id/documents"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:src="@drawable/approve" />
-    </LinearLayout>
-    <!--Ari ra kutob ang navagation bar -->
-
-
-
 
 </RelativeLayout>
