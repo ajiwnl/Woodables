@@ -9,7 +9,7 @@
         android:id="@+id/backbutton"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:src="@drawable/backbutton"
+        android:src="@drawable/leftarrow"
         android:background="@color/background"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/left_arrow"
@@ -22,6 +22,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/textbox_4curvedcorners"
+        android:backgroundTint="@color/white"
         android:layout_toEndOf="@+id/backbutton"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="50dp"
@@ -30,14 +31,14 @@
 
     <ImageView
         android:layout_width="50dp"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="1dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="12dp"
         android:contentDescription="@string/setting"
         android:background="@color/background"
-        android:src="@drawable/settings" />
+        android:src="@drawable/whitesetting" />
 
     <ImageView
         android:id="@+id/profilebackground"
@@ -102,7 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_below="@id/profileCategory"
-        android:backgroundTint="@color/btnColor"
+        android:backgroundTint="@color/cinnamon"
         android:shadowColor="@color/peach"
         android:layout_marginStart="30dp"
         android:text="@string/opento"/>
@@ -112,7 +113,7 @@
         android:layout_height="48dp"
         android:layout_below="@+id/profileCategory"
         android:layout_toEndOf="@+id/openToButton"
-        android:backgroundTint="@color/btnColor"
+        android:backgroundTint="@color/cinnamon"
         android:layout_marginStart="5dp"
         android:text="@string/edit_prof"/>
     <Button
@@ -122,7 +123,7 @@
         android:layout_below="@id/profileCategory"
         android:layout_marginStart="5dp"
         android:layout_toEndOf="@id/editProfile"
-        android:backgroundTint="@color/btnColor"
+        android:backgroundTint="@color/cinnamon"
         android:text="@string/dotdot"/>
     <ImageView
         android:id="@+id/view"

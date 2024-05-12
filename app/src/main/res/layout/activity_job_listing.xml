@@ -17,7 +17,7 @@
             android:layout_height="match_parent"
             android:padding="10dp"
             android:layout_weight="0.5"
-            android:src="@drawable/backbutton"
+            android:src="@drawable/leftarrow"
             android:background="@color/background"/>
 
         <SearchView
@@ -28,6 +28,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/textbox_4curvedcorners"
+            android:backgroundTint="@color/white"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="5dp"/>
 
@@ -181,14 +182,16 @@
                         android:layout_height="45dp"
                         android:layout_weight="0.75"
                         android:layout_marginStart="5dp"
+                        android:backgroundTint="@color/cinnamon"
                         android:text="@string/apply"
                         android:textSize="7sp" />
 
                     <Button
                         android:layout_width="0dp"
                         android:layout_height="45dp"
-                        android:layout_weight="0.75"
                         android:layout_marginStart="5dp"
+                        android:layout_weight="0.75"
+                        android:backgroundTint="@color/indochine"
                         android:text="@string/save"
                         android:textSize="7sp" />
 
