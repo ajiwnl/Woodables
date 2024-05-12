@@ -51,12 +51,8 @@ public class CreatePostActivity extends AppCompatActivity {
         closeview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toCommunity = new Intent(CreatePostActivity.this, CommunityActivity.class);
-                startActivity(toCommunity);
-
-                // Clear EditText fields
-                title.getText().clear();
-                content.getText().clear();
+                finish();
+                overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left);
             }
         });
 

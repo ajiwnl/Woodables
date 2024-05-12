@@ -55,6 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/cola"
+                android:padding="10dp"
                 android:textStyle="bold"
                 android:text="@string/username" />
 
@@ -75,6 +76,7 @@
                 android:id="@+id/password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="10dp"
                 android:textColor="@color/cola"
                 android:textStyle="bold"
                 android:text="@string/password" />

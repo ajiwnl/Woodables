@@ -42,8 +42,7 @@ public class AssessmentActivity extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent backtocourse = new Intent(AssessmentActivity.this, LearnCourseActivity.class);
-                startActivity(backtocourse);
+                finish();
             }
         });
     }

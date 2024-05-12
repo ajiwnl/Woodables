@@ -1,19 +1,23 @@
 package com.intprog.woodablesapp;
 
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-public class JobListingActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+public class MainScreenActivity extends AppCompatActivity {
 
     ImageView homeclick, communityclick, postingclick, chatclick, docclick;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_job_listing);
+        setContentView(R.layout.activity_main_screen);
 
         homeclick = findViewById(R.id.home);
         communityclick = findViewById(R.id.community);
@@ -24,42 +28,46 @@ public class JobListingActivity extends AppCompatActivity {
         homeclick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toHome = new Intent(JobListingActivity.this, ClientProfileActivity.class);
-                startActivity(toHome);
+                replaceFragment(new ClientProfileFragment());
             }
         });
 
         communityclick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toClient = new Intent(JobListingActivity.this, CommunityActivity.class);
-                startActivity(toClient);
-
+                replaceFragment(new CommunityFragment());
             }
         });
 
         postingclick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toPosting = new Intent(JobListingActivity.this, JobListingActivity.class);
-                startActivity(toPosting);
+                replaceFragment(new JobListingFragment());
             }
         });
 
         chatclick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toChats = new Intent(JobListingActivity.this, MessageChatViewActivity.class);
-                startActivity(toChats);
+                replaceFragment(new MessageChatViewFragment());
             }
         });
 
         docclick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toDocs = new Intent(JobListingActivity.this, LearnCourseActivity.class);
-                startActivity(toDocs);
+                replaceFragment(new LearnCourseFragment());
             }
         });
+
+    }
+
+
+    private void replaceFragment(Fragment frag){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.contentView, frag);
+        fragmentTransaction.commit();
+
     }
 }

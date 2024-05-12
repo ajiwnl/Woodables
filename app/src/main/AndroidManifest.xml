@@ -35,9 +35,6 @@
             android:name=".CreateJobCardActivity"
             android:exported="false" />
         <activity
-            android:name=".CourseCatalogActivity"
-            android:exported="false" />
-        <activity
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity
@@ -45,37 +42,25 @@
             android:exported="false" />
         <activity
             android:name=".CreatePostActivity"
-            android:exported="true" >
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            android:exported="true">
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--            -->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+            <!--  -->
         </activity>
         <activity
             android:name=".MessageSettingActivity"
             android:exported="false" />
         <activity
-            android:name=".MessageChatViewActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LearnCourseActivity"
-            android:exported="false" />
-        <activity
-            android:name=".JobListingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CommunityActivity"
-            android:exported="false" />
+            android:name=".MainScreenActivity"
+            android:exported="false">
+        </activity>
         <activity
             android:name=".RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ClientProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ClientProfileFollowedDummy"
             android:exported="false" />
         <activity
             android:name=".ForgotPasswordActivity"
@@ -83,17 +68,18 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true">
-<!--            android:screenOrientation="portrait">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- android:screenOrientation="portrait"> -->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".StartUpActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
