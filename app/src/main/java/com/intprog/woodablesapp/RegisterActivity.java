@@ -118,33 +118,43 @@ public class RegisterActivity extends AppCompatActivity {
                         // Email does not exist, proceed with registration
                         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(authTask -> {
                             if (authTask.isSuccessful()){
+                                // Get the current user instance from FirebaseAuth
+                                FirebaseUser newUser = mAuth.getCurrentUser();
                                 // Send verification email
-                                sendVerificationEmail();
+                                sendVerificationEmail(newUser);
+                                finish();
                             } else {
                                 progressDialog.dismiss();
                                 Toast.makeText(RegisterActivity.this, "Registration failed: " + authTask.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                finish();
                             }
                         });
                     }
                 } else {
                     progressDialog.dismiss();
                     Toast.makeText(RegisterActivity.this, "Error checking email existence: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    finish();
                 }
             });
         }
     }
 
-    private void sendVerificationEmail() {
-        FirebaseUser user = mAuth.getCurrentUser();
+    private void sendVerificationEmail(FirebaseUser user) {
         if (user != null) {
             user.sendEmailVerification().addOnCompleteListener(task -> {
                 progressDialog.dismiss();
                 if (task.isSuccessful()) {
                     Toast.makeText(RegisterActivity.this, "Verification email sent. Please check your email to verify your account.", Toast.LENGTH_LONG).show();
-                    mAuth.signOut(); // Sign out the user after sending the verification email
                     toLoginPage();
                 } else {
-                    Toast.makeText(RegisterActivity.this, "Failed to send verification email: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    // Delete the user account if email verification fails
+                    user.delete().addOnCompleteListener(deleteTask -> {
+                        if (deleteTask.isSuccessful()) {
+                            Toast.makeText(RegisterActivity.this, "Failed to send verification email. Account deleted.", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(RegisterActivity.this, "Failed to send verification email. Failed to delete account.", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
             });
         }
@@ -155,6 +165,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         tologin = new Intent(RegisterActivity.this, LoginActivity.class);
         tologin.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        finish();
         startActivity(tologin);
     }
 }
