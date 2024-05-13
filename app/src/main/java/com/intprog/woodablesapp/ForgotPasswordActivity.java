@@ -1,24 +1,30 @@
 package com.intprog.woodablesapp;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
     EditText forgotemail;
     Button recoverBtn;
+    FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
+
+        mAuth = FirebaseAuth.getInstance();
+
         forgotemail = findViewById(R.id.forgotemail);
         recoverBtn = findViewById(R.id.recoverbtn);
 
@@ -27,25 +33,25 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = forgotemail.getText().toString().trim();
 
-                Log.d("ForgotPasswordActivity","Email Input is:" +email);
-                showConfirmationDialog(email);
+                if (TextUtils.isEmpty(email)) {
+                    forgotemail.setError("Email is required");
+                    return;
+                }
+
+                // Send password reset email
+                mAuth.sendPasswordResetEmail(email)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(ForgotPasswordActivity.this, "Password reset email sent. Please check your email.", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                } else {
+                                    Toast.makeText(ForgotPasswordActivity.this, "Failed to send password reset email. Please check your email and try again.", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
             }
         });
-    }
-    private void showConfirmationDialog(String email) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Please check your email to change your password.")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-
-                        Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setData(Uri.parse("mailto:" + email));
-                        intent.putExtra(Intent.EXTRA_SUBJECT, "Password Reset Request");
-                        intent.putExtra(Intent.EXTRA_TEXT, "Please follow the instructions in the email to reset your password.");
-                        startActivity(intent);
-                    }
-                });
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
     }
 }
