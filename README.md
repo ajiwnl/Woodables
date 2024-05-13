@@ -4,7 +4,9 @@ Read this please for Gradle Scripts Update. Also, pede mo update diri sa readme 
 //build.gradle.kts (Project: WoodablesApp)
 
 buildscript {
+
     dependencies {
+    
         classpath("com.google.gms:google-services:4.4.1")
     }
 }
@@ -15,6 +17,7 @@ buildscript {
 //build.gradle.kts (Module :app)
 
 plugins {
+
     id("com.android.application")
     id("com.google.gms.google-services")
 }
