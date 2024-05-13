@@ -14,17 +14,17 @@ import com.google.android.material.snackbar.Snackbar;
 public class LoginActivity extends AppCompatActivity {
 
     //Default Credential
-    public static String username;
+    //public static String username;
     public static String password;
     public static String email;
-    public static String lastname;
-    public static String firstname;
-    public static String middlename;
-    public static String dateofbirth;
-    public static String address;
-    public static String phonenum;
+    //public static String lastname;
+    //public static String firstname;
+    //public static String middlename;
+    //public static String dateofbirth;
+    //public static String address;
+    //public static String phonenum;
 
-    EditText userEditText;
+    EditText emailEditText;
     EditText passEditText;
     Button toProfile;
     TextView toForgot;
@@ -54,8 +54,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        userEditText = findViewById(R.id.userIn);
-        passEditText = findViewById(R.id.passIn);
+        emailEditText = findViewById(R.id.email);
+        passEditText = findViewById(R.id.password);
         toProfile = findViewById(R.id.toprofilelogin);
         toForgot = findViewById(R.id.forgotpassword);
         toRegister = findViewById(R.id.register);
@@ -63,42 +63,42 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if(intent != null) {
             //Overwrite Data
-            username = intent.getStringExtra("Username");
+            //username = intent.getStringExtra("Username");
             password = intent.getStringExtra("Password");
             email = intent.getStringExtra("Email");
-            lastname = intent.getStringExtra("LName");
-            firstname = intent.getStringExtra("FName");
-            middlename = intent.getStringExtra("MName");
-            dateofbirth = intent.getStringExtra("DOB");
-            address = intent.getStringExtra("Address");
-            phonenum = intent.getStringExtra("Phone");
+            //lastname = intent.getStringExtra("LName");
+            //firstname = intent.getStringExtra("FName");
+            //middlename = intent.getStringExtra("MName");
+            //dateofbirth = intent.getStringExtra("DOB");
+            //address = intent.getStringExtra("Address");
+            //phonenum = intent.getStringExtra("Phone");
         }
 
         toProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String inUser = userEditText.getText().toString();
+                String inUser = emailEditText.getText().toString();
                 String inPass = passEditText.getText().toString();
 
                 Log.d("LoginActivity", "Clicked login button");
                 Log.d("LoginActivity", "Entered username: " + inUser);
                 Log.d("LoginActivity", "Entered password: " + inPass);
 
-                if(inUser.equals(username) && inPass.equals(password)) {
+                if(inUser.equals(email) && inPass.equals(password)) {
                     Intent navprofile = new Intent(LoginActivity.this,ProfileActivity.class);
                   
-                    navprofile.putExtra("Username", username);
+                    //navprofile.putExtra("Username", username);
                     navprofile.putExtra("Password", password);
                     navprofile.putExtra("Email", email);
-                    navprofile.putExtra("LName", lastname);
-                    navprofile.putExtra("FName", firstname);
-                    navprofile.putExtra("MName", middlename);
-                    navprofile.putExtra("DOB", dateofbirth);
-                    navprofile.putExtra("Address", address);
-                    navprofile.putExtra("Phone", phonenum);
+                    //navprofile.putExtra("LName", lastname);
+                    //navprofile.putExtra("FName", firstname);
+                    //navprofile.putExtra("MName", middlename);
+                    //navprofile.putExtra("DOB", dateofbirth);
+                    //navprofile.putExtra("Address", address);
+                    //navprofile.putExtra("Phone", phonenum);
                     startActivity(navprofile);
                 }else {
-                    if (!inUser.equals(username)) {
+                    if (!inUser.equals(email)) {
                         Snackbar.make(v, "Invalid Credentials, please try again", Snackbar.LENGTH_LONG).show();
                     } else {
                         Snackbar.make(v, "Invalid Credentials, please try again", Snackbar.LENGTH_LONG).show();

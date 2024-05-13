@@ -81,7 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
         registerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = userText.getText().toString();
+                //String username = userText.getText().toString();
                 String password = passText.getText().toString();
                 String email = emailText.getText().toString();
 //                String lname = lNameText.getText().toString();
@@ -92,7 +92,7 @@ public class RegisterActivity extends AppCompatActivity {
 //                String pnumber = phoneText.getText().toString();
 
                 tologin = new Intent(RegisterActivity.this, LoginActivity.class);
-                tologin.putExtra("Username", username);
+                //tologin.putExtra("Username", username);
                 tologin.putExtra("Password", password);
                 tologin.putExtra("Email", email);
 //                tologin.putExtra("LName", lname);

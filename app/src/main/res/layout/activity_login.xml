@@ -57,23 +57,22 @@
                 android:textColor="@color/cola"
                 android:padding="10dp"
                 android:textStyle="bold"
-                android:text="@string/username" />
+                android:text="Email" />
 
             <EditText
-                android:id="@+id/userIn"
+                android:id="@+id/email"
                 android:layout_width="200dp"
                 android:layout_height="48dp"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
-                android:inputType="text"
+                android:inputType="textEmailAddress"
                 android:elevation="4dp"
                 android:background="@drawable/textbox_4curvedcorners"
                 android:textColor="@color/black"
-                android:hint="Enter Username"
+                android:hint="Enter Email"
                 android:autofillHints="" />
 
             <TextView
-                android:id="@+id/password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
@@ -82,7 +81,7 @@
                 android:text="@string/password" />
 
             <EditText
-                android:id="@+id/passIn"
+                android:id="@+id/password"
                 android:layout_width="200dp"
                 android:hint="@string/enter_password"
                 android:inputType="textPassword"
