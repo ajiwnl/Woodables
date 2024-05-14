@@ -25,10 +25,12 @@ public class MainScreenActivity extends AppCompatActivity {
         chatclick = findViewById(R.id.messenger);
         docclick = findViewById(R.id.documents);
 
+        replaceFragment(new WoodworkerProfileFragment());
+
         homeclick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new ClientProfileFragment());
+                replaceFragment(new WoodworkerProfileFragment());
             }
         });
 
@@ -67,6 +69,7 @@ public class MainScreenActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.contentView, frag);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
     }

@@ -37,9 +37,6 @@
             android:name=".CreateJobCardActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfileActivity"
-            android:exported="false" />
-        <activity
             android:name=".VideoActivity"
             android:exported="false" />
         <activity

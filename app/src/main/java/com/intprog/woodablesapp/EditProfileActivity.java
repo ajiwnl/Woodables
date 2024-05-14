@@ -30,8 +30,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
 
         backBtn.setOnClickListener(v -> {
-            Intent backtoProf = new Intent(EditProfileActivity.this, ProfileActivity.class);
-            startActivity(backtoProf);
+            finish();
         });
 
         saveButton.setOnClickListener(v -> {
