@@ -1,6 +1,9 @@
 package com.intprog.woodablesapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -57,8 +60,9 @@ public class LoginActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 if (user.isEmailVerified()) {
-                                    Intent navprofile = new Intent(LoginActivity.this, ProfileActivity.class);
-                                    startActivity(navprofile);
+                                    Intent toUserProfile = new Intent(LoginActivity.this, MainScreenActivity.class);
+
+                                    startActivity(toUserProfile);
                                     Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_LONG).show();
                                 } else {
                                     Toast.makeText(LoginActivity.this, "Please verify your email address first.", Toast.LENGTH_LONG).show();
@@ -103,4 +107,5 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
 }
