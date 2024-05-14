@@ -10,7 +10,7 @@
     android:background="@drawable/startupbkg">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:padding="20dp"
         android:background="@color/transpa"
@@ -61,7 +61,7 @@
 
             <EditText
                 android:id="@+id/email"
-                android:layout_width="200dp"
+                android:layout_width="300dp"
                 android:layout_height="48dp"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
@@ -82,7 +82,7 @@
 
             <EditText
                 android:id="@+id/password"
-                android:layout_width="200dp"
+                android:layout_width="300dp"
                 android:hint="@string/enter_password"
                 android:inputType="textPassword"
                 android:layout_height="48dp"
@@ -94,8 +94,8 @@
 
             <Button
                 android:id="@+id/toprofilelogin"
-                android:layout_width="200dp"
-                android:layout_height="48dp"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/cinnamon"
                 android:text="@string/login"/>
