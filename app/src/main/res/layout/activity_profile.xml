@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
@@ -15,7 +16,7 @@
         android:contentDescription="@string/left_arrow"
         android:layout_marginStart="15dp"/>
 
-    <SearchView
+    <EditText
         android:id="@+id/searchBarProfile"
         android:layout_width="match_parent"
         android:layout_height="35dp"
@@ -98,6 +99,8 @@
         android:textColor="@color/white"
         android:layout_below="@+id/profileName"
         android:text="@string/adv_carpenter"/>
+
+
     <Button
         android:id="@+id/openToButton"
         android:layout_width="wrap_content"

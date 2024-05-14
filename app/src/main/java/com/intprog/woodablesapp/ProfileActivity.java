@@ -1,6 +1,8 @@
 package com.intprog.woodablesapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -26,7 +28,11 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-
+        ImageView homeImageView = findViewById(R.id.home);
+        ImageView communityImageView = findViewById(R.id.community);
+        ImageView hammerImageView = findViewById(R.id.hammer);
+        ImageView messengerImageView = findViewById(R.id.messenger);
+        ImageView documentsImageView = findViewById(R.id.documents);
 
         profileName = findViewById(R.id.profileName);
         profileDesc2 = findViewById(R.id.profileDesc2);
@@ -37,6 +43,44 @@ public class ProfileActivity extends AppCompatActivity {
         profileDesc7 = findViewById(R.id.profileDesc7);
 
         Button editProfile = findViewById(R.id.editProfile);
+
+        homeImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        communityImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new CommunityFragment());
+            }
+        });
+
+        hammerImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new JobListingFragment());
+
+            }
+        });
+
+        messengerImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new MessageChatViewFragment());
+            }
+        });
+
+        documentsImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, AssessmentActivity.class);
+                startActivity(intent);
+            }
+        });
 
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +97,13 @@ public class ProfileActivity extends AppCompatActivity {
         String fullName = fname + " " + lname;
 
         profileName.setText(fullName);
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.addToBackStack(null);  // Optional: This allows the user to navigate back to the previous fragment by pressing the back button
+        transaction.commit();
     }
 
     @Override
