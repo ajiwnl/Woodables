@@ -20,7 +20,7 @@ public class StartUpActivity extends AppCompatActivity {
         regbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent navreg = new Intent(StartUpActivity.this,RegisterActivity.class);
+                Intent navreg = new Intent(StartUpActivity.this,UserInfoActivity.class);
                 startActivity(navreg);
             }
         });

@@ -102,7 +102,7 @@ public class LoginActivity extends AppCompatActivity {
         toRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent navreg = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent navreg = new Intent(LoginActivity.this, UserInfoActivity.class);
                 startActivity(navreg);
             }
         });
