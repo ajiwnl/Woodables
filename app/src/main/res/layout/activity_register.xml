@@ -3,13 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".RegisterActivity"
     android:gravity="center"
     android:background="@drawable/startupbkg">
 
     <RelativeLayout
-        android:layout_width="350dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="40dp"
         android:background="@color/transpa"
