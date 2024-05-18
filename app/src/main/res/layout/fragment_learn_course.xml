@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:gravity="center_vertical"
+            android:background="@color/cinnamon"
             android:orientation="horizontal">
 
             <ImageView
@@ -28,7 +29,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.70"
                 android:padding="10dp"
-                android:background="@color/background"
+                android:background="@color/cinnamon"
                 android:src="@drawable/leftarrow" />
 
             <ImageView
@@ -37,7 +38,7 @@
                 android:layout_height="match_parent"
                 android:padding="5dp"
                 android:layout_weight="1"
-                android:background="@color/background"
+                android:background="@color/cinnamon"
                 android:src="@drawable/woodableslogo" />
 
             <TextView
@@ -56,7 +57,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:padding="10dp"
-                android:background="@color/background"
+                android:background="@color/cinnamon"
                 android:src="@drawable/menu" />
 
         </LinearLayout>
@@ -73,6 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:gravity="center_vertical"
+            android:background="#D9D9D9"
             android:orientation="horizontal">
 
             <SearchView
@@ -118,6 +120,7 @@
             android:background="@color/white"/>
 
         <LinearLayout
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:orientation="horizontal"
@@ -128,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.60"
                 android:text="Course I've Enrolled In"
-                android:textColor="@color/white"
+                android:textColor="@color/darkgrey"
                 android:layout_marginStart="25dp"/>
 
             <Button
@@ -148,6 +151,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:background="@color/white"
             android:orientation="vertical">
 
             <LinearLayout
