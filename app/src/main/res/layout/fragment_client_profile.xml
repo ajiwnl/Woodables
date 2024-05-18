@@ -7,13 +7,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
+        android:background="@color/white"
         android:orientation="vertical">
         <LinearLayout
             android:id="@+id/searchbargroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:background="@color/cinnamon"
             android:orientation="horizontal">
 
             <ImageView
@@ -23,7 +24,7 @@
                 android:padding="10dp"
                 android:layout_weight="0.5"
                 android:src="@drawable/leftarrow"
-                android:background="@color/background"/>
+                android:background="@color/cinnamon"/>
 
             <SearchView
                 android:id="@+id/searchBarProfile"
@@ -44,7 +45,7 @@
                 android:padding="10dp"
                 android:layout_weight="0.5"
                 android:src="@drawable/whitesetting"
-                android:background="@color/background"/>
+                android:background="@color/cinnamon"/>
 
         </LinearLayout>
 
@@ -64,7 +65,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/background"
+                android:background="@color/white"
                 android:id="@+id/scrollMainLayout">
 
 
@@ -119,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:text="Krusty Crab Co."
-                    android:textColor="@color/white"
+                    android:textColor="@color/darkgrey"
                     android:textStyle="bold"
                     android:layout_below="@+id/profilepicture"
                     android:paddingTop="10dp"
@@ -139,7 +140,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/darkgrey"
                     android:layout_below="@+id/profileName"
                     android:text="Company"/>
                 <Button
@@ -171,12 +172,11 @@
                     android:text="..."/>
                 <ImageView
                     android:id="@+id/view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/view"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/cineye"
                     android:layout_marginLeft="10dp"
 
-                    android:layout_marginTop="4dp"
                     android:layout_below="@id/openToButton"/>
                 <TextView
                     android:id="@+id/visitors"
@@ -184,7 +184,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="1dp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/darkgrey"
                     android:layout_toRightOf="@+id/view"
                     android:layout_below="@id/openToButton"
                     android:text="69 Unique Profile Visitors"/>
@@ -192,7 +192,7 @@
                     android:id="@+id/breakline"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:background="@color/white"
+                    android:textColor="@color/darkgrey"
                     android:layout_marginTop="10dp"
                     android:layout_below="@id/visitors"/>
                 <TextView
@@ -202,7 +202,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_below="@id/breakline"
-                    android:textColor="@color/white"
+                    android:textColor="@color/darkgrey"
                     android:text="Intro"/>
 
                 <ImageView
@@ -220,7 +220,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_toEndOf="@id/starlogo"
                     android:layout_alignBottom="@id/starlogo"
-                    android:textColor="@color/white"
+                    android:textColor="@color/darkgrey"
                     android:text="4.8 out of 5.0 Job and Project Ratings"/>
 
                 <ImageView
@@ -238,7 +238,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_toEndOf="@+id/locationlogo"
                     android:layout_alignBottom="@id/locationlogo"
-                    android:textColor="@color/white"
+                    android:textColor="@color/darkgrey"
                     android:text="From Krusty Krab Restaurant"/>
 
                 <ImageView
@@ -256,7 +256,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_toEndOf="@id/clock"
                     android:layout_alignBottom="@id/clock"
-                    android:textColor="@color/white"
+                    android:textColor="@color/darkgrey"
                     android:text="Joined 2023"/>
 
                 <ImageView
@@ -274,7 +274,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_toEndOf="@+id/facebook"
                     android:layout_alignBottom="@id/facebook"
-                    android:textColor="@color/white"
+                    android:textColor="@color/darkgrey"
                     android:text="fb.me/testfblink"/>
 
                 <ImageView
@@ -292,7 +292,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_toEndOf="@id/emailLogo"
                     android:layout_alignBottom="@id/emailLogo"
-                    android:textColor="@color/white"
+                    android:textColor="@color/darkgrey"
                     android:text="test@gmail.com"/>
 
                 <ImageView
@@ -310,7 +310,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_toEndOf="@+id/telephone"
                     android:layout_alignBottom="@id/telephone"
-                    android:textColor="@color/white"
+                    android:textColor="@color/darkgrey"
                     android:text="+63917-470-1282" />
 
                 <ImageView
@@ -328,7 +328,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_toEndOf="@id/linksforlink"
                     android:layout_alignBottom="@id/linksforlink"
-                    android:textColor="@color/white"
+                    android:textColor="@color/darkgrey"
                     android:text="testlink.me"/>
 
                 <TextView
@@ -338,7 +338,7 @@
                     android:layout_below="@id/profileDesc7"
                     android:layout_marginTop="20dp"
                     android:layout_marginStart="15dp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/darkgrey"
                     android:text="Ratings from Woodworkers"/>
 
                 <View

@@ -5,17 +5,18 @@
     android:layout_height="match_parent"
     tools:context=".JobListingFragment">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/background">
+        android:background="@color/white">
 
 
 
         <LinearLayout
             android:id="@+id/searchbargroup"
             android:layout_width="match_parent"
+            android:background="@color/cinnamon"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -26,7 +27,7 @@
                 android:padding="10dp"
                 android:layout_weight="0.5"
                 android:src="@drawable/leftarrow"
-                android:background="@color/background"/>
+                android:background="@color/cinnamon"/>
 
             <SearchView
                 android:id="@+id/searchBarProfile"
@@ -83,7 +84,7 @@
                 android:paddingTop="4dp"
                 android:text="@string/listing_view"
                 android:textAlignment="center"
-                android:textColor="@color/white"
+                android:textColor="@color/darkgrey"
                 android:textSize="20sp" />
 
             <ImageView
@@ -106,7 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="#161804">
+                android:background="@color/white">
 
                 <LinearLayout
                     android:layout_width="match_parent"
