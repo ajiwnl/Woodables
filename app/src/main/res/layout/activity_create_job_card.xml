@@ -185,7 +185,7 @@
                         android:inputType="text"
 
                         android:textSize="16sp"
-                        android:hintTextColor="#80FFFFFF" />
+                         />
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -196,7 +196,7 @@
                         android:padding="5dp"
                         android:inputType="text"
                         android:textSize="16sp"
-                        android:hintTextColor="#80FFFFFF" />
+                        />
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -207,7 +207,7 @@
                         android:padding="5dp"
                         android:inputType="text"
                         android:textSize="16sp"
-                        android:hintTextColor="#80FFFFFF" />
+                         />
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -218,7 +218,7 @@
                         android:padding="5dp"
                         android:inputType="text"
                         android:textSize="16sp"
-                        android:hintTextColor="#80FFFFFF" />
+                         />
 
                 </LinearLayout>
                 <TextView
