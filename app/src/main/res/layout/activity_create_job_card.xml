@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".CreateJobCardActivity">
 
@@ -14,6 +14,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="@color/cinnamon"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -21,14 +22,15 @@
             android:id="@+id/backbutton"
             android:layout_width="25dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="15dp"
-            android:background="@color/background"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/cinnamon"
             android:src="@drawable/leftarrow" />
 
 
 
         <TextView
-            android:layout_width="300dp"
+            android:layout_width="280dp"
             android:layout_height="match_parent"
             android:paddingEnd="50dp"
             android:text="Create Job Card"
@@ -43,7 +45,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:layout_gravity="end"
-            android:background="@color/background"
+            android:background="@color/cinnamon"
             android:src="@drawable/woodableslogo" />
 
     </LinearLayout>
@@ -85,7 +87,12 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="30dp"
-                        android:background="@drawable/catprofile"/>
+                        android:background="@drawable/ic_launcher_foreground"/>
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/camera"
+                        android:layout_gravity="center"/>
 
                 </LinearLayout>
 
@@ -94,19 +101,178 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/darkgrey"
+                        android:layout_marginTop="50dp"
+                        android:text="Company Name / Individual Name"/>
+                    <EditText
+                        android:id="@+id/compName"
+                        android:layout_width="236dp"
+                        android:layout_height="28dp"
+                        android:background="@drawable/input_border"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/darkgrey"
+                        android:layout_marginTop="10dp"
+                        android:text="Job Title"/>
+                    <EditText
+                        android:id="@+id/jobTitle"
+                        android:layout_width="236dp"
+                        android:layout_height="28dp"
+                        android:background="@drawable/input_border"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/darkgrey"
+                        android:layout_marginTop="10dp"
+                        android:text="Pay Range"/>
+                    <EditText
+                        android:layout_width="236dp"
+                        android:layout_height="28dp"
+                        android:background="@drawable/input_border"/>
+
+                    <CheckBox
+                        android:id="@+id/checkBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Do you have benifits?"
+                        android:textColor="@color/darkgrey"
+                        android:padding="10dp" />
+
+
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_height="450dp"
                 android:orientation="vertical"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/textbox_4curvedcorners">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Details"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/darkgrey"/>
+                <LinearLayout
+                    android:layout_marginStart="20dp"
+                    android:layout_width="330dp"
+                    android:layout_height="120dp"
+                    android:orientation="vertical"
+                    android:background="@color/white">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:hint="Enter Specific Details"
+                        android:textColor="@color/darkgrey"
+                        android:textColorHint="@color/darkgrey"
+                        android:padding="5dp"
+                        android:inputType="text"
+
+                        android:textSize="16sp"
+                        android:hintTextColor="#80FFFFFF" />
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:hint="Enter text"
+                        android:textColor="#FFFFFF"
+                        android:textColorHint="#B3FFFFFF"
+                        android:padding="5dp"
+                        android:inputType="text"
+                        android:textSize="16sp"
+                        android:hintTextColor="#80FFFFFF" />
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:hint="Enter text"
+                        android:textColor="#FFFFFF"
+                        android:textColorHint="#B3FFFFFF"
+                        android:padding="5dp"
+                        android:inputType="text"
+                        android:textSize="16sp"
+                        android:hintTextColor="#80FFFFFF" />
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:hint="Enter text"
+                        android:textColor="#FFFFFF"
+                        android:textColorHint="#B3FFFFFF"
+                        android:padding="5dp"
+                        android:inputType="text"
+                        android:textSize="16sp"
+                        android:hintTextColor="#80FFFFFF" />
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Requirements"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/darkgrey"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:layout_width="150dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/input_border"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:hint="   Enter Requirements"
+                        android:textSize="12sp"
+                        android:textColor="@color/darkgrey"/>
+                    <EditText
+                        android:layout_width="150dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/input_border"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:hint="  Enter other Requirements"
+                        android:textSize="12sp"
+                        android:textColor="@color/darkgrey"/>
+
+                </LinearLayout>
+
+                <EditText
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+
+                    android:background="@drawable/input_border"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:hint="  Enter other Requirements"
+                    android:textSize="12sp"
+                    android:textColor="@color/darkgrey"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Create"
+                    android:layout_marginTop="30dp"
+                    android:layout_gravity="center"/>
 
             </LinearLayout>
 
