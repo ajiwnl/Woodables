@@ -1,8 +1,8 @@
-// MainScreenActivity.java
 package com.intprog.woodablesapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View; // Import the View class
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,13 +58,21 @@ public class MainScreenActivity extends AppCompatActivity {
             docclick.setImageResource(R.drawable.dgdoc); // Reset doc icon
         });
 
-        postingclick.setOnClickListener(v -> {
-            replaceFragment(new JobListingFragment());
-            postingclick.setImageResource(R.drawable.cinhammer); // Change icon
-            homeclick.setImageResource(R.drawable.dghomebtn); // Reset home icon
-            communityclick.setImageResource(R.drawable.socialicon); // Reset community icon
-            chatclick.setImageResource(R.drawable.dgmessage); // Reset chat icon
-            docclick.setImageResource(R.drawable.dgdoc); // Reset doc icon
+        postingclick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if ("client".equals(role)) {
+                    Intent intent = new Intent(MainScreenActivity.this, CreateJobCardActivity.class);
+                    startActivity(intent);
+                } else {
+                    replaceFragment(new JobListingFragment());
+                }
+                postingclick.setImageResource(R.drawable.cinhammer); // Change icon
+                homeclick.setImageResource(R.drawable.dghomebtn); // Reset home icon
+                communityclick.setImageResource(R.drawable.socialicon); // Reset community icon
+                chatclick.setImageResource(R.drawable.dgmessage); // Reset chat icon
+                docclick.setImageResource(R.drawable.dgdoc); // Reset doc icon
+            }
         });
 
         chatclick.setOnClickListener(v -> {
