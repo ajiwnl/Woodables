@@ -39,6 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+
         logclick = findViewById(R.id.loginhere);
         registerbtn = findViewById(R.id.regclick);
         passText = findViewById(R.id.password);
@@ -168,4 +169,5 @@ public class RegisterActivity extends AppCompatActivity {
         finish();
         startActivity(tologin);
     }
+
 }

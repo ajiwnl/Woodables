@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
+        android:background="#D9D9D9"
         android:orientation="vertical">
 
         <View
@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:gravity="center_vertical"
+            android:background="@color/cinnamon"
             android:orientation="horizontal">
 
             <ImageView
@@ -28,7 +29,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.70"
                 android:padding="10dp"
-                android:background="@color/background"
+                android:background="@color/cinnamon"
                 android:src="@drawable/leftarrow" />
 
             <ImageView
@@ -37,7 +38,7 @@
                 android:layout_height="match_parent"
                 android:padding="5dp"
                 android:layout_weight="1"
-                android:background="@color/background"
+                android:background="@color/cinnamon"
                 android:src="@drawable/woodableslogo" />
 
             <TextView
@@ -56,7 +57,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:padding="10dp"
-                android:background="@color/background"
+                android:background="@color/cinnamon"
                 android:src="@drawable/menu" />
 
         </LinearLayout>
@@ -129,7 +130,7 @@
                 android:layout_weight="0.70"
                 android:layout_marginLeft="25dp"
                 android:text="Course Catalog"
-                android:textColor="@color/white"
+                android:textColor="@color/darkgrey"
                 android:textSize="19sp" />
 
             <ImageButton
@@ -138,7 +139,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="0.20"
-                android:background="@color/background"
+                android:background="@color/cinnamon"
                 android:src="@drawable/approve" />
 
         </LinearLayout>

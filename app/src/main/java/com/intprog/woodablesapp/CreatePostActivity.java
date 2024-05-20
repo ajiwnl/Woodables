@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class CreatePostActivity extends AppCompatActivity {
 
@@ -36,17 +37,25 @@ public class CreatePostActivity extends AppCompatActivity {
         clickPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toPost = new Intent(CreatePostActivity.this, DummyCreatePostActivity.class);
-                toPost.putExtra("Title here",title.getText().toString());
-                toPost.putExtra("Content here",content.getText().toString());
-                startActivity(toPost);
+                String postTitle = title.getText().toString();
+                String postContent = content.getText().toString();
+                String userName = "w/User123"; // You can replace this with the actual username logic
 
-                // Clear EditText fields
-                title.getText().clear();
-                content.getText().clear();
+                // Check if title and content are not empty
+                if (!postTitle.isEmpty() && !postContent.isEmpty()) {
+                    // Call the uploadPost method to store the post in Firestore
+                    uploadPost(postTitle, postContent, userName);
 
+                    // Clear EditText fields
+                    title.getText().clear();
+                    content.getText().clear();
+                } else {
+                    // Show a Snackbar or toast message indicating that fields are empty
+                    Snackbar.make(v, "Title and content cannot be empty", Snackbar.LENGTH_SHORT).show();
+                }
             }
         });
+
 
         closeview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,5 +89,21 @@ public class CreatePostActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void uploadPost(String title, String message, String userName) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Post post = new Post(title, message, userName);
+
+        db.collection("posts")
+                .add(post)
+                .addOnSuccessListener(documentReference -> {
+                    // Post added successfully
+                    Log.d("Firestore", "Post added successfully with ID: " + documentReference.getId());
+                })
+                .addOnFailureListener(e -> {
+                    // Handle failure
+                    Log.e("Firestore", "Error adding post: " + e.getMessage(), e);
+                });
     }
 }

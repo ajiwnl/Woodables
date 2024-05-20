@@ -25,10 +25,17 @@ public class MainScreenActivity extends AppCompatActivity {
         chatclick = findViewById(R.id.messenger);
         docclick = findViewById(R.id.documents);
 
+        replaceFragment(new WoodworkerProfileFragment());
+
         homeclick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new ClientProfileFragment());
+                replaceFragment(new WoodworkerProfileFragment());
+                homeclick.setImageResource(R.drawable.cinbtn); // Change icon
+                communityclick.setImageResource(R.drawable.socialicon); // Reset community icon
+                postingclick.setImageResource(R.drawable.dghammer); // Reset posting icon
+                chatclick.setImageResource(R.drawable.dgmessage); // Reset chat icon
+                docclick.setImageResource(R.drawable.dgdoc); // Reset doc icon
             }
         });
 
@@ -36,6 +43,11 @@ public class MainScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 replaceFragment(new CommunityFragment());
+                communityclick.setImageResource(R.drawable.cinchat); // Change icon
+                homeclick.setImageResource(R.drawable.dghomebtn); // Reset home icon
+                postingclick.setImageResource(R.drawable.dghammer); // Reset posting icon
+                chatclick.setImageResource(R.drawable.dgmessage); // Reset chat icon
+                docclick.setImageResource(R.drawable.dgdoc); // Reset doc icon
             }
         });
 
@@ -43,6 +55,11 @@ public class MainScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 replaceFragment(new JobListingFragment());
+                postingclick.setImageResource(R.drawable.cinhammer); // Change icon
+                homeclick.setImageResource(R.drawable.dghomebtn); // Reset home icon
+                communityclick.setImageResource(R.drawable.socialicon); // Reset community icon
+                chatclick.setImageResource(R.drawable.dgmessage); // Reset chat icon
+                docclick.setImageResource(R.drawable.dgdoc); // Reset doc icon
             }
         });
 
@@ -50,6 +67,11 @@ public class MainScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 replaceFragment(new MessageChatViewFragment());
+                chatclick.setImageResource(R.drawable.cinsocial); // Change icon
+                homeclick.setImageResource(R.drawable.dghomebtn); // Reset home icon
+                communityclick.setImageResource(R.drawable.socialicon); // Reset community icon
+                postingclick.setImageResource(R.drawable.dghammer); // Reset posting icon
+                docclick.setImageResource(R.drawable.dgdoc); // Reset doc icon
             }
         });
 
@@ -57,17 +79,19 @@ public class MainScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 replaceFragment(new LearnCourseFragment());
+                docclick.setImageResource(R.drawable.cindoc); // Change icon
+                homeclick.setImageResource(R.drawable.dghomebtn); // Reset home icon
+                communityclick.setImageResource(R.drawable.socialicon); // Reset community icon
+                postingclick.setImageResource(R.drawable.dghammer); // Reset posting icon
+                chatclick.setImageResource(R.drawable.dgmessage); // Reset chat icon
             }
         });
-
     }
-
 
     private void replaceFragment(Fragment frag){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.contentView, frag);
         fragmentTransaction.commit();
-
     }
 }
