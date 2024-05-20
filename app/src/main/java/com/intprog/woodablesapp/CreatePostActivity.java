@@ -3,6 +3,7 @@ package com.intprog.woodablesapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -39,12 +40,15 @@ public class CreatePostActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String postTitle = title.getText().toString();
                 String postContent = content.getText().toString();
-                String userName = "w/User123"; // You can replace this with the actual username logic
+                SharedPreferences preferences = getSharedPreferences("user_info", MODE_PRIVATE);
+                String name = "w/" + preferences.getString("name", "");
+                String role = preferences.getString("role", "");
+
 
                 // Check if title and content are not empty
                 if (!postTitle.isEmpty() && !postContent.isEmpty()) {
                     // Call the uploadPost method to store the post in Firestore
-                    uploadPost(postTitle, postContent, userName);
+                    uploadPost(postTitle, postContent, name);
 
                     // Clear EditText fields
                     title.getText().clear();

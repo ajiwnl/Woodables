@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.SharedPreferences;
+
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -70,6 +72,11 @@ public class LoginActivity extends AppCompatActivity {
                                                     Log.d("LoginActivity", "name: " + firstname + ", Role: " + role);
                                                     // Proceed to the main screen activity
                                                     Intent toUserProfile = new Intent(LoginActivity.this, MainScreenActivity.class);
+                                                    SharedPreferences preferences = getSharedPreferences("user_info", MODE_PRIVATE);
+                                                    SharedPreferences.Editor editor = preferences.edit();
+                                                    editor.putString("name", firstname);
+                                                    editor.putString("role", role);
+                                                    editor.apply();
                                                     startActivity(toUserProfile);
                                                     Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_LONG).show();
                                                 } else {
