@@ -30,8 +30,10 @@ public class MainScreenActivity extends AppCompatActivity {
         String role = intent.getStringExtra("ROLE");
 
         // Load the appropriate fragment based on the role
+        // Load the appropriate fragment based on the role
         if ("client".equals(role)) {
             replaceFragment(new ClientProfileFragment());
+            docclick.setVisibility(View.GONE);
         } else {
             replaceFragment(new WoodworkerProfileFragment());
         }
