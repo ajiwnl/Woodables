@@ -40,11 +40,13 @@
                 android:textColor="@color/black"/>
 
             <ImageView
+                android:id="@+id/logout"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:padding="10dp"
+                android:clickable="true"
                 android:layout_weight="0.5"
-                android:src="@drawable/whitesetting"
+                android:src="@drawable/logout"
                 android:background="@color/cinnamon"/>
 
         </LinearLayout>

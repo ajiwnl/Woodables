@@ -13,7 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class WoodworkerProfileFragment extends Fragment{
     private TextView profileName;
@@ -23,6 +28,10 @@ public class WoodworkerProfileFragment extends Fragment{
     private TextView profileDesc5;
     private TextView profileDesc6;
     private TextView profileDesc7;
+
+    private ImageView logoutBtn;
+
+    private FirebaseAuth mAuth; //FirebaseAuth instance
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,7 +49,21 @@ public class WoodworkerProfileFragment extends Fragment{
 
         Button editProfile = viewRoot.findViewById(R.id.editProfile);
         Button openTo = viewRoot.findViewById(R.id.openToButton);
+        logoutBtn = viewRoot.findViewById(R.id.logout);
 
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Sign out from Firebase
+                mAuth.signOut();
+                // Navigate back to the LoginActivity and clear the back stack
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                // finish the current activity
+                getActivity().finish();
+            }
+        });
         openTo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
