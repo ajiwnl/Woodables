@@ -13,15 +13,16 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="55dp"
             android:background="@color/cinnamon"
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
             <ImageView
-                android:layout_width="35dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:padding="6dp"
+                android:padding="10dp"
+                android:layout_weight="0.50"
                 android:src="@drawable/leftarrow"
                 android:contentDescription="@string/left_arrow" />
 
@@ -44,23 +45,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/spartan_bold"
-                android:layout_weight="1"
+                android:layout_weight="1.25"
                 android:text="@string/chats"
                 android:textColor="#ffff"
                 android:textSize="20sp" />
 
             <ImageView
-                android:layout_width="35dp"
+                android:id="@+id/toSearch"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:padding="3dp"
-                android:layout_marginEnd="10dp"
+                android:padding="10dp"
+                android:layout_weight="0.50"
                 android:src="@drawable/search"
                 android:contentDescription="@string/search"/>
 
             <ImageView
                 android:id="@+id/toSetting"
-                android:layout_width="45dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:padding="10dp"
+                android:layout_weight="0.50"
                 android:src="@drawable/menu"
                 android:contentDescription="@string/menu"/>
 

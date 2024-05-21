@@ -63,8 +63,7 @@ public class MainScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if ("client".equals(role)) {
-                    Intent intent = new Intent(MainScreenActivity.this, CreateJobCardActivity.class);
-                    startActivity(intent);
+                    replaceFragment(new CreateJobCardFragment());
                 } else {
                     replaceFragment(new JobListingFragment());
                 }
@@ -101,4 +100,6 @@ public class MainScreenActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.contentView, frag);
         fragmentTransaction.commit();
     }
+
+
 }
