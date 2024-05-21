@@ -9,7 +9,7 @@
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
+        android:background="@color/white"
         >
 
         <LinearLayout
@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:background="@color/cinnamon"
             android:orientation="horizontal">
 
             <ImageView
@@ -26,7 +27,7 @@
                 android:padding="10dp"
                 android:layout_weight="0.5"
                 android:src="@drawable/leftarrow"
-                android:background="@color/background"/>
+                android:background="@color/cinnamon"/>
 
             <SearchView
                 android:id="@+id/searchBarProfile"
@@ -42,12 +43,14 @@
                 android:textColor="@color/black"/>
 
             <ImageView
+                android:id="@+id/logout"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:padding="10dp"
+                android:clickable="true"
                 android:layout_weight="0.5"
-                android:src="@drawable/whitesetting"
-                android:background="@color/background"/>
+                android:src="@drawable/logout"
+                android:background="@color/cinnamon"/>
 
         </LinearLayout>
 
@@ -88,7 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:text="@string/aj_von"
-            android:textColor="@color/white"
+            android:textColor="@color/darkgrey"
             android:textStyle="bold"
             android:layout_below="@+id/profilepicture"
             android:textSize="18sp"/> <!-- Profile Name -->
@@ -106,7 +109,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:textColor="@color/white"
+            android:textColor="@color/darkgrey"
             android:layout_below="@+id/profileName"
             android:text="@string/adv_carpenter"/>
 
@@ -141,13 +144,11 @@
             android:text="@string/dotdot"/>
         <ImageView
             android:id="@+id/view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:contentDescription="@string/visitortext"
-            android:src="@drawable/view"
+            android:src="@drawable/cineye"
             android:layout_marginStart="10dp"
-
-            android:layout_marginTop="4dp"
             android:layout_below="@id/openToButton"/>
         <TextView
             android:id="@+id/visitors"
@@ -155,7 +156,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="1dp"
-            android:textColor="@color/white"
+            android:textColor="@color/darkgrey"
             android:layout_toEndOf="@+id/view"
             android:layout_below="@id/openToButton"
             android:text="@string/visitortext"/>
@@ -163,7 +164,7 @@
             android:id="@+id/breakline"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/white"
+            android:background="@color/darkgrey"
             android:layout_marginTop="10dp"
             android:layout_below="@id/visitors"/>
         <TextView
@@ -172,7 +173,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:textColor="@color/white"
+            android:textColor="@color/darkgrey"
             android:text="@string/introtext"
             android:layout_below="@id/breakline"/>
         <ImageView
@@ -188,7 +189,7 @@
             android:id="@+id/profileDesc1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="@color/darkgrey"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/starlogo"
@@ -196,13 +197,13 @@
             android:layout_below="@id/introduction"/>
         <ImageView
             android:id="@+id/carpenterlogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
             android:contentDescription="@string/freelance_carpenter"
             android:layout_below="@id/profileDesc1"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
-            android:src="@drawable/toolslogo"/>
+            android:src="@drawable/cintools"/>
 
         <TextView
             android:id="@+id/profileDesc2"
@@ -215,15 +216,14 @@
             android:layout_marginBottom="10dp"
             android:layout_toEndOf="@+id/carpenterlogo"
             android:text="@string/freelance_carpenter"
-            android:textColor="@color/white" />
+            android:textColor="@color/darkgrey" />
         <ImageView
             android:id="@+id/carpenterlogo2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
             android:contentDescription="@string/former_carpenter"
-            android:src="@drawable/toolslogo"
+            android:src="@drawable/cintools"
             android:layout_below="@id/profileDesc2"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"/>
         <TextView
             android:id="@+id/profileDesc3"
@@ -231,17 +231,17 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_toEndOf="@id/carpenterlogo2"
-            android:textColor="@color/white"
+            android:textColor="@color/darkgrey"
             android:text="@string/former_carpenter"
             android:layout_below="@id/profileDesc2"/>
         <ImageView
             android:id="@+id/graduationcap"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
             android:layout_below="@id/profileDesc3"
-            android:src="@drawable/graduationcap"
-            android:contentDescription="@string/studied_in"
+            android:src="@drawable/cincap"
             android:layout_marginTop="10dp"
+            android:contentDescription="@string/studied_in"
             android:layout_marginStart="10dp"/>
 
         <TextView
@@ -252,15 +252,16 @@
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="15dp"
+            android:layout_marginTop="10dp"
             android:layout_toEndOf="@+id/graduationcap"
             android:text="@string/studied_in"
-            android:textColor="@color/white" />
+            android:textColor="@color/darkgrey" />
         <ImageView
             android:id="@+id/paperdocu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
             android:layout_below="@id/profileDesc4"
-            android:src="@drawable/paper"
+            android:src="@drawable/cinpapers"
             android:contentDescription="@string/studied_in"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"/>
@@ -270,16 +271,16 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/profileDesc4"
             android:layout_marginStart="40dp"
-            android:textColor="@color/white"
+            android:textColor="@color/darkgrey"
             android:contentDescription="@string/completed_selflearning"
             android:text="@string/completed_selflearning"/>
 
         <ImageView
             android:id="@+id/locationlogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
             android:layout_below="@id/profileDesc5"
-            android:src="@drawable/location"
+            android:src="@drawable/cinloc"
             android:contentDescription="@string/City_b"
             android:layout_marginTop="15dp"
             android:layout_marginStart="10dp"
@@ -290,7 +291,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:textColor="@color/white"
+            android:textColor="@color/darkgrey"
             android:layout_toEndOf="@+id/locationlogo"
             android:text="@string/City_b"
             android:layout_below="@id/profileDesc5"/>
@@ -310,7 +311,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/clock"
-            android:textColor="@color/white"
+            android:textColor="@color/darkgrey"
             android:text="@string/joined"
             android:layout_below="@id/profileDesc6"/>
 

@@ -3,17 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".AssessmentActivity">
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/white"/>
+        android:background="@color/background"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="@color/cinnamon"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -22,7 +23,7 @@
             android:layout_width="25dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="15dp"
-            android:background="@color/background"
+            android:background="@color/cinnamon"
             android:src="@drawable/leftarrow" />
 
         <ImageView
@@ -30,7 +31,7 @@
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="15dp"
-            android:background="@color/background"
+            android:background="@color/cinnamon"
             android:src="@drawable/woodableslogo" />
 
         <TextView
@@ -40,7 +41,7 @@
             android:text="Assess my Skills"
             android:textAlignment="center"
             android:gravity="center"
-            android:textColor="@color/white"
+            android:textColor="@color/darkgrey"
             android:textStyle="bold"
             android:textSize="25sp" />
 
@@ -57,6 +58,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="@color/white"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -67,7 +69,7 @@
             android:paddingEnd="50dp"
             android:text="Schedule an Appointment today!"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/darkgrey"
             android:textSize="15sp"
             android:textStyle="bold" />
 
@@ -96,7 +98,7 @@
             android:layout_marginEnd="15dp"
             android:text="You wish to get verified and assess your skills with the Woodables Resident Experts? Fill out the form and get verified, as soons as possible."
             android:textAlignment="textStart"
-            android:textColor="@color/black"
+            android:textColor="@color/darkgrey"
             android:textSize="15sp"/>
 
         <EditText

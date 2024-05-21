@@ -1,14 +1,12 @@
 package com.intprog.woodablesapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -16,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 public class UserInfoActivity extends AppCompatActivity {
 
     RadioButton woodType, clientType;
+    String selectedRole = "Woodworker"; // Default role
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +30,7 @@ public class UserInfoActivity extends AppCompatActivity {
         woodType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                selectedRole = "woodworker";
                 replaceFragment(new UserInfoWoodworkerFragment());
             }
         });
@@ -38,6 +38,7 @@ public class UserInfoActivity extends AppCompatActivity {
         clientType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                selectedRole = "client";
                 replaceFragment(new UserInfoClientFragment());
             }
         });
@@ -48,6 +49,9 @@ public class UserInfoActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.contentView, frag);
         fragmentTransaction.commit();
+    }
 
+    public String getSelectedRole() {
+        return selectedRole;
     }
 }

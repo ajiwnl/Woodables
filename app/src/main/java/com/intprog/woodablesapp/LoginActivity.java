@@ -1,10 +1,7 @@
 package com.intprog.woodablesapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
+import android.util.Log;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,12 +10,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.SharedPreferences;
+
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private FirebaseFirestore db;
     EditText emailEditText;
     EditText passEditText;
     Button toProfile;
@@ -32,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
-
+        db = FirebaseFirestore.getInstance();
         emailEditText = findViewById(R.id.email);
         passEditText = findViewById(R.id.password);
         toProfile = findViewById(R.id.toprofilelogin);
@@ -60,10 +62,33 @@ public class LoginActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 if (user.isEmailVerified()) {
-                                    Intent toUserProfile = new Intent(LoginActivity.this, MainScreenActivity.class);
+                                    // Fetch user information from Firestore
+// LoginActivity.java
+                                    db.collection("users").document(user.getUid()).get()
+                                            .addOnSuccessListener(documentSnapshot -> {
+                                                if (documentSnapshot.exists()) {
+                                                    String firstname = documentSnapshot.getString("First Name");
+                                                    String role = documentSnapshot.getString("Role");
+                                                    Log.d("LoginActivity", "name: " + firstname + ", Role: " + role);
 
-                                    startActivity(toUserProfile);
-                                    Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_LONG).show();
+                                                    Intent toUserProfile = new Intent(LoginActivity.this, MainScreenActivity.class);
+                                                    toUserProfile.putExtra("ROLE", role); // Add the role to the intent
+                                                    SharedPreferences preferences = getSharedPreferences("user_info", MODE_PRIVATE);
+                                                    SharedPreferences.Editor editor = preferences.edit();
+                                                    editor.putString("name", firstname);
+                                                    editor.putString("role", role);
+                                                    editor.apply();
+                                                    startActivity(toUserProfile);
+                                                    Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_LONG).show();
+                                                } else {
+                                                    Log.d("LoginActivity", "User document does not exist");
+                                                    Toast.makeText(LoginActivity.this, "User document does not exist", Toast.LENGTH_LONG).show();
+                                                }
+                                            })
+                                            .addOnFailureListener(e -> {
+                                                Log.e("LoginActivity", "Error fetching user information", e);
+                                                Toast.makeText(LoginActivity.this, "Error fetching user information", Toast.LENGTH_LONG).show();
+                                            });
                                 } else {
                                     Toast.makeText(LoginActivity.this, "Please verify your email address first.", Toast.LENGTH_LONG).show();
                                 }
@@ -89,7 +114,10 @@ public class LoginActivity extends AppCompatActivity {
                         });
 
             }
+            
         });
+        
+        
 
         toForgot.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,6 +134,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(navreg);
             }
         });
-    }
 
+       
+    }
 }

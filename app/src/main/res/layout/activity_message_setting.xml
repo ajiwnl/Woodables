@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".MessageSettingActivity">
 
@@ -16,6 +16,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="@color/cinnamon"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -24,7 +25,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginLeft="15dp"
-            android:background="@color/background"
+            android:background="@color/cinnamon"
             android:src="@drawable/leftarrow" />
         <TextView
             android:layout_width="match_parent"
@@ -63,7 +64,7 @@
             android:text="Catto Inc."
 
             android:textSize="25sp"
-            android:textColor="@color/white"
+            android:textColor="@color/darkgrey"
             android:textStyle="bold"
             android:textAlignment="center"/>
         <!--- Start of Messaging Menu Setting -->
@@ -81,7 +82,6 @@
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:layout_weight="1"
-                android:background="@color/background"
                 android:src="@drawable/activestatus" />
 
             <TextView
@@ -90,7 +90,7 @@
                 android:padding="10dp"
                 android:layout_weight="4"
                 android:text="Active Status"
-                android:textColor="@color/white"
+                android:textColor="@color/darkgrey"
                 android:textSize="21sp" />
 
             <ImageView
@@ -98,7 +98,6 @@
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:layout_weight="0.50"
-                android:background="@color/background"
                 android:src="@drawable/continuebutton" />
         </LinearLayout>
 
@@ -113,7 +112,6 @@
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:layout_weight="1"
-                android:background="@color/background"
                 android:src="@drawable/chats_logo" />
 
             <TextView
@@ -122,7 +120,7 @@
                 android:padding="10dp"
                 android:layout_weight="4"
                 android:text="Chats"
-                android:textColor="@color/white"
+                android:textColor="@color/darkgrey"
                 android:textSize="21sp" />
 
             <ImageView
@@ -130,7 +128,6 @@
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:layout_weight="0.50"
-                android:background="@color/background"
                 android:src="@drawable/continuebutton" />
         </LinearLayout>
 
@@ -145,7 +142,6 @@
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:layout_weight="1"
-                android:background="@color/background"
                 android:src="@drawable/req_logo" />
 
             <TextView
@@ -154,7 +150,7 @@
                 android:padding="10dp"
                 android:layout_weight="4"
                 android:text="Message Request"
-                android:textColor="@color/white"
+                android:textColor="@color/darkgrey"
                 android:textSize="21sp" />
 
             <ImageView
@@ -162,7 +158,6 @@
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:layout_weight="0.50"
-                android:background="@color/background"
                 android:src="@drawable/continuebutton" />
         </LinearLayout>
 
@@ -173,7 +168,7 @@
             android:text="General Settings"
             android:layout_marginLeft="15dp"
             android:textStyle="bold"
-            android:textColor="@color/white"
+            android:textColor="@color/darkgrey"
             android:textSize="15sp" />
 
         <LinearLayout
@@ -187,7 +182,6 @@
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:layout_weight="1"
-                android:background="@color/background"
                 android:src="@drawable/user_logo" />
 
             <TextView
@@ -196,7 +190,7 @@
                 android:padding="10dp"
                 android:layout_weight="4"
                 android:text="Username"
-                android:textColor="@color/white"
+                android:textColor="@color/darkgrey"
                 android:textSize="21sp" />
 
             <ImageView
@@ -204,7 +198,6 @@
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:layout_weight="0.50"
-                android:background="@color/background"
                 android:src="@drawable/continuebutton" />
         </LinearLayout>
 
@@ -219,7 +212,6 @@
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:layout_weight="1"
-                android:background="@color/background"
                 android:src="@drawable/not_logo" />
 
             <TextView
@@ -228,7 +220,7 @@
                 android:padding="10dp"
                 android:layout_weight="4"
                 android:text="Notification and Sounds"
-                android:textColor="@color/white"
+                android:textColor="@color/darkgrey"
                 android:textSize="21sp" />
 
             <ImageView
@@ -236,7 +228,6 @@
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:layout_weight="0.50"
-                android:background="@color/background"
                 android:src="@drawable/continuebutton" />
         </LinearLayout>
 
@@ -252,7 +243,6 @@
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:layout_weight="1"
-                android:background="@color/background"
                 android:src="@drawable/lang_logo" />
 
             <TextView
@@ -261,7 +251,7 @@
                 android:padding="10dp"
                 android:layout_weight="4"
                 android:text="Languages"
-                android:textColor="@color/white"
+                android:textColor="@color/darkgrey"
                 android:textSize="21sp" />
 
             <ImageView
@@ -269,7 +259,6 @@
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:layout_weight="0.50"
-                android:background="@color/background"
                 android:src="@drawable/continuebutton" />
         </LinearLayout>
 
@@ -285,7 +274,7 @@
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:layout_weight="1"
-                android:background="@color/background"
+                android:background="@color/white"
                 android:src="@drawable/cont_logo" />
 
             <TextView
@@ -294,7 +283,7 @@
                 android:padding="10dp"
                 android:layout_weight="4"
                 android:text="Contacts"
-                android:textColor="@color/white"
+                android:textColor="@color/darkgrey"
                 android:textSize="21sp" />
 
             <ImageView
@@ -302,7 +291,7 @@
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:layout_weight="0.50"
-                android:background="@color/background"
+                android:background="@color/white"
                 android:src="@drawable/continuebutton" />
         </LinearLayout>
 
