@@ -18,7 +18,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="55dp"
             android:gravity="center_vertical"
             android:background="@color/cinnamon"
             android:orientation="horizontal">
@@ -27,9 +27,9 @@
                 android:id="@+id/backbutton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.70"
-                android:padding="10dp"
+                android:layout_weight="0.50"
                 android:background="@color/cinnamon"
+                android:padding="10dp"
                 android:src="@drawable/leftarrow" />
 
             <ImageView
@@ -37,7 +37,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:padding="5dp"
-                android:layout_weight="1"
+                android:layout_weight="0.5"
                 android:background="@color/cinnamon"
                 android:src="@drawable/woodableslogo" />
 
@@ -55,7 +55,7 @@
                 android:id="@+id/burgermenu"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="0.50"
                 android:padding="10dp"
                 android:background="@color/cinnamon"
                 android:src="@drawable/menu" />
@@ -107,7 +107,7 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="10dp"
-                android:layout_weight="0.25"
+                android:layout_weight="0.3"
                 android:backgroundTint="@color/cinnamon"
                 android:text="Assesment"
                 android:textSize="10sp"/>
