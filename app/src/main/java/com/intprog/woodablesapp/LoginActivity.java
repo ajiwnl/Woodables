@@ -63,19 +63,22 @@ public class LoginActivity extends AppCompatActivity {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 if (user.isEmailVerified()) {
                                     // Fetch user information from Firestore
-// LoginActivity.java
                                     db.collection("users").document(user.getUid()).get()
                                             .addOnSuccessListener(documentSnapshot -> {
                                                 if (documentSnapshot.exists()) {
                                                     String firstname = documentSnapshot.getString("First Name");
+                                                    String lastname = documentSnapshot.getString("Last Name");
+                                                    String middlename = documentSnapshot.getString("Middle Name");
                                                     String role = documentSnapshot.getString("Role");
-                                                    Log.d("LoginActivity", "name: " + firstname + ", Role: " + role);
+                                                    Log.d("LoginActivity", "First Name: " + firstname + ", Middle Name: " + middlename + ", Role: " + role);
 
                                                     Intent toUserProfile = new Intent(LoginActivity.this, MainScreenActivity.class);
+                                                    String fullName = firstname + " " +middlename + " "+ lastname;
                                                     toUserProfile.putExtra("ROLE", role); // Add the role to the intent
+                                                    toUserProfile.putExtra("FullName", fullName);
                                                     SharedPreferences preferences = getSharedPreferences("user_info", MODE_PRIVATE);
                                                     SharedPreferences.Editor editor = preferences.edit();
-                                                    editor.putString("name", firstname);
+                                                    editor.putString("fullname", fullName);
                                                     editor.putString("role", role);
                                                     editor.apply();
                                                     startActivity(toUserProfile);

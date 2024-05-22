@@ -5,20 +5,34 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class EditProfileActivity extends AppCompatActivity {
 
     ImageView backBtn;
+    private FirebaseFirestore db;
+    private FirebaseAuth mAuth;
+    private String userId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+
+        db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        userId = mAuth.getCurrentUser().getUid();
+
         Button saveButton = findViewById(R.id.saveEdit);
-        EditText nameEditText = findViewById(R.id.editName1);
+        EditText firstNameEditText = findViewById(R.id.editName1);
+//        EditText middleNameEditText = findViewById(R.id.editMiddleName);
+//        EditText lastNameEditText = findViewById(R.id.editLastName);
         EditText desc2EditText = findViewById(R.id.profileDesc2);
         EditText desc3EditText = findViewById(R.id.profileDesc3);
         EditText desc4EditText = findViewById(R.id.profileDesc4);
@@ -28,13 +42,14 @@ public class EditProfileActivity extends AppCompatActivity {
 
         backBtn = findViewById(R.id.backbutton);
 
-
         backBtn.setOnClickListener(v -> {
             finish();
         });
 
         saveButton.setOnClickListener(v -> {
-            String name = nameEditText.getText().toString();
+            String firstName = firstNameEditText.getText().toString();
+//            String middleName = middleNameEditText.getText().toString();
+//            String lastName = lastNameEditText.getText().toString();
             String desc2 = desc2EditText.getText().toString();
             String desc3 = desc3EditText.getText().toString();
             String desc4 = desc4EditText.getText().toString();
@@ -42,8 +57,21 @@ public class EditProfileActivity extends AppCompatActivity {
             String desc6 = desc6EditText.getText().toString();
             String desc7 = desc7EditText.getText().toString();
 
+            if (!firstName.isEmpty()) {
+                db.collection("users").document(userId)
+                        .update("First Name", firstName)
+                        .addOnSuccessListener(aVoid -> {
+                            Toast.makeText(EditProfileActivity.this, "Profile updated", Toast.LENGTH_SHORT).show();
+                        })
+                        .addOnFailureListener(e -> {
+                            Toast.makeText(EditProfileActivity.this, "Error updating profile", Toast.LENGTH_SHORT).show();
+                        });
+            }
+
+            String fullName = firstName;
+
             Intent intent = new Intent();
-            intent.putExtra("NAME", name);
+            intent.putExtra("FULL_NAME", fullName);
             intent.putExtra("DESC2", desc2);
             intent.putExtra("DESC3", desc3);
             intent.putExtra("DESC4", desc4);
