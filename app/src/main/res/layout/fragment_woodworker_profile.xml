@@ -85,6 +85,7 @@
             android:layout_marginStart="230dp"
             android:contentDescription="@string/editprofilephoto"
             android:layout_below="@+id/profilebackground"/>
+
         <TextView
             android:id="@+id/profileName"
             android:layout_width="wrap_content"

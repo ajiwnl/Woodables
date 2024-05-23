@@ -10,16 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            >
-            <!-- Linear Layout for Back Button and Settings -->
+            android:orientation="vertical"
+            android:background="@color/white">
+
             <LinearLayout
                 android:id="@+id/headerLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:layout_alignParentTop="true"
                 android:background="@color/cinnamon"
                 android:orientation="horizontal">
@@ -33,335 +33,376 @@
                     android:src="@drawable/leftarrow"
                     android:background="@color/cinnamon"/>
 
-                <SearchView
-                    android:id="@+id/searchBarProfile"
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:layout_weight="3"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/textbox_4curvedcorners"
-                    android:backgroundTint="@color/white"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="5dp"
-                    android:textColor="@color/black"/>
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:padding="10dp"
-                    android:layout_weight="0.5"
-                    android:src="@drawable/whitesetting"
-                    android:background="@color/cinnamon"/>
+        
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:layout_weight="3"
+                  android:padding="10dp"
+                  android:gravity="center_vertical"
+                  android:textColor="@color/white"
+                  android:fontFamily="@font/spartan_medium"
+                  android:text="General Information"/>
 
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/profilebackground"
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:src="@drawable/woodworker"
-                android:scaleType="fitXY"
-                android:contentDescription="@string/profilebg"
-                android:layout_below="@id/headerLayout" />
-
-            <ImageView
-                android:id="@+id/profilepicture"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="200dp"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/catprofile"
-                android:adjustViewBounds="true"
-                android:background="@drawable/rounded_corners"
-                android:clipToOutline="true"
-                android:contentDescription="@string/logo"
-                android:cropToPadding="true"
-                android:scaleType="centerCrop"/>
-
-            <ImageView
-                android:id="@+id/camerlogo"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/camera"
-                android:layout_marginStart="230dp"
-                android:contentDescription="@string/editprofilephoto"
-                android:layout_below="@+id/profilebackground"/>
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/editFirstName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:hint="First Name"
-                android:textColor="@color/darkgrey"
-                android:textStyle="bold"
-                android:padding="8dp"
-                android:background="@drawable/edit_text_blue"
-                android:layout_below="@+id/profilepicture"
-                android:textSize="18sp"/> <!-- Profile Name -->
-            <EditText
-                android:id="@+id/editMiddleName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_toRightOf="@+id/editFirstName"
-               android:hint="Middle Name"
-                android:textColor="@color/darkgrey"
-                android:textStyle="bold"
-                android:padding="8dp"
-                android:background="@drawable/edit_text_blue"
-                android:layout_below="@+id/profilepicture"
-                android:textSize="18sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:padding="10dp"
+                    android:fontFamily="@font/spartan_medium"
+                    android:textSize="18sp"
+                    android:text="Edit User Profile"/>
 
-            <EditText
-                android:id="@+id/editLastName"
-                android:layout_width="wrap_content"
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_margin="10dp"
+                    android:background="#808080" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+                    <ImageView
+                        android:id="@+id/profilepicture"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/catprofile"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/rounded_corners"
+                        android:clipToOutline="true"
+                        android:contentDescription="@string/logo"
+                        android:cropToPadding="true"
+                        android:scaleType="centerCrop"/>
+
+                    <ImageView
+                        android:id="@+id/camerlogo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/camera"
+                        android:padding="3dp"
+                        android:background="@drawable/rounded_corners"
+                        android:backgroundTint="@color/cola"
+                        android:layout_centerHorizontal="true"
+                        android:contentDescription="@string/editprofilephoto"
+                        android:layout_alignEnd="@+id/profilepicture"
+                        android:layout_alignBottom="@+id/profilepicture"/>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:layout_marginStart="20dp"
+                        android:fontFamily="@font/spartan_medium"
+                        android:text="First Name"/>
+
+                    <EditText
+                        android:id="@+id/editFirstName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/textbox_4curvedcorners"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_toEndOf="@+id/editMiddleName"
-                android:hint="Last Name"
-                android:textColor="@color/darkgrey"
-                android:textStyle="bold"
-                android:padding="8dp"
-                android:background="@drawable/edit_text_blue"
-                android:layout_below="@+id/profilepicture"
-                android:textSize="18sp"/>
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:layout_marginStart="20dp"
+                        android:fontFamily="@font/spartan_medium"
+                        android:text="Last Name"/>
+
+                    <EditText
+                        android:id="@+id/editLastName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:layout_weight="4"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/textbox_4curvedcorners"/>
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:layout_marginStart="20dp"
+                        android:fontFamily="@font/spartan_medium"
+                        android:text="Middle Name"/>
+
+                    <EditText
+                        android:id="@+id/editMiddleName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/textbox_4curvedcorners"/>
+                </LinearLayout>
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/profileCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:textColor="@color/darkgrey"
-                android:layout_below="@+id/editFirstName"
-                android:text="@string/adv_carpenter"/>
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:padding="10dp"
+                android:fontFamily="@font/spartan_medium"
+                android:textSize="18sp"
+                android:text="Profile Description"/>
 
 
-            <Button
-                android:id="@+id/openToButton"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_below="@id/profileCategory"
-                android:backgroundTint="@color/cinnamon"
-                android:shadowColor="@color/peach"
-                android:layout_marginStart="30dp"
-                android:text="@string/opento"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_margin="10dp"
+                android:background="#808080" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/spartan_medium"
+                    android:text="Profile Desc 1"/>
+
+                <EditText
+                    android:id="@+id/profileDesc1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/textbox_4curvedcorners"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/spartan_medium"
+                    android:text="Profile Desc 2"/>
+
+                <EditText
+                    android:id="@+id/profileDesc2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/textbox_4curvedcorners"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/spartan_medium"
+                    android:text="Profile Desc 3"/>
+
+                <EditText
+                    android:id="@+id/profileDesc3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/textbox_4curvedcorners"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/spartan_medium"
+                    android:text="Profile Desc 4"/>
+
+                <EditText
+                    android:id="@+id/profileDesc4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/textbox_4curvedcorners"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/spartan_medium"
+                    android:text="Profile Desc 5"/>
+
+                <EditText
+                    android:id="@+id/profileDesc5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/textbox_4curvedcorners"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/spartan_medium"
+                    android:text="Profile Desc 6"/>
+
+                <EditText
+                    android:id="@+id/profileDesc6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/textbox_4curvedcorners"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/spartan_medium"
+                    android:text="Profile Desc 7"/>
+
+                <EditText
+                    android:id="@+id/profileDesc7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/textbox_4curvedcorners"/>
+
+            </LinearLayout>
+
+
             <Button
                 android:id="@+id/saveEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
-                android:layout_below="@+id/profileCategory"
-                android:layout_toEndOf="@+id/openToButton"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
                 android:backgroundTint="@color/cinnamon"
-                android:layout_marginStart="5dp"
                 android:text="@string/saveprofile"/>
-            <Button
-                android:id="@+id/moreButton"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_below="@id/profileCategory"
-                android:layout_marginStart="5dp"
-                android:layout_toEndOf="@id/saveEdit"
-                android:backgroundTint="@color/cinnamon"
-                android:text="@string/dotdot"/>
-            <ImageView
-                android:id="@+id/view"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:contentDescription="@string/visitortext"
-                android:src="@drawable/cineye"
-                android:layout_marginStart="10dp"
-                android:layout_below="@id/openToButton"/>
-            <TextView
-                android:id="@+id/visitors"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="1dp"
-                android:textColor="@color/darkgrey"
-                android:layout_toEndOf="@+id/view"
-                android:layout_below="@id/openToButton"
-                android:text="@string/visitortext"/>
-            <View
-                android:id="@+id/breakline"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/darkgrey"
-                android:layout_marginTop="10dp"
-                android:layout_below="@id/visitors"/>
-            <TextView
-                android:id="@+id/introduction"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/darkgrey"
-                android:text="@string/introtext"
-                android:layout_below="@id/breakline"/>
-            <ImageView
-                android:id="@+id/starlogo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/star"
-                android:layout_below="@+id/introduction"
-                android:contentDescription="@string/project_ratings"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"/>
-            <TextView
-                android:id="@+id/profileDesc1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="12dp"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/darkgrey"
-                android:layout_marginStart="15dp"
-                android:layout_toEndOf="@id/starlogo"
-                android:text="@string/project_ratings"
-                android:layout_below="@id/introduction"/>
-            <ImageView
-                android:id="@+id/carpenterlogo"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:contentDescription="@string/freelance_carpenter"
-                android:layout_below="@id/profileDesc1"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
-                android:src="@drawable/cintools"/>
 
-            <EditText
-                android:id="@+id/profileDesc2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/profileDesc1"
-                android:textSize="12dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edit_text_blue"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_toEndOf="@+id/carpenterlogo"
-                android:text="@string/freelance_carpenter"
-                android:textColor="@color/darkgrey" />
-
-            <ImageView
-                android:id="@+id/carpenterlogo2"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:contentDescription="@string/former_carpenter"
-                android:src="@drawable/cintools"
-                android:layout_below="@id/profileDesc2"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="10dp"/>
-            <EditText
-                android:id="@+id/profileDesc3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_toEndOf="@id/carpenterlogo2"
-                android:background="@drawable/edit_text_blue"
-                android:textSize="12dp"
-                android:textColor="@color/darkgrey"
-                android:text="@string/former_carpenter"
-                android:layout_below="@id/profileDesc2"/>
-            <ImageView
-                android:id="@+id/graduationcap"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_below="@id/profileDesc3"
-                android:src="@drawable/cincap"
-                android:layout_marginTop="15dp"
-                android:layout_marginStart="10dp"/>
-
-            <EditText
-                android:id="@+id/profileDesc4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/profileDesc3"
-                android:textSize="12dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edit_text_blue"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="15dp"
-                android:layout_toEndOf="@+id/graduationcap"
-                android:text="@string/studied_in"
-                android:textColor="@color/darkgrey" />
-            <ImageView
-                android:id="@+id/paperdocu"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_below="@id/profileDesc4"
-                android:src="@drawable/cinpapers"
-                android:contentDescription="@string/studied_in"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"/>
-            <EditText
-                android:id="@+id/profileDesc5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/profileDesc4"
-                android:layout_marginStart="40dp"
-                android:textSize="12dp"
-                android:background="@drawable/edit_text_blue"
-                android:textColor="@color/darkgrey"
-                android:contentDescription="@string/completed_selflearning"
-                android:text="@string/completed_selflearning"/>
-
-            <ImageView
-                android:id="@+id/locationlogo"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_below="@id/profileDesc5"
-                android:src="@drawable/cinloc"
-                android:contentDescription="@string/City_b"
-                android:layout_marginTop="15dp"
-                android:layout_marginStart="10dp"
-                />
-            <EditText
-                android:id="@+id/profileDesc6"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:textSize="12dp"
-                android:background="@drawable/edit_text_blue"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/darkgrey"
-                android:layout_toEndOf="@+id/locationlogo"
-                android:text="@string/City_b"
-                android:layout_below="@id/profileDesc5"/>
-            <ImageView
-                android:id="@+id/clock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/profileDesc6"
-                android:src="@drawable/clock"
-                android:layout_marginTop="10dp"
-                android:contentDescription="@string/joined"
-                android:layout_marginStart="10dp"/>
-            <EditText
-                android:id="@+id/profileDesc7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:background="@drawable/edit_text_blue"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_toEndOf="@id/clock"
-                android:textColor="@color/darkgrey"
-                android:text="@string/joined"
-                android:layout_below="@id/profileDesc6"/>
-
-            <View
-                android:id="@+id/breakline3"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="10dp"
-                android:layout_below="@id/profileDesc7"
-                android:background="@color/white"/>
-
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
 
 
