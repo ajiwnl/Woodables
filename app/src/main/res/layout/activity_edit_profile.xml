@@ -133,7 +133,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:textColor="@color/darkgrey"
-                android:layout_below="@+id/editName1"
+                android:layout_below="@+id/editFirstName"
                 android:text="@string/adv_carpenter"/>
             <Button
                 android:id="@+id/openToButton"
