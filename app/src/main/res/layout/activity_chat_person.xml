@@ -161,7 +161,7 @@
             android:padding="10dp"
             android:background="@drawable/textbox_4curvedcorners"
             android:textColor="@android:color/black"
-            android:hintTextColor="@android:color/darker_gray"/>
+            />
 
         <ImageView
             android:id="@+id/send_button"
