@@ -88,17 +88,44 @@
                 android:contentDescription="@string/editprofilephoto"
                 android:layout_below="@+id/profilebackground"/>
             <EditText
-                android:id="@+id/editName1"
+                android:id="@+id/editFirstName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:text="Edit Name"
+                android:hint="First Name"
                 android:textColor="@color/darkgrey"
                 android:textStyle="bold"
                 android:padding="8dp"
                 android:background="@drawable/edit_text_blue"
                 android:layout_below="@+id/profilepicture"
                 android:textSize="18sp"/> <!-- Profile Name -->
+            <EditText
+                android:id="@+id/editMiddleName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_toRightOf="@+id/editFirstName"
+               android:hint="Middle Name"
+                android:textColor="@color/darkgrey"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:background="@drawable/edit_text_blue"
+                android:layout_below="@+id/profilepicture"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:id="@+id/editLastName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/editMiddleName"
+                android:hint="Last Name"
+                android:textColor="@color/darkgrey"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:background="@drawable/edit_text_blue"
+                android:layout_below="@+id/profilepicture"
+                android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/profileCategory"
