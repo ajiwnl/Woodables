@@ -15,12 +15,16 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ChatPersonActivity extends AppCompatActivity {
@@ -84,6 +88,9 @@ public class ChatPersonActivity extends AppCompatActivity {
             message.put("timestamp", timestamp); // Include the timestamp
             // Add any other fields as needed
 
+            // Immediately update the UI with the new message
+            updateUIWithNewMessage(message);
+
             // Save the message to Firestore
             FirebaseFirestore.getInstance().collection("messages")
                     .add(message)
@@ -101,43 +108,74 @@ public class ChatPersonActivity extends AppCompatActivity {
         }
     }
 
+
     private void loadMessages(String selectedUserID) {
         if (selectedUserID != null) {
             FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
             if (currentUser != null) {
                 String currentUserId = currentUser.getUid();
 
+                // Initialize an empty list to store all messages
+                List<Map<String, Object>> allMessages = new ArrayList<>();
+
                 // Query Firestore for messages between the current user and the selected user
                 db.collection("messages")
                         .whereEqualTo("sender", currentUserId)
                         .whereEqualTo("receiver", selectedUserID)
-                        .orderBy("timestamp", Query.Direction.ASCENDING) // Order by timestamp in descending order
-                        .addSnapshotListener((querySnapshot, error) -> {
-                            if (error != null) {
-                                Log.e("LoadMessages", "Error getting messages: ", error);
-                                return;
+                        .orderBy("timestamp", Query.Direction.ASCENDING) // Order by timestamp in ascending order
+                        .get()
+                        .addOnSuccessListener(queryDocumentSnapshots -> {
+                            // Add all messages sent by the current user to the list
+                            for (DocumentSnapshot document : queryDocumentSnapshots) {
+                                Map<String, Object> messageData = document.getData();
+                                allMessages.add(messageData);
                             }
 
-                            if (querySnapshot != null) {
-                                // Get the LinearLayout container for messages
-                                LinearLayout messageContainer = findViewById(R.id.messageContainer);
-                                messageContainer.removeAllViews(); // Clear existing messages
+                            // Query Firestore for messages sent by the selected user to the current user
+                            db.collection("messages")
+                                    .whereEqualTo("sender", selectedUserID)
+                                    .whereEqualTo("receiver", currentUserId)
+                                    .orderBy("timestamp", Query.Direction.ASCENDING) // Order by timestamp in ascending order
+                                    .get()
+                                    .addOnSuccessListener(queryDocumentSnapshots1 -> {
+                                        // Add all messages sent by the selected user to the list
+                                        for (DocumentSnapshot document : queryDocumentSnapshots1) {
+                                            Map<String, Object> messageData = document.getData();
+                                            allMessages.add(messageData);
+                                        }
 
-                                // Iterate through the messages and display them
-                                for (QueryDocumentSnapshot document : querySnapshot) {
-                                    // Process each message
-                                    processMessage(document, messageContainer, currentUserId);
-                                }
-                            }
-                        });
+                                        // Sort all messages based on their timestamps
+                                        Collections.sort(allMessages, (message1, message2) -> {
+                                            long timestamp1 = (long) message1.get("timestamp");
+                                            long timestamp2 = (long) message2.get("timestamp");
+                                            return Long.compare(timestamp1, timestamp2);
+                                        });
+
+                                        // Get the LinearLayout container for messages
+                                        LinearLayout messageContainer = findViewById(R.id.messageContainer);
+                                        messageContainer.removeAllViews(); // Clear existing messages
+
+                                        // Iterate through the sorted messages and display them
+                                        for (Map<String, Object> message : allMessages) {
+                                            // Process each message
+                                            processMessage(message, messageContainer, currentUserId);
+                                        }
+                                    })
+                                    .addOnFailureListener(e -> Log.e("LoadMessages", "Error getting messages: ", e));
+                        })
+                        .addOnFailureListener(e -> Log.e("LoadMessages", "Error getting messages: ", e));
             }
         }
     }
 
 
-    private void processMessage(QueryDocumentSnapshot document, LinearLayout messageContainer, String currentUserId) {
-        String messageText = document.getString("message");
-        String senderID = document.getString("sender");
+
+
+
+    private void processMessage(Map<String, Object> message, LinearLayout messageContainer, String currentUserId) {
+        // Extract message details from the map
+        String messageText = (String) message.get("message");
+        String senderID = (String) message.get("sender");
         Log.d("Message", "Sender: " + senderID + ", Message: " + messageText);
 
         // Inflate the chat message layout
@@ -168,12 +206,21 @@ public class ChatPersonActivity extends AppCompatActivity {
             messageView.setBackgroundResource(R.drawable.whitemsg_bg); // Add your sender background drawable
 
             // Set receiver's image and text color
-            messageTextView.setTextColor(Color.BLACK); // Set text color to black
+            messageTextView.setTextColor(Color.WHITE); // Set text color to black
         }
         messageView.setLayoutParams(layoutParams);
 
         // Add the inflated layout to the message container
         messageContainer.addView(messageView);
+    }
+
+
+    private void updateUIWithNewMessage(Map<String, Object> message) {
+        // Get the LinearLayout container for messages
+        LinearLayout messageContainer = findViewById(R.id.messageContainer);
+
+        // Process the new message and add it to the UI
+        processMessage(message, messageContainer, FirebaseAuth.getInstance().getCurrentUser().getUid());
     }
 }
 
