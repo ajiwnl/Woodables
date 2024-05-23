@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <!-- Header layout with back arrow, profile image, and name -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/blackleftarrow"/>
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:src="@drawable/pfp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bluebg_color"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ken Macas"
+            android:textSize="18sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/darkgrey"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:src="@drawable/calliconblack"
+            android:layout_marginLeft="110dp"
+            android:layout_marginTop="8dp"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:src="@drawable/vdcallicon"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="15dp"/>
+
+
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#D9D9D9"
+        android:layout_marginTop="2dp"/>
+
+    <!-- Scroll view for chat messages -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Person 1's message layout with image -->
+            <LinearLayout
+                android:id="@+id/person1_message_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:layout_marginTop="16dp">
+
+                <ImageView
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:src="@drawable/pfp"
+                    android:background="@drawable/bluebg_color"
+                    android:layout_marginEnd="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/person1_message_bg"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/person1_message"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hello! How are you?"
+                        android:textSize="16sp"
+                        android:textColor="#000000"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Person 2's message layout -->
+            <LinearLayout
+                android:id="@+id/person2_message_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="5dp"
+                android:orientation="horizontal"
+                android:background="@drawable/person2_message_bg"
+                android:padding="8dp"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:id="@+id/person2_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I'm good, thanks! How about you?"
+                    android:textSize="16sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <!-- Add more message layouts here -->
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Input area for new messages -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"> <!-- Change to desired background color -->
+
+        <ImageView
+            android:id="@+id/plus_button"
+            android:layout_width="52dp"
+            android:layout_height="48dp"
+            android:src="@drawable/plusicon"
+            android:layout_marginTop="5dp"
+            android:contentDescription="Add image or doc"
+            android:padding="10dp"/>
+
+        <EditText
+            android:id="@+id/message_input"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_weight="1"
+            android:hint="Type a message"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:background="@drawable/textbox_4curvedcorners"
+            android:textColor="@android:color/black"
+            android:hintTextColor="@android:color/darker_gray"/>
+
+        <ImageView
+            android:id="@+id/send_button"
+            android:layout_width="52dp"
+            android:layout_height="48dp"
+            android:src="@drawable/sendicon"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:contentDescription="Send message"
+            android:padding="10dp"/>
+    </LinearLayout>
+
+</LinearLayout>
