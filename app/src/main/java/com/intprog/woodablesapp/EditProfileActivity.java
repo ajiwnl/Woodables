@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+import java.util.Map;
+import java.util.HashMap;
+
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -58,8 +61,13 @@ public class EditProfileActivity extends AppCompatActivity {
             String desc7 = desc7EditText.getText().toString();
 
             if (!firstName.isEmpty() || !middleName.isEmpty() || !lastName.isEmpty()) {
+                Map<String, Object> userData = new HashMap<>();
+                userData.put("First Name", firstName);
+                userData.put("Middle Name", middleName);
+                userData.put("Last Name", lastName);
+
                 db.collection("users").document(userId)
-                        .update("First Name", firstName, "Middle Name", middleName, "Last Name", lastName)
+                        .update(userData)
                         .addOnSuccessListener(aVoid -> {
                             Toast.makeText(EditProfileActivity.this, "Profile updated", Toast.LENGTH_SHORT).show();
                         })
@@ -67,6 +75,16 @@ public class EditProfileActivity extends AppCompatActivity {
                             Toast.makeText(EditProfileActivity.this, "Error updating profile", Toast.LENGTH_SHORT).show();
                         });
             }
+
+            ProfileDescriptions profileDescriptions = new ProfileDescriptions(desc2, desc3, desc4, desc5, desc6, desc7);
+            db.collection("profile_descriptions").document(userId)
+                    .set(profileDescriptions)
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(EditProfileActivity.this, "Descriptions updated", Toast.LENGTH_SHORT).show();
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(EditProfileActivity.this, "Error updating descriptions", Toast.LENGTH_SHORT).show();
+                    });
 
             String fullName = firstName + " " + middleName + " " + lastName;
 

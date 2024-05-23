@@ -16,10 +16,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class WoodworkerProfileFragment extends Fragment {
     private TextView profileName;
@@ -34,8 +37,7 @@ public class WoodworkerProfileFragment extends Fragment {
     private FirebaseAuth mAuth; //FirebaseAuth instance
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View viewRoot = inflater.inflate(R.layout.fragment_woodworker_profile, container, false);
 
@@ -52,20 +54,19 @@ public class WoodworkerProfileFragment extends Fragment {
         logoutBtn = viewRoot.findViewById(R.id.logout);
 
         mAuth = FirebaseAuth.getInstance();
+        String userId = mAuth.getCurrentUser().getUid();
 
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Sign out from Firebase
                 mAuth.signOut();
-                // Navigate back to the LoginActivity and clear the back stack
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
-                // finish the current activity
                 getActivity().finish();
             }
         });
+
         openTo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,6 +94,24 @@ public class WoodworkerProfileFragment extends Fragment {
 
         profileName.setText(fullName);
         woodworkerRole.setText(role);
+
+        // Fetch profile descriptions from Firestore
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("profile_descriptions").document(userId).get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        ProfileDescriptions profileDescriptions = documentSnapshot.toObject(ProfileDescriptions.class);
+                        profileDesc2.setText(profileDescriptions.getDesc2());
+                        profileDesc3.setText(profileDescriptions.getDesc3());
+                        profileDesc4.setText(profileDescriptions.getDesc4());
+                        profileDesc5.setText(profileDescriptions.getDesc5());
+                        profileDesc6.setText(profileDescriptions.getDesc6());
+                        profileDesc7.setText(profileDescriptions.getDesc7());
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(getContext(), "Failed to load descriptions", Toast.LENGTH_SHORT).show();
+                });
 
         return viewRoot;
     }
@@ -133,4 +152,5 @@ public class WoodworkerProfileFragment extends Fragment {
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
+
 }
