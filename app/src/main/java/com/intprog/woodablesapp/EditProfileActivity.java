@@ -76,15 +76,22 @@ public class EditProfileActivity extends AppCompatActivity {
                         });
             }
 
-            ProfileDescriptions profileDescriptions = new ProfileDescriptions(desc2, desc3, desc4, desc5, desc6, desc7);
-            db.collection("profile_descriptions").document(userId)
-                    .set(profileDescriptions)
-                    .addOnSuccessListener(aVoid -> {
-                        Toast.makeText(EditProfileActivity.this, "Descriptions updated", Toast.LENGTH_SHORT).show();
-                    })
-                    .addOnFailureListener(e -> {
-                        Toast.makeText(EditProfileActivity.this, "Error updating descriptions", Toast.LENGTH_SHORT).show();
-                    });
+            // Check if any of the description fields are not empty
+            boolean hasNonEmptyDescriptions = !desc2.isEmpty() || !desc3.isEmpty() || !desc4.isEmpty()
+                    || !desc5.isEmpty() || !desc6.isEmpty() || !desc7.isEmpty();
+
+            // Only update descriptions if there are non-empty values
+            if (hasNonEmptyDescriptions) {
+                ProfileDescriptions profileDescriptions = new ProfileDescriptions(desc2, desc3, desc4, desc5, desc6, desc7);
+                db.collection("profile_descriptions").document(userId)
+                        .set(profileDescriptions)
+                        .addOnSuccessListener(aVoid -> {
+                            Toast.makeText(EditProfileActivity.this, "Descriptions updated", Toast.LENGTH_SHORT).show();
+                        })
+                        .addOnFailureListener(e -> {
+                            Toast.makeText(EditProfileActivity.this, "Error updating descriptions", Toast.LENGTH_SHORT).show();
+                        });
+            }
 
             String fullName = firstName + " " + middleName + " " + lastName;
 
