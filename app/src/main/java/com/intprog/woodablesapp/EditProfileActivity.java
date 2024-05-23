@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+import java.util.Map;
+import java.util.HashMap;
+
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -30,9 +33,9 @@ public class EditProfileActivity extends AppCompatActivity {
         userId = mAuth.getCurrentUser().getUid();
 
         Button saveButton = findViewById(R.id.saveEdit);
-        EditText firstNameEditText = findViewById(R.id.editName1);
-//        EditText middleNameEditText = findViewById(R.id.editMiddleName);
-//        EditText lastNameEditText = findViewById(R.id.editLastName);
+        EditText firstNameEditText = findViewById(R.id.editFirstName);
+        EditText middleNameEditText = findViewById(R.id.editMiddleName);
+        EditText lastNameEditText = findViewById(R.id.editLastName);
         EditText desc2EditText = findViewById(R.id.profileDesc2);
         EditText desc3EditText = findViewById(R.id.profileDesc3);
         EditText desc4EditText = findViewById(R.id.profileDesc4);
@@ -48,8 +51,8 @@ public class EditProfileActivity extends AppCompatActivity {
 
         saveButton.setOnClickListener(v -> {
             String firstName = firstNameEditText.getText().toString();
-//            String middleName = middleNameEditText.getText().toString();
-//            String lastName = lastNameEditText.getText().toString();
+            String middleName = middleNameEditText.getText().toString();
+            String lastName = lastNameEditText.getText().toString();
             String desc2 = desc2EditText.getText().toString();
             String desc3 = desc3EditText.getText().toString();
             String desc4 = desc4EditText.getText().toString();
@@ -57,9 +60,14 @@ public class EditProfileActivity extends AppCompatActivity {
             String desc6 = desc6EditText.getText().toString();
             String desc7 = desc7EditText.getText().toString();
 
-            if (!firstName.isEmpty()) {
+            if (!firstName.isEmpty() || !middleName.isEmpty() || !lastName.isEmpty()) {
+                Map<String, Object> userData = new HashMap<>();
+                userData.put("First Name", firstName);
+                userData.put("Middle Name", middleName);
+                userData.put("Last Name", lastName);
+
                 db.collection("users").document(userId)
-                        .update("First Name", firstName)
+                        .update(userData)
                         .addOnSuccessListener(aVoid -> {
                             Toast.makeText(EditProfileActivity.this, "Profile updated", Toast.LENGTH_SHORT).show();
                         })
@@ -68,7 +76,17 @@ public class EditProfileActivity extends AppCompatActivity {
                         });
             }
 
-            String fullName = firstName;
+            ProfileDescriptions profileDescriptions = new ProfileDescriptions(desc2, desc3, desc4, desc5, desc6, desc7);
+            db.collection("profile_descriptions").document(userId)
+                    .set(profileDescriptions)
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(EditProfileActivity.this, "Descriptions updated", Toast.LENGTH_SHORT).show();
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(EditProfileActivity.this, "Error updating descriptions", Toast.LENGTH_SHORT).show();
+                    });
+
+            String fullName = firstName + " " + middleName + " " + lastName;
 
             Intent intent = new Intent();
             intent.putExtra("FULL_NAME", fullName);
