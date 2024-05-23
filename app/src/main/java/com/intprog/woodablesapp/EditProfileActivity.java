@@ -30,9 +30,9 @@ public class EditProfileActivity extends AppCompatActivity {
         userId = mAuth.getCurrentUser().getUid();
 
         Button saveButton = findViewById(R.id.saveEdit);
-        EditText firstNameEditText = findViewById(R.id.editName1);
-//        EditText middleNameEditText = findViewById(R.id.editMiddleName);
-//        EditText lastNameEditText = findViewById(R.id.editLastName);
+        EditText firstNameEditText = findViewById(R.id.editFirstName);
+        EditText middleNameEditText = findViewById(R.id.editMiddleName);
+        EditText lastNameEditText = findViewById(R.id.editLastName);
         EditText desc2EditText = findViewById(R.id.profileDesc2);
         EditText desc3EditText = findViewById(R.id.profileDesc3);
         EditText desc4EditText = findViewById(R.id.profileDesc4);
@@ -48,8 +48,8 @@ public class EditProfileActivity extends AppCompatActivity {
 
         saveButton.setOnClickListener(v -> {
             String firstName = firstNameEditText.getText().toString();
-//            String middleName = middleNameEditText.getText().toString();
-//            String lastName = lastNameEditText.getText().toString();
+            String middleName = middleNameEditText.getText().toString();
+            String lastName = lastNameEditText.getText().toString();
             String desc2 = desc2EditText.getText().toString();
             String desc3 = desc3EditText.getText().toString();
             String desc4 = desc4EditText.getText().toString();
