@@ -33,20 +33,17 @@
                     android:src="@drawable/leftarrow"
                     android:background="@color/cinnamon"/>
 
-        
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="match_parent"
-                  android:layout_weight="3"
-                  android:padding="10dp"
-                  android:gravity="center_vertical"
-                  android:textColor="@color/white"
-                  android:fontFamily="@font/spartan_medium"
-                  android:text="General Information"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:padding="10dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/spartan_medium"
+                    android:text="General Information"/>
 
             </LinearLayout>
-
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -188,7 +185,7 @@
                         android:id="@+id/editMiddleName"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="4"
+                        android:layout_weight="2"
                         android:layout_marginEnd="20dp"
                         android:background="@drawable/textbox_4curvedcorners"/>
                 </LinearLayout>
@@ -266,6 +263,7 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
+
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal">
