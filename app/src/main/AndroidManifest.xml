@@ -22,6 +22,9 @@
         android:theme="@style/Theme.WoodablesApp"
         tools:targetApi="31">
         <activity
+            android:name=".AdminPostActivity"
+            android:exported="false" />
+        <activity
             android:name=".EditProfileClientActivity"
             android:exported="false" />
         <activity

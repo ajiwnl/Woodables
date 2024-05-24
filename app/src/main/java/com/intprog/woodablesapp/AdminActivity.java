@@ -5,58 +5,84 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 public class AdminActivity extends AppCompatActivity {
-    private ListView adminListView;
-    private ArrayList<String> itemList;
-    private ArrayAdapter<String> adapter;
-
-    private Button toAssementButton;
+    private LinearLayout adminLinearLayout;
+    private Button listingsButton, assessmentButton, postsButton;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
-        adminListView = findViewById(R.id.adminListView);
-        toAssementButton = findViewById(R.id.toAssement);
+        adminLinearLayout = findViewById(R.id.adminLinearLayout);
+        listingsButton = findViewById(R.id.toListings);
+        assessmentButton = findViewById(R.id.toAssessment);
+        postsButton = findViewById(R.id.toPosts);
+        db = FirebaseFirestore.getInstance();
 
-        itemList = new ArrayList<>();
-        // Add some sample items
-        itemList.add("Item 1");
-        itemList.add("Item 2");
-        itemList.add("Item 3");
+        loadDocumentIds();
 
-        adapter = new ArrayAdapter<String>(this, R.layout.viewlisting_item, R.id.itemText, itemList) {
-            @Override
-            public View getView(final int position, View convertView, ViewGroup parent) {
-                View view = super.getView(position, convertView, parent);
-                Button deleteButton = view.findViewById(R.id.deleteButton);
-                deleteButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        itemList.remove(position);
-                        notifyDataSetChanged();
+        listingsButton.setOnClickListener(v -> startActivity(new Intent(AdminActivity.this, AdminActivity.class)));
+        assessmentButton.setOnClickListener(v -> startActivity(new Intent(AdminActivity.this, AdminAssesmentActivity.class)));
+        postsButton.setOnClickListener(v -> startActivity(new Intent(AdminActivity.this, AdminPostActivity.class)));
+    }
+
+    private void loadDocumentIds() {
+        db.collection("listings")
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            String documentId = document.getId();
+                            String title = document.getString("title");
+                            addDocumentIdToLayout(title, documentId);
+                        }
+                    } else {
+                        // Handle the error
                     }
                 });
-                return view;
-            }
-        };
+    }
 
-        adminListView.setAdapter(adapter);
+    private void addDocumentIdToLayout(String title, String documentId) {
+        LinearLayout documentLayout = new LinearLayout(this);
+        documentLayout.setOrientation(LinearLayout.HORIZONTAL);
+        documentLayout.setPadding(8, 8, 8, 8);
 
-        toAssementButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AdminActivity.this, AdminAssesmentActivity.class);
-                startActivity(intent);
-            }
-        });
+        TextView textView = new TextView(this);
+        textView.setText(String.format("%s (ID: %s)", title, documentId));
+        textView.setTextSize(16);
+        textView.setLayoutParams(new LinearLayout.LayoutParams(
+                0,
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                1
+        ));
+
+        Button deleteButton = new Button(this);
+        deleteButton.setText("Delete");
+        deleteButton.setOnClickListener(v -> deleteDocument(documentId, documentLayout));
+
+        documentLayout.addView(textView);
+        documentLayout.addView(deleteButton);
+
+        adminLinearLayout.addView(documentLayout);
+    }
+
+    private void deleteDocument(String documentId, View documentView) {
+        db.collection("listings").document(documentId)
+                .delete()
+                .addOnSuccessListener(aVoid -> {
+                    adminLinearLayout.removeView(documentView);
+                })
+                .addOnFailureListener(e -> {
+                    // Handle the error
+                });
     }
 }
