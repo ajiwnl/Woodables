@@ -1,22 +1,32 @@
 package com.intprog.woodablesapp;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class AssessmentActivity extends AppCompatActivity {
 
     EditText lNameIn, fNameIn, mNameIn, doaIn, expertiseIn;
     Button sendBtn, getSendBtn;
-
     ImageView backBtn;
+
+    // Firestore instance
+    private FirebaseFirestore db;
+    private FirebaseAuth mAuth;
 
     // SharedPreferences instance
     SharedPreferences sharedPreferences;
@@ -25,6 +35,11 @@ public class AssessmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assessment);
+
+        // Initialize Firestore and FirebaseAuth
+        db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+
         sharedPreferences = getSharedPreferences("UserData", MODE_PRIVATE);
         lNameIn = findViewById(R.id.assesslName);
         fNameIn = findViewById(R.id.assessfName);
@@ -35,52 +50,70 @@ public class AssessmentActivity extends AppCompatActivity {
         getSendBtn = findViewById(R.id.getDataBtn);
         backBtn = findViewById(R.id.backbutton);
 
+        // Fetch and set user data
+        fetchAndSetUserData();
+
         sendBtn.setOnClickListener(v -> saveUserData());
-
-        getSendBtn.setOnClickListener(v -> displayUserData());
-
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        backBtn.setOnClickListener(v -> finish());
     }
 
-    // Method to save user data in SharedPreferences
+    // Method to fetch user data from Firestore and set in EditText fields
+    private void fetchAndSetUserData() {
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            String uid = currentUser.getUid();
+            db.collection("users").document(uid).get()
+                    .addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot.exists()) {
+                            String firstName = documentSnapshot.getString("First Name");
+                            String middleName = documentSnapshot.getString("Middle Name");
+                            String lastName = documentSnapshot.getString("Last Name");
+
+                            fNameIn.setText(firstName);
+                            mNameIn.setText(middleName);
+                            lNameIn.setText(lastName);
+
+                            // Make the fields non-editable
+                            fNameIn.setEnabled(false);
+                            mNameIn.setEnabled(false);
+                            lNameIn.setEnabled(false);
+                        } else {
+                            Toast.makeText(AssessmentActivity.this, "User data not found", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(AssessmentActivity.this, "Error fetching user data", Toast.LENGTH_SHORT).show();
+                    });
+        } else {
+            Toast.makeText(AssessmentActivity.this, "User not logged in", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // Method to save user data in Firestore
     public void saveUserData() {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("lastName", lNameIn.getText().toString());
-        editor.putString("firstName", fNameIn.getText().toString());
-        editor.putString("middleName", mNameIn.getText().toString());
-        editor.putString("dateOfAssessment", doaIn.getText().toString());
-        editor.putString("expertise", expertiseIn.getText().toString());
-        editor.apply();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            String uid = currentUser.getUid();
+
+            Map<String, Object> assessmentData = new HashMap<>();
+            assessmentData.put("lastName", lNameIn.getText().toString());
+            assessmentData.put("firstName", fNameIn.getText().toString());
+            assessmentData.put("middleName", mNameIn.getText().toString());
+            assessmentData.put("dateOfAssessment", doaIn.getText().toString());
+            assessmentData.put("expertise", expertiseIn.getText().toString());
+
+            // Use set with the document ID as the user's UID
+            db.collection("assessment").document(uid).set(assessmentData)
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(AssessmentActivity.this, "Data saved successfully", Toast.LENGTH_SHORT).show();
+                        setResult(RESULT_OK);
+                        finish();
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(AssessmentActivity.this, "Error saving data", Toast.LENGTH_SHORT).show();
+                    });
+        } else {
+            Toast.makeText(AssessmentActivity.this, "User not logged in", Toast.LENGTH_SHORT).show();
+        }
     }
-
-    // Method to display user data from SharedPreferences
-    // Method to display user data from SharedPreferences
-    public void displayUserData() {
-        String lastName = sharedPreferences.getString("lastName", "");
-        String firstName = sharedPreferences.getString("firstName", "");
-        String middleName = sharedPreferences.getString("middleName", "");
-        String dateOfAssessment = sharedPreferences.getString("dateOfAssessment", "");
-        String expertise = sharedPreferences.getString("expertise", "");
-
-        // Build the message for the dialog
-        StringBuilder messageBuilder = new StringBuilder();
-        messageBuilder.append("Last Name: ").append(lastName).append("\n")
-                .append("First Name: ").append(firstName).append("\n")
-                .append("Middle Name: ").append(middleName).append("\n")
-                .append("Date of Assessment: ").append(dateOfAssessment).append("\n")
-                .append("Expertise: ").append(expertise);
-
-        // Show the dialog
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("User Data");
-        builder.setMessage(messageBuilder.toString());
-        builder.setPositiveButton("OK", null);
-        builder.create().show();
-    }
-
 }
