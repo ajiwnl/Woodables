@@ -47,7 +47,6 @@ public class AssessmentActivity extends AppCompatActivity {
         doaIn = findViewById(R.id.assesDOA);
         expertiseIn = findViewById(R.id.assessExpertise);
         sendBtn = findViewById(R.id.bookBtn);
-        getSendBtn = findViewById(R.id.getDataBtn);
         backBtn = findViewById(R.id.backbutton);
 
         // Fetch and set user data
