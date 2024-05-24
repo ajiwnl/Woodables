@@ -88,29 +88,67 @@ public class AssessmentActivity extends AppCompatActivity {
         }
     }
 
+    // Method to fetch profile descriptions from Firestore
+    private void fetchProfileDescriptions(String uid, ProfileDescriptionsCallback callback) {
+        db.collection("profile_descriptions").document(uid).get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        String desc2 = documentSnapshot.getString("desc2");
+                        String desc3 = documentSnapshot.getString("desc3");
+                        String desc4 = documentSnapshot.getString("desc4");
+                        String desc5 = documentSnapshot.getString("desc5");
+                        String desc6 = documentSnapshot.getString("desc6");
+                        String desc7 = documentSnapshot.getString("desc7");
+
+                        callback.onProfileDescriptionsFetched(desc2, desc3, desc4, desc5, desc6, desc7);
+                    } else {
+                        callback.onProfileDescriptionsFetched(null, null, null, null, null, null);
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(AssessmentActivity.this, "Error fetching profile descriptions", Toast.LENGTH_SHORT).show();
+                    callback.onProfileDescriptionsFetched(null, null, null, null, null, null);
+                });
+    }
+
+    // Interface for profile descriptions callback
+    interface ProfileDescriptionsCallback {
+        void onProfileDescriptionsFetched(String desc2, String desc3, String desc4, String desc5, String desc6, String desc7);
+    }
+
     // Method to save user data in Firestore
     public void saveUserData() {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             String uid = currentUser.getUid();
 
-            Map<String, Object> assessmentData = new HashMap<>();
-            assessmentData.put("lastName", lNameIn.getText().toString());
-            assessmentData.put("firstName", fNameIn.getText().toString());
-            assessmentData.put("middleName", mNameIn.getText().toString());
-            assessmentData.put("dateOfAssessment", doaIn.getText().toString());
-            assessmentData.put("expertise", expertiseIn.getText().toString());
+            fetchProfileDescriptions(uid, (desc2, desc3, desc4, desc5, desc6, desc7) -> {
+                Map<String, Object> assessmentData = new HashMap<>();
+                assessmentData.put("lastName", lNameIn.getText().toString());
+                assessmentData.put("firstName", fNameIn.getText().toString());
+                assessmentData.put("middleName", mNameIn.getText().toString());
+                assessmentData.put("dateOfAssessment", doaIn.getText().toString());
+                assessmentData.put("expertise", expertiseIn.getText().toString());
 
-            // Use set with the document ID as the user's UID
-            db.collection("assessment").document(uid).set(assessmentData)
-                    .addOnSuccessListener(aVoid -> {
-                        Toast.makeText(AssessmentActivity.this, "Data saved successfully", Toast.LENGTH_SHORT).show();
-                        setResult(RESULT_OK);
-                        finish();
-                    })
-                    .addOnFailureListener(e -> {
-                        Toast.makeText(AssessmentActivity.this, "Error saving data", Toast.LENGTH_SHORT).show();
-                    });
+                // Add profile descriptions to assessment data
+                assessmentData.put("exp_1", desc2);
+                assessmentData.put("exp_2", desc3);
+                assessmentData.put("educ", desc4);
+                assessmentData.put("course", desc5);
+                assessmentData.put("location", desc6);
+                assessmentData.put("desc7", desc7);
+
+                // Use set with the document ID as the user's UID
+                db.collection("assessment").document(uid).set(assessmentData)
+                        .addOnSuccessListener(aVoid -> {
+                            Toast.makeText(AssessmentActivity.this, "Data saved successfully", Toast.LENGTH_SHORT).show();
+                            setResult(RESULT_OK);
+                            finish();
+                        })
+                        .addOnFailureListener(e -> {
+                            Toast.makeText(AssessmentActivity.this, "Error saving data", Toast.LENGTH_SHORT).show();
+                        });
+            });
         } else {
             Toast.makeText(AssessmentActivity.this, "User not logged in", Toast.LENGTH_SHORT).show();
         }
