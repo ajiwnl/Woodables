@@ -69,22 +69,13 @@
             android:layout_height="100dp"
             android:layout_marginTop="200dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/catprofile"
+            android:src="@drawable/default_profile"
             android:adjustViewBounds="true"
             android:background="@drawable/rounded_corners"
             android:clipToOutline="true"
             android:contentDescription="@string/logo"
             android:cropToPadding="true"
             android:scaleType="centerCrop"/>
-
-        <ImageView
-            android:id="@+id/camerlogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/camera"
-            android:layout_marginStart="230dp"
-            android:contentDescription="@string/editprofilephoto"
-            android:layout_below="@+id/profilebackground"/>
 
         <TextView
             android:id="@+id/profileName"
@@ -96,15 +87,7 @@
             android:textStyle="bold"
             android:layout_below="@+id/profilepicture"
             android:textSize="18sp"/> <!-- Profile Name -->
-        <ImageView
-            android:id="@+id/verified"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/accept"
-            android:layout_toEndOf="@id/profileName"
-            android:contentDescription="@string/verified"
-            android:layout_below="@id/profilepicture"
-            android:layout_marginStart="10dp"/>
+
         <TextView
             android:id="@+id/profileCategory"
             android:layout_width="wrap_content"
@@ -113,7 +96,6 @@
             android:textColor="@color/darkgrey"
             android:layout_below="@+id/profileName"
             android:text="@string/adv_carpenter"/>
-
 
         <Button
             android:id="@+id/openToButton"
@@ -143,31 +125,14 @@
             android:layout_toEndOf="@id/editProfile"
             android:backgroundTint="@color/cinnamon"
             android:text="@string/dotdot"/>
-        <ImageView
-            android:id="@+id/view"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:contentDescription="@string/visitortext"
-            android:src="@drawable/cineye"
-            android:layout_marginStart="10dp"
-            android:layout_below="@id/openToButton"/>
-        <TextView
-            android:id="@+id/visitors"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="1dp"
-            android:textColor="@color/darkgrey"
-            android:layout_toEndOf="@+id/view"
-            android:layout_below="@id/openToButton"
-            android:text="@string/visitortext"/>
+
         <View
             android:id="@+id/breakline"
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/darkgrey"
             android:layout_marginTop="10dp"
-            android:layout_below="@id/visitors"/>
+            android:layout_below="@id/editProfile"/>
         <TextView
             android:id="@+id/introduction"
             android:layout_width="wrap_content"
@@ -177,31 +142,13 @@
             android:textColor="@color/darkgrey"
             android:text="@string/introtext"
             android:layout_below="@id/breakline"/>
-        <ImageView
-            android:id="@+id/starlogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/star"
-            android:layout_below="@+id/introduction"
-            android:contentDescription="@string/project_ratings"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"/>
-        <TextView
-            android:id="@+id/profileDesc1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/darkgrey"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/starlogo"
-            android:text="@string/project_ratings"
-            android:layout_below="@id/introduction"/>
+
         <ImageView
             android:id="@+id/carpenterlogo"
             android:layout_width="16dp"
             android:layout_height="16dp"
             android:contentDescription="@string/freelance_carpenter"
-            android:layout_below="@id/profileDesc1"
+            android:layout_below="@id/introduction"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
             android:src="@drawable/cintools"/>
@@ -210,7 +157,7 @@
             android:id="@+id/profileDesc2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/profileDesc1"
+            android:layout_below="@id/introduction"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"

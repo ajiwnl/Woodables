@@ -7,6 +7,7 @@
 
     <!-- Header layout with back arrow, profile image, and name -->
     <LinearLayout
+        android:id="@+id/chat_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="6dp"
@@ -20,15 +21,15 @@
         <ImageView
             android:layout_width="34dp"
             android:layout_height="34dp"
-            android:src="@drawable/pfp"
+            android:src="@drawable/woodableslogo"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/bluebg_color"/>
 
         <TextView
+            android:id="@+id/receiverUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ken Macas"
             android:textSize="18sp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
@@ -39,16 +40,10 @@
             android:layout_width="wrap_content"
             android:layout_height="28dp"
             android:src="@drawable/calliconblack"
-            android:layout_marginLeft="110dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:src="@drawable/vdcallicon"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="15dp"/>
 
 
 
@@ -68,69 +63,15 @@
         android:fillViewport="true">
 
         <LinearLayout
+            android:id="@+id/messageContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Person 1's message layout with image -->
-            <LinearLayout
-                android:id="@+id/person1_message_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginBottom="8dp"
-                android:orientation="horizontal"
-                android:padding="8dp"
-                android:layout_marginTop="16dp">
-
-                <ImageView
-                    android:layout_width="34dp"
-                    android:layout_height="34dp"
-                    android:src="@drawable/pfp"
-                    android:background="@drawable/bluebg_color"
-                    android:layout_marginEnd="8dp"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/person1_message_bg"
-                    android:padding="8dp">
-
-                    <TextView
-                        android:id="@+id/person1_message"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Hello! How are you?"
-                        android:textSize="16sp"
-                        android:textColor="#000000"/>
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- Person 2's message layout -->
-            <LinearLayout
-                android:id="@+id/person2_message_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginBottom="8dp"
-                android:layout_marginRight="5dp"
-                android:orientation="horizontal"
-                android:background="@drawable/person2_message_bg"
-                android:padding="8dp"
-                android:layout_marginTop="16dp">
-
-                <TextView
-                    android:id="@+id/person2_message"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="I'm good, thanks! How about you?"
-                    android:textSize="16sp"
-                    android:textColor="#000000"/>
-            </LinearLayout>
-
-            <!-- Add more message layouts here -->
-
         </LinearLayout>
+
+
+
     </ScrollView>
 
     <!-- Input area for new messages -->
