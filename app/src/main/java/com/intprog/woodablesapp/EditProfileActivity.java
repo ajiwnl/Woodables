@@ -9,9 +9,12 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -58,6 +61,9 @@ public class EditProfileActivity extends AppCompatActivity {
         EditText middleNameEditText = findViewById(R.id.editMiddleName);
         EditText lastNameEditText = findViewById(R.id.editLastName);
         EditText companyNameEditText = findViewById(R.id.editCompanyName);
+
+        LinearLayout companyNameField = findViewById(R.id.companyname);
+
         EditText desc2EditText = findViewById(R.id.profileDesc2);
         EditText desc3EditText = findViewById(R.id.profileDesc3);
         EditText desc4EditText = findViewById(R.id.profileDesc4);
@@ -71,20 +77,23 @@ public class EditProfileActivity extends AppCompatActivity {
 
         backBtn.setOnClickListener(v -> finish());
 
+
         // Fetch and populate user data
         db.collection("users").document(userId).get().addOnSuccessListener(documentSnapshot -> {
             if (documentSnapshot.exists()) {
                 String firstName = documentSnapshot.getString("First Name");
                 String middleName = documentSnapshot.getString("Middle Name");
                 String lastName = documentSnapshot.getString("Last Name");
-
                 String role = documentSnapshot.getString("Role");
+
+
                 if(role.equals("client")){
-
-                    String companyName = documentSnapshot.getString("");
+                    String companyName = documentSnapshot.getString("Company Name");
                     companyNameEditText.setText(companyName);
+                    companyNameField.setVisibility(View.VISIBLE);
+                }else{
+                    companyNameField.setVisibility(View.GONE);
                 }
-
                 firstNameEditText.setText(firstName);
                 middleNameEditText.setText(middleName);
                 lastNameEditText.setText(lastName);
