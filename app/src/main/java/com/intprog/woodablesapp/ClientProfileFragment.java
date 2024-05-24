@@ -20,18 +20,26 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class ClientProfileFragment extends Fragment {
 
-    private static final int PROFILE_PIC_REQ_CODE = 1000;
-    private static final int BACKGROUND_PIC_REQ_CODE = 2000;
-
-    ImageView profilechange, profilebkgchange, profilepic, backgroundpic, logoutBtn;
-    Button followBtn;
     TextView clientName, clientLoc, clientFB;
     RelativeLayout layout;
-    private Uri profilePicUri;
-    private Uri backgroundPicUri;
+    //Used
+    private TextView profileName;
+    private TextView woodworkerRole;
+    private TextView profileDesc2;
+    private TextView profileDesc3;
+    private TextView profileDesc4;
+    private TextView profileDesc5;
+    private TextView profileDesc6;
+    private TextView profileDesc7;
+    private ImageView profilePicture;
+    ImageView logoutBtn;
+    private StorageReference storageReference;
+    private String userId;
 
     private FirebaseAuth mAuth; //FirebaseAuth instance
 
@@ -39,28 +47,27 @@ public class ClientProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_client_profile, container, false);
+        View viewRoot = inflater.inflate(R.layout.fragment_client_profile, container, false);
+
+        profileName = viewRoot.findViewById(R.id.profileName);
+        woodworkerRole = viewRoot.findViewById(R.id.profileCategory);
+        profileDesc2 = viewRoot.findViewById(R.id.profileDesc2);
+        profileDesc3 = viewRoot.findViewById(R.id.profileDesc3);
+        profileDesc4 = viewRoot.findViewById(R.id.profileDesc4);
+        profileDesc5 = viewRoot.findViewById(R.id.profileDesc5);
+        profileDesc6 = viewRoot.findViewById(R.id.profileDesc6);
+        profileDesc7 = viewRoot.findViewById(R.id.profileDesc7);
+        profilePicture = viewRoot.findViewById(R.id.profilepicture);
+        Button editProfile = viewRoot.findViewById(R.id.editProfile);
+        Button openTo = viewRoot.findViewById(R.id.openToButton);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-
-        // Follow Button
-        followBtn = rootView.findViewById(R.id.openToButton);
-        clientName = rootView.findViewById(R.id.profileName);
-        // Client Profile Main Layout
-        layout = rootView.findViewById(R.id.scrollMainLayout);
-        // Image changer location
-        profilechange = rootView.findViewById(R.id.cameralogoprofile);
-        profilebkgchange = rootView.findViewById(R.id.cameralogobackground);
-        // Image Location
-        profilepic = rootView.findViewById(R.id.profilepicture);
-        backgroundpic = rootView.findViewById(R.id.profilebackground);
-        // Find Client Location
-        clientLoc = rootView.findViewById(R.id.profileDesc2);
-        clientFB = rootView.findViewById(R.id.profileDesc4);
+        storageReference = FirebaseStorage.getInstance().getReference();
+        userId = mAuth.getCurrentUser().getUid();
 
         // Logout Button
-        logoutBtn = rootView.findViewById(R.id.logout);
+        logoutBtn = viewRoot.findViewById(R.id.logout);
 
         // Set click listener for the logout button
         logoutBtn.setOnClickListener(new View.OnClickListener() {
@@ -77,57 +84,10 @@ public class ClientProfileFragment extends Fragment {
             }
         });
 
-        clientLoc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String url = "https://maps.app.goo.gl/5U2HDuowZVD4heeW6";
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                startActivity(intent);
-            }
-        });
-
-        clientFB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/TheKrustyKrabOfficial"));
-                startActivity(intent);
-            }
-        });
-
-        followBtn.setOnClickListener(v -> {
-            createPopUpWindow(clientName.getText().toString());
-        });
-
-        profilechange.setOnClickListener(v -> {
-            Intent imgGallery = new Intent(Intent.ACTION_PICK);
-            imgGallery.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            startActivityForResult(imgGallery, PROFILE_PIC_REQ_CODE);
-        });
-
-        profilebkgchange.setOnClickListener(v -> {
-            Intent imgGallery = new Intent(Intent.ACTION_PICK);
-            imgGallery.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            startActivityForResult(imgGallery, BACKGROUND_PIC_REQ_CODE);
-        });
-
-        return rootView;
+        return viewRoot;
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == RESULT_OK) {
-            if (requestCode == PROFILE_PIC_REQ_CODE) {
-                profilePicUri = data.getData();
-                profilepic.setImageURI(profilePicUri);
-            } else if (requestCode == BACKGROUND_PIC_REQ_CODE) {
-                backgroundPicUri = data.getData();
-                backgroundpic.setImageURI(backgroundPicUri);
-            }
-        }
-    }
-
+//Reuse for something
     private void createPopUpWindow(String clientName) {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View popup = inflater.inflate(R.layout.activity_client_profile_followed_dummy, null); // Consider fragment-specific layout name
