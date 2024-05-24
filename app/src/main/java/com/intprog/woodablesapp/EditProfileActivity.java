@@ -60,9 +60,6 @@ public class EditProfileActivity extends AppCompatActivity {
         EditText firstNameEditText = findViewById(R.id.editFirstName);
         EditText middleNameEditText = findViewById(R.id.editMiddleName);
         EditText lastNameEditText = findViewById(R.id.editLastName);
-        EditText companyNameEditText = findViewById(R.id.editCompanyName);
-
-        LinearLayout companyNameField = findViewById(R.id.companyname);
 
         EditText desc2EditText = findViewById(R.id.profileDesc2);
         EditText desc3EditText = findViewById(R.id.profileDesc3);
@@ -89,10 +86,9 @@ public class EditProfileActivity extends AppCompatActivity {
 
                 if(role.equals("client")){
                     String companyName = documentSnapshot.getString("Company Name");
-                    companyNameEditText.setText(companyName);
-                    companyNameField.setVisibility(View.VISIBLE);
+
                 }else{
-                    companyNameField.setVisibility(View.GONE);
+
                 }
                 firstNameEditText.setText(firstName);
                 middleNameEditText.setText(middleName);
@@ -223,15 +219,16 @@ public class EditProfileActivity extends AppCompatActivity {
         byte[] data = baos.toByteArray();
 
         StorageReference profilePicRef = storageReference.child("profile_pictures/" + userId);
-
         profilePicRef.putBytes(data).addOnSuccessListener(taskSnapshot -> {
-            pictureUpdated = true;
-            showToastUpdate();
+            profilePicRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                ProfilePictureManager.updateProfilePicture(EditProfileActivity.this, uri);
+                Toast.makeText(EditProfileActivity.this, "Profile picture updated", Toast.LENGTH_SHORT).show();
+                Glide.with(EditProfileActivity.this).load(uri).into(profilePicture);
+            });
         }).addOnFailureListener(e -> {
             Toast.makeText(EditProfileActivity.this, "Error uploading profile picture", Toast.LENGTH_SHORT).show();
         });
     }
-
     private void showToastUpdate() {
         if (profileUpdated && descriptionsUpdated && pictureUpdated) {
             Toast.makeText(EditProfileActivity.this, "Profile, descriptions, and picture updated", Toast.LENGTH_SHORT).show();

@@ -129,6 +129,9 @@ public class WoodworkerProfileFragment extends Fragment {
             Toast.makeText(getContext(), "Failed to load profile picture", Toast.LENGTH_SHORT).show();
         });
 
+        // Fetch profile picture from Firebase Storage using ProfilePictureManager
+        ProfilePictureManager.fetchProfilePicture(getContext(), profilePicture);
+
         return viewRoot;
     }
 
