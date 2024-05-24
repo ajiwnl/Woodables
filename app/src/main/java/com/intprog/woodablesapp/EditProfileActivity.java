@@ -21,7 +21,10 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.ByteArrayOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class EditProfileActivity extends AppCompatActivity {
@@ -90,7 +93,9 @@ public class EditProfileActivity extends AppCompatActivity {
                 desc4EditText.setText(documentSnapshot.getString("desc4"));
                 desc5EditText.setText(documentSnapshot.getString("desc5"));
                 desc6EditText.setText(documentSnapshot.getString("desc6"));
-                desc7EditText.setText(documentSnapshot.getString("desc7"));
+                String creationDate = String.valueOf(FirebaseAuth.getInstance().getCurrentUser().getMetadata().getCreationTimestamp());
+                desc7EditText.setText(getFormattedDate(Long.parseLong(creationDate)));
+                desc7EditText.setEnabled(false); // Disable editing
             }
         }).addOnFailureListener(e -> {
             Toast.makeText(EditProfileActivity.this, "Error loading descriptions", Toast.LENGTH_SHORT).show();
@@ -216,5 +221,10 @@ public class EditProfileActivity extends AppCompatActivity {
             Toast.makeText(EditProfileActivity.this, "Profile and descriptions updated", Toast.LENGTH_SHORT).show();
             finish();
         }
+    }
+
+    private String getFormattedDate(long timestamp) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault());
+        return dateFormat.format(new Date(timestamp));
     }
 }
