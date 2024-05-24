@@ -2,9 +2,8 @@ package com.intprog.woodablesapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View; // Import the View class
+import android.view.View;
 import android.widget.ImageView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -29,8 +28,19 @@ public class MainScreenActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String role = intent.getStringExtra("ROLE");
 
+        if ("admin".equals(role)) {
+            // Add admin-specific options here
+            Intent adminAssessmentIntent = new Intent(MainScreenActivity.this, AdminAssesmentActivity.class);
+            startActivity(adminAssessmentIntent);
 
-        if ("client".equals(role)) {
+            Intent adminActivityIntent = new Intent(MainScreenActivity.this, AdminActivity.class);
+            startActivity(adminActivityIntent);
+
+            communityclick.setOnClickListener(v -> {
+                replaceFragment(new CommunityFragment());
+                updateIcons(R.drawable.dghomebtn, R.drawable.cinchat, R.drawable.dghammer, R.drawable.dgmessage, R.drawable.dgdoc);
+            });
+        } else if ("client".equals(role)) {
             replaceFragment(new ClientProfileFragment());
             docclick.setVisibility(View.GONE);
         } else {
@@ -43,63 +53,46 @@ public class MainScreenActivity extends AppCompatActivity {
             } else {
                 replaceFragment(new WoodworkerProfileFragment());
             }
-            homeclick.setImageResource(R.drawable.cinbtn); // Change icon
-            communityclick.setImageResource(R.drawable.socialicon); // Reset community icon
-            postingclick.setImageResource(R.drawable.dghammer); // Reset posting icon
-            chatclick.setImageResource(R.drawable.dgmessage); // Reset chat icon
-            docclick.setImageResource(R.drawable.dgdoc); // Reset doc icon
+            updateIcons(R.drawable.cinbtn, R.drawable.socialicon, R.drawable.dghammer, R.drawable.dgmessage, R.drawable.dgdoc);
         });
 
         communityclick.setOnClickListener(v -> {
             replaceFragment(new CommunityFragment());
-            communityclick.setImageResource(R.drawable.cinchat); // Change icon
-            homeclick.setImageResource(R.drawable.dghomebtn); // Reset home icon
-            postingclick.setImageResource(R.drawable.dghammer); // Reset posting icon
-            chatclick.setImageResource(R.drawable.dgmessage); // Reset chat icon
-            docclick.setImageResource(R.drawable.dgdoc); // Reset doc icon
+            updateIcons(R.drawable.dghomebtn, R.drawable.cinchat, R.drawable.dghammer, R.drawable.dgmessage, R.drawable.dgdoc);
         });
 
-        postingclick.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if ("client".equals(role)) {
-                    replaceFragment(new CreateJobCardFragment());
-                } else {
-                    replaceFragment(new JobListingFragment());
-                }
-                postingclick.setImageResource(R.drawable.cinhammer); // Change icon
-                homeclick.setImageResource(R.drawable.dghomebtn); // Reset home icon
-                communityclick.setImageResource(R.drawable.socialicon); // Reset community icon
-                chatclick.setImageResource(R.drawable.dgmessage); // Reset chat icon
-                docclick.setImageResource(R.drawable.dgdoc); // Reset doc icon
+        postingclick.setOnClickListener(v -> {
+            if ("client".equals(role)) {
+                replaceFragment(new CreateJobCardFragment());
+            } else {
+                replaceFragment(new JobListingFragment());
             }
+            updateIcons(R.drawable.dghomebtn, R.drawable.socialicon, R.drawable.cinhammer, R.drawable.dgmessage, R.drawable.dgdoc);
         });
 
         chatclick.setOnClickListener(v -> {
             replaceFragment(new MessageChatViewFragment());
-            chatclick.setImageResource(R.drawable.cinsocial); // Change icon
-            homeclick.setImageResource(R.drawable.dghomebtn); // Reset home icon
-            communityclick.setImageResource(R.drawable.socialicon); // Reset community icon
-            postingclick.setImageResource(R.drawable.dghammer); // Reset posting icon
-            docclick.setImageResource(R.drawable.dgdoc); // Reset doc icon
+            updateIcons(R.drawable.dghomebtn, R.drawable.socialicon, R.drawable.dghammer, R.drawable.cinsocial, R.drawable.dgdoc);
         });
 
         docclick.setOnClickListener(v -> {
             replaceFragment(new LearnCourseFragment());
-            docclick.setImageResource(R.drawable.cindoc); // Change icon
-            homeclick.setImageResource(R.drawable.dghomebtn); // Reset home icon
-            communityclick.setImageResource(R.drawable.socialicon); // Reset community icon
-            postingclick.setImageResource(R.drawable.dghammer); // Reset posting icon
-            chatclick.setImageResource(R.drawable.dgmessage); // Reset chat icon
+            updateIcons(R.drawable.dghomebtn, R.drawable.socialicon, R.drawable.dghammer, R.drawable.dgmessage, R.drawable.cindoc);
         });
     }
 
-    private void replaceFragment(Fragment frag){
+    private void updateIcons(int homeRes, int communityRes, int postingRes, int chatRes, int docRes) {
+        homeclick.setImageResource(homeRes);
+        communityclick.setImageResource(communityRes);
+        postingclick.setImageResource(postingRes);
+        chatclick.setImageResource(chatRes);
+        docclick.setImageResource(docRes);
+    }
+
+    private void replaceFragment(Fragment frag) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.contentView, frag);
         fragmentTransaction.commit();
     }
-
-
 }
