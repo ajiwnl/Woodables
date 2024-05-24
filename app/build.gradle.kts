@@ -39,6 +39,7 @@ dependencies {
     implementation ("com.google.android.gms:play-services-auth:20.0.0")
     implementation  ("com.google.firebase:firebase-bom:33.0.0")
     implementation("com.google.firebase:firebase-auth:23.0.0")
+    implementation ("androidx.cardview:cardview:1.0.0")
     implementation ("com.google.firebase:firebase-analytics:22.0.0")
     implementation ("com.google.firebase:firebase-firestore:25.0.0")
     implementation ("com.google.firebase:firebase-storage:21.0.0")
