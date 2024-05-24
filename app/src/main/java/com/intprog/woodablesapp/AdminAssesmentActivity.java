@@ -71,8 +71,13 @@ public class AdminAssesmentActivity extends AppCompatActivity {
         deleteButton.setText("Delete");
         deleteButton.setOnClickListener(v -> deleteDocument(documentId, documentLayout));
 
+        Button approveButton = new Button(this);
+        approveButton.setText("Approve");
+        approveButton.setOnClickListener(v -> approveDocument(documentId, documentLayout));
+
         documentLayout.addView(textView);
         documentLayout.addView(deleteButton);
+        documentLayout.addView(approveButton);
 
         assessmentLinearLayout.addView(documentLayout);
     }
@@ -86,6 +91,17 @@ public class AdminAssesmentActivity extends AppCompatActivity {
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(AdminAssesmentActivity.this, "Error deleting document.", Toast.LENGTH_SHORT).show();
+                });
+    }
+
+    private void approveDocument(String documentId, View documentView) {
+        db.collection("assessment").document(documentId)
+                .update("status", "approved")
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(AdminAssesmentActivity.this, "Document approved.", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(AdminAssesmentActivity.this, "Error approving document.", Toast.LENGTH_SHORT).show();
                 });
     }
 }
