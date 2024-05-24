@@ -54,30 +54,44 @@ public class MainScreenActivity extends AppCompatActivity {
                 replaceFragment(new WoodworkerProfileFragment());
             }
             updateIcons(R.drawable.cinbtn, R.drawable.socialicon, R.drawable.dghammer, R.drawable.dgmessage, R.drawable.dgdoc);
+            enableAllBtn();
+            homeclick.setEnabled(false);
+
         });
 
         communityclick.setOnClickListener(v -> {
             replaceFragment(new CommunityFragment());
             updateIcons(R.drawable.dghomebtn, R.drawable.cinchat, R.drawable.dghammer, R.drawable.dgmessage, R.drawable.dgdoc);
+            enableAllBtn();
+            communityclick.setEnabled(false);
         });
 
-        postingclick.setOnClickListener(v -> {
-            if ("client".equals(role)) {
-                replaceFragment(new CreateJobCardFragment());
-            } else {
-                replaceFragment(new JobListingFragment());
-            }
-            updateIcons(R.drawable.dghomebtn, R.drawable.socialicon, R.drawable.cinhammer, R.drawable.dgmessage, R.drawable.dgdoc);
+        postingclick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if ("client".equals(role)) {
+                    replaceFragment(new CreateJobCardFragment());
+                } else {
+                    replaceFragment(new JobListingFragment());
+                }
+                updateIcons(R.drawable.dghomebtn, R.drawable.socialicon, R.drawable.cinhammer, R.drawable.dgmessage, R.drawable.dgdoc);
+                enableAllBtn();
+                postingclick.setEnabled(false);
+            }     
         });
 
         chatclick.setOnClickListener(v -> {
             replaceFragment(new MessageChatViewFragment());
             updateIcons(R.drawable.dghomebtn, R.drawable.socialicon, R.drawable.dghammer, R.drawable.cinsocial, R.drawable.dgdoc);
+            enableAllBtn();
+            chatclick.setEnabled(false);
         });
 
         docclick.setOnClickListener(v -> {
             replaceFragment(new LearnCourseFragment());
             updateIcons(R.drawable.dghomebtn, R.drawable.socialicon, R.drawable.dghammer, R.drawable.dgmessage, R.drawable.cindoc);
+            enableAllBtn();
+            docclick.setEnabled(false);
         });
     }
 
@@ -92,7 +106,17 @@ public class MainScreenActivity extends AppCompatActivity {
     private void replaceFragment(Fragment frag) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_out_right, R.anim.slide_in_left);
         fragmentTransaction.replace(R.id.contentView, frag);
         fragmentTransaction.commit();
+    }
+
+    private void enableAllBtn(){
+        ImageView[] nav = {homeclick, communityclick, postingclick, chatclick, docclick};
+
+        for (ImageView navigate : nav) {
+            navigate.setEnabled(true);
+        }
+
     }
 }
