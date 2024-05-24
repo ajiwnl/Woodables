@@ -1,7 +1,6 @@
 package com.intprog.woodablesapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,18 +11,17 @@ import android.widget.Toast;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
-public class AdminAssesmentActivity extends AppCompatActivity {
-    private LinearLayout assessmentLinearLayout;
+public class AdminPostActivity extends AppCompatActivity {
+    private LinearLayout postLinearLayout;
     private FirebaseFirestore db;
-
     private Button listingsButton, assessmentButton, postsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_assesment);
+        setContentView(R.layout.activity_admin_post);
 
-        assessmentLinearLayout = findViewById(R.id.assessmentLinearLayout);
+        postLinearLayout = findViewById(R.id.postLinearLayout);
         listingsButton = findViewById(R.id.toListings);
         assessmentButton = findViewById(R.id.toAssessment);
         postsButton = findViewById(R.id.toPosts);
@@ -31,35 +29,35 @@ public class AdminAssesmentActivity extends AppCompatActivity {
 
         loadDocumentIds();
 
-        listingsButton.setOnClickListener(v -> startActivity(new Intent(AdminAssesmentActivity.this, AdminActivity.class)));
-        assessmentButton.setOnClickListener(v -> startActivity(new Intent(AdminAssesmentActivity.this, AdminAssesmentActivity.class)));
-        postsButton.setOnClickListener(v -> startActivity(new Intent(AdminAssesmentActivity.this, AdminPostActivity.class)));
+        listingsButton.setOnClickListener(v -> startActivity(new Intent(AdminPostActivity.this, AdminActivity.class)));
+        assessmentButton.setOnClickListener(v -> startActivity(new Intent(AdminPostActivity.this, AdminAssesmentActivity.class)));
+        postsButton.setOnClickListener(v -> startActivity(new Intent(AdminPostActivity.this, AdminPostActivity.class)));
     }
 
     private void loadDocumentIds() {
-        db.collection("assessment")
+        db.collection("posts")
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             String documentId = document.getId();
-                            String course = document.getString("course");
-                            addDocumentIdToLayout(course, documentId);
+                            String title = document.getString("title");
+                            addDocumentIdToLayout(title, documentId);
                         }
                     } else {
                         // Handle the error
-                        Toast.makeText(AdminAssesmentActivity.this, "Error loading documents.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AdminPostActivity.this, "Error loading documents.", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
-    private void addDocumentIdToLayout(String course, String documentId) {
+    private void addDocumentIdToLayout(String title, String documentId) {
         LinearLayout documentLayout = new LinearLayout(this);
         documentLayout.setOrientation(LinearLayout.HORIZONTAL);
         documentLayout.setPadding(8, 8, 8, 8);
 
         TextView textView = new TextView(this);
-        textView.setText(String.format("%s (ID: %s)", course, documentId));
+        textView.setText(String.format("%s (ID: %s)", title, documentId));
         textView.setTextSize(16);
         textView.setLayoutParams(new LinearLayout.LayoutParams(
                 0,
@@ -74,18 +72,18 @@ public class AdminAssesmentActivity extends AppCompatActivity {
         documentLayout.addView(textView);
         documentLayout.addView(deleteButton);
 
-        assessmentLinearLayout.addView(documentLayout);
+        postLinearLayout.addView(documentLayout);
     }
 
     private void deleteDocument(String documentId, View documentView) {
-        db.collection("assessment").document(documentId)
+        db.collection("posts").document(documentId)
                 .delete()
                 .addOnSuccessListener(aVoid -> {
-                    assessmentLinearLayout.removeView(documentView);
-                    Toast.makeText(AdminAssesmentActivity.this, "Document deleted.", Toast.LENGTH_SHORT).show();
+                    postLinearLayout.removeView(documentView);
+                    Toast.makeText(AdminPostActivity.this, "Document deleted.", Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e -> {
-                    Toast.makeText(AdminAssesmentActivity.this, "Error deleting document.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminPostActivity.this, "Error deleting document.", Toast.LENGTH_SHORT).show();
                 });
     }
 }
