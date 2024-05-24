@@ -48,6 +48,10 @@ public class MainScreenActivity extends AppCompatActivity {
             postingclick.setImageResource(R.drawable.dghammer); // Reset posting icon
             chatclick.setImageResource(R.drawable.dgmessage); // Reset chat icon
             docclick.setImageResource(R.drawable.dgdoc); // Reset doc icon
+
+            enableAllBtn();
+
+            homeclick.setEnabled(false);
         });
 
         communityclick.setOnClickListener(v -> {
@@ -57,6 +61,9 @@ public class MainScreenActivity extends AppCompatActivity {
             postingclick.setImageResource(R.drawable.dghammer); // Reset posting icon
             chatclick.setImageResource(R.drawable.dgmessage); // Reset chat icon
             docclick.setImageResource(R.drawable.dgdoc); // Reset doc icon
+
+            enableAllBtn();
+            communityclick.setEnabled(false);
         });
 
         postingclick.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +79,9 @@ public class MainScreenActivity extends AppCompatActivity {
                 communityclick.setImageResource(R.drawable.socialicon); // Reset community icon
                 chatclick.setImageResource(R.drawable.dgmessage); // Reset chat icon
                 docclick.setImageResource(R.drawable.dgdoc); // Reset doc icon
+
+                enableAllBtn();
+                postingclick.setEnabled(false);
             }
         });
 
@@ -82,6 +92,9 @@ public class MainScreenActivity extends AppCompatActivity {
             communityclick.setImageResource(R.drawable.socialicon); // Reset community icon
             postingclick.setImageResource(R.drawable.dghammer); // Reset posting icon
             docclick.setImageResource(R.drawable.dgdoc); // Reset doc icon
+
+            enableAllBtn();
+            chatclick.setEnabled(false);
         });
 
         docclick.setOnClickListener(v -> {
@@ -91,15 +104,26 @@ public class MainScreenActivity extends AppCompatActivity {
             communityclick.setImageResource(R.drawable.socialicon); // Reset community icon
             postingclick.setImageResource(R.drawable.dghammer); // Reset posting icon
             chatclick.setImageResource(R.drawable.dgmessage); // Reset chat icon
+
+            enableAllBtn();
+            docclick.setEnabled(false);
         });
     }
 
     private void replaceFragment(Fragment frag){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_out_right, R.anim.slide_in_left);
         fragmentTransaction.replace(R.id.contentView, frag);
         fragmentTransaction.commit();
     }
 
+    private void enableAllBtn(){
+        ImageView[] nav = {homeclick, communityclick, postingclick, chatclick, docclick};
 
+        for (ImageView navigate : nav) {
+            navigate.setEnabled(true);
+        }
+
+    }
 }

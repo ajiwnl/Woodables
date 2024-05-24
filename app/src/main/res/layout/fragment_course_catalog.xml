@@ -61,9 +61,7 @@
                 android:src="@drawable/menu" />
 
         </LinearLayout>
-
-
-
+        
 
         <View
             android:layout_width="match_parent"
@@ -191,6 +189,7 @@
                             android:background="@color/white"
                             android:paddingStart="5dp"
                             android:paddingEnd="5dp"
+                            android:textColor="@color/darkgrey"
                             android:text="Course - 001" />
 
                         <TextView
@@ -199,6 +198,7 @@
                             android:background="@color/white"
                             android:paddingStart="5dp"
                             android:paddingEnd="5dp"
+                            android:textColor="@color/darkgrey"
                             android:text="Lorem Ipsum Dimsum Lumpsum Inksum Rescom Hascom Lascom Dascom"
                             android:textSize="9sp" />
 
@@ -232,6 +232,7 @@
                             android:background="@color/white"
                             android:paddingStart="5dp"
                             android:paddingEnd="5dp"
+                            android:textColor="@color/darkgrey"
                             android:text="Course - 001" />
 
                         <TextView
@@ -240,6 +241,7 @@
                             android:background="@color/white"
                             android:paddingStart="5dp"
                             android:paddingEnd="5dp"
+                            android:textColor="@color/darkgrey"
                             android:text="Lorem Ipsum Dimsum Lumpsum Inksum Rescom Hascom Lascom Dascom"
                             android:textSize="9sp" />
 
@@ -252,6 +254,7 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -280,6 +283,7 @@
                             android:background="@color/white"
                             android:paddingStart="5dp"
                             android:paddingEnd="5dp"
+                            android:textColor="@color/darkgrey"
                             android:text="Course - 001" />
 
                         <TextView
@@ -288,6 +292,7 @@
                             android:background="@color/white"
                             android:paddingStart="5dp"
                             android:paddingEnd="5dp"
+                            android:textColor="@color/darkgrey"
                             android:text="Lorem Ipsum Dimsum Lumpsum Inksum Rescom Hascom Lascom Dascom"
                             android:textSize="9sp" />
 
@@ -321,6 +326,7 @@
                             android:background="@color/white"
                             android:paddingStart="5dp"
                             android:paddingEnd="5dp"
+                            android:textColor="@color/darkgrey"
                             android:text="Course - 001" />
 
                         <TextView
@@ -329,6 +335,7 @@
                             android:background="@color/white"
                             android:paddingStart="5dp"
                             android:paddingEnd="5dp"
+                            android:textColor="@color/darkgrey"
                             android:text="Lorem Ipsum Dimsum Lumpsum Inksum Rescom Hascom Lascom Dascom"
                             android:textSize="9sp" />
 
@@ -368,6 +375,7 @@
                             android:background="@color/white"
                             android:paddingStart="5dp"
                             android:paddingEnd="5dp"
+                            android:textColor="@color/darkgrey"
                             android:text="Course - 001" />
 
                         <TextView
@@ -376,6 +384,7 @@
                             android:background="@color/white"
                             android:paddingStart="5dp"
                             android:paddingEnd="5dp"
+                            android:textColor="@color/darkgrey"
                             android:text="Lorem Ipsum Dimsum Lumpsum Inksum Rescom Hascom Lascom Dascom"
                             android:textSize="9sp" />
 
@@ -409,6 +418,7 @@
                             android:background="@color/white"
                             android:paddingStart="5dp"
                             android:paddingEnd="5dp"
+                            android:textColor="@color/darkgrey"
                             android:text="Course - 001" />
 
                         <TextView
@@ -417,6 +427,7 @@
                             android:background="@color/white"
                             android:paddingStart="5dp"
                             android:paddingEnd="5dp"
+                            android:textColor="@color/darkgrey"
                             android:text="Lorem Ipsum Dimsum Lumpsum Inksum Rescom Hascom Lascom Dascom"
                             android:textSize="9sp" />
 
@@ -429,6 +440,8 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
+
 
 
             </LinearLayout>
