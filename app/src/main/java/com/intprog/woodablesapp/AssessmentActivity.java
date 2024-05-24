@@ -67,6 +67,7 @@ public class AssessmentActivity extends AppCompatActivity {
                             String firstName = documentSnapshot.getString("First Name");
                             String middleName = documentSnapshot.getString("Middle Name");
                             String lastName = documentSnapshot.getString("Last Name");
+                            String email = documentSnapshot.getString("Email");
 
                             fNameIn.setText(firstName);
                             mNameIn.setText(middleName);
@@ -76,6 +77,9 @@ public class AssessmentActivity extends AppCompatActivity {
                             fNameIn.setEnabled(false);
                             mNameIn.setEnabled(false);
                             lNameIn.setEnabled(false);
+
+                            // Save the email in SharedPreferences for later use
+                            sharedPreferences.edit().putString("userEmail", email).apply();
                         } else {
                             Toast.makeText(AssessmentActivity.this, "User data not found", Toast.LENGTH_SHORT).show();
                         }
@@ -121,6 +125,7 @@ public class AssessmentActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             String uid = currentUser.getUid();
+            String email = sharedPreferences.getString("userEmail", "");
 
             fetchProfileDescriptions(uid, (desc2, desc3, desc4, desc5, desc6, desc7) -> {
                 Map<String, Object> assessmentData = new HashMap<>();
@@ -129,6 +134,7 @@ public class AssessmentActivity extends AppCompatActivity {
                 assessmentData.put("middleName", mNameIn.getText().toString());
                 assessmentData.put("dateOfAssessment", doaIn.getText().toString());
                 assessmentData.put("expertise", expertiseIn.getText().toString());
+                assessmentData.put("email", email); // Add the email to the assessment data
 
                 // Add profile descriptions to assessment data
                 assessmentData.put("exp_1", desc2);
@@ -154,3 +160,4 @@ public class AssessmentActivity extends AppCompatActivity {
         }
     }
 }
+
