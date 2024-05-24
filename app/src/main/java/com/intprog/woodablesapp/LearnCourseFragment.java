@@ -12,10 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-
 public class LearnCourseFragment extends Fragment {
 
+    private static final int ASSESSMENT_REQUEST_CODE = 1;
     Button toAssess, toCatalog;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -26,28 +27,28 @@ public class LearnCourseFragment extends Fragment {
         toAssess = viewRoot.findViewById(R.id.skillassess);
         toCatalog = viewRoot.findViewById(R.id.browsecoursecatalog);
 
-
-        toCatalog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                CourseCatalogFragment catalogFragment = new CourseCatalogFragment();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.contentView, catalogFragment);
-                fragmentTransaction.commit();
-            }
+        toCatalog.setOnClickListener(v -> {
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            CourseCatalogFragment catalogFragment = new CourseCatalogFragment();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.contentView, catalogFragment);
+            fragmentTransaction.commit();
         });
 
-        toAssess.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent toAssess = new Intent(viewRoot.getContext(), AssessmentActivity.class);
-                startActivity(toAssess);
-            }
+        toAssess.setOnClickListener(v -> {
+            Intent toAssess = new Intent(viewRoot.getContext(), AssessmentActivity.class);
+            startActivityForResult(toAssess, ASSESSMENT_REQUEST_CODE);
         });
 
         return viewRoot;
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == ASSESSMENT_REQUEST_CODE && resultCode == getActivity().RESULT_OK) {
+
+        }
+    }
 }
