@@ -57,6 +57,7 @@ public class EditProfileActivity extends AppCompatActivity {
         EditText firstNameEditText = findViewById(R.id.editFirstName);
         EditText middleNameEditText = findViewById(R.id.editMiddleName);
         EditText lastNameEditText = findViewById(R.id.editLastName);
+        EditText companyNameEditText = findViewById(R.id.editCompanyName);
         EditText desc2EditText = findViewById(R.id.profileDesc2);
         EditText desc3EditText = findViewById(R.id.profileDesc3);
         EditText desc4EditText = findViewById(R.id.profileDesc4);
@@ -77,9 +78,18 @@ public class EditProfileActivity extends AppCompatActivity {
                 String middleName = documentSnapshot.getString("Middle Name");
                 String lastName = documentSnapshot.getString("Last Name");
 
+                String role = documentSnapshot.getString("Role");
+                if(role.equals("client")){
+
+                    String companyName = documentSnapshot.getString("");
+                    companyNameEditText.setText(companyName);
+                }
+
                 firstNameEditText.setText(firstName);
                 middleNameEditText.setText(middleName);
                 lastNameEditText.setText(lastName);
+
+
             }
         }).addOnFailureListener(e -> {
             Toast.makeText(EditProfileActivity.this, "Error loading profile", Toast.LENGTH_SHORT).show();
