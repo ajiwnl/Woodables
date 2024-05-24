@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -177,9 +176,9 @@ public class WoodworkerProfileFragment extends Fragment {
         fragmentTransaction.commit();
     }
 
+    // Method to get the account creation date
     private String getAccountCreationDate() {
-        Log.d("ProfileFragment", "getAccountCreationDate() called");
-        long creationTimestamp = FirebaseAuth.getInstance().getCurrentUser().getMetadata().getCreationTimestamp();
+        long creationTimestamp = mAuth.getCurrentUser().getMetadata().getCreationTimestamp();
         Date creationDate = new Date(creationTimestamp);
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault());
         return dateFormat.format(creationDate);
