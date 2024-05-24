@@ -204,15 +204,16 @@ public class EditProfileActivity extends AppCompatActivity {
         byte[] data = baos.toByteArray();
 
         StorageReference profilePicRef = storageReference.child("profile_pictures/" + userId);
-
         profilePicRef.putBytes(data).addOnSuccessListener(taskSnapshot -> {
-            pictureUpdated = true;
-            showToastUpdate();
+            profilePicRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                ProfilePictureManager.updateProfilePicture(EditProfileActivity.this, uri);
+                Toast.makeText(EditProfileActivity.this, "Profile picture updated", Toast.LENGTH_SHORT).show();
+                Glide.with(EditProfileActivity.this).load(uri).into(profilePicture);
+            });
         }).addOnFailureListener(e -> {
             Toast.makeText(EditProfileActivity.this, "Error uploading profile picture", Toast.LENGTH_SHORT).show();
         });
     }
-
     private void showToastUpdate() {
         if (profileUpdated && descriptionsUpdated && pictureUpdated) {
             Toast.makeText(EditProfileActivity.this, "Profile, descriptions, and picture updated", Toast.LENGTH_SHORT).show();
