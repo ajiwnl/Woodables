@@ -57,6 +57,7 @@
                     android:layout_marginStart="10dp"
                     android:padding="10dp"
                     android:fontFamily="@font/spartan_medium"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:text="Edit User Profile"/>
 
@@ -113,6 +114,7 @@
                         android:layout_weight="1"
                         android:padding="10dp"
                         android:layout_marginStart="20dp"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/spartan_medium"
                         android:text="First Name"/>
 
@@ -141,11 +143,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:padding="10dp"
                         android:layout_marginStart="20dp"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/spartan_medium"
                         android:text="Last Name"/>
 
@@ -174,12 +176,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:padding="10dp"
                         android:layout_marginStart="20dp"
+                        android:layout_weight="1"
                         android:fontFamily="@font/spartan_medium"
-                        android:text="Middle Name"/>
+                        android:gravity="center_vertical"
+                        android:textColor="@color/black"
+                        android:padding="10dp"
+                        android:text="Middle Name" />
 
                     <EditText
                         android:id="@+id/editMiddleName"
@@ -199,6 +202,7 @@
                 android:layout_marginStart="10dp"
                 android:padding="10dp"
                 android:fontFamily="@font/spartan_medium"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:text="Profile Description"/>
 
@@ -224,6 +228,7 @@
                     android:padding="10dp"
                     android:layout_marginStart="20dp"
                     android:fontFamily="@font/spartan_medium"
+                    android:textColor="@color/black"
                     android:text="Profile Desc 1"/>
 
                 <EditText
@@ -250,6 +255,7 @@
                     android:padding="10dp"
                     android:layout_marginStart="20dp"
                     android:fontFamily="@font/spartan_medium"
+                    android:textColor="@color/black"
                     android:text="Profile Desc 2"/>
 
                 <EditText
@@ -275,6 +281,7 @@
                     android:gravity="center_vertical"
                     android:padding="10dp"
                     android:layout_marginStart="20dp"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/spartan_medium"
                     android:text="Profile Desc 3"/>
 
@@ -300,6 +307,7 @@
                     android:gravity="center_vertical"
                     android:padding="10dp"
                     android:layout_marginStart="20dp"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/spartan_medium"
                     android:text="Profile Desc 4"/>
 
@@ -326,6 +334,7 @@
                     android:gravity="center_vertical"
                     android:padding="10dp"
                     android:layout_marginStart="20dp"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/spartan_medium"
                     android:text="Profile Desc 5"/>
 
@@ -352,6 +361,7 @@
                     android:gravity="center_vertical"
                     android:padding="10dp"
                     android:layout_marginStart="20dp"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/spartan_medium"
                     android:text="Profile Desc 6"/>
 
@@ -377,6 +387,7 @@
                     android:gravity="center_vertical"
                     android:padding="10dp"
                     android:layout_marginStart="20dp"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/spartan_medium"
                     android:text="Profile Desc 7"/>
 
