@@ -69,22 +69,13 @@
             android:layout_height="100dp"
             android:layout_marginTop="200dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/catprofile"
+            android:src="@drawable/default_profile"
             android:adjustViewBounds="true"
             android:background="@drawable/rounded_corners"
             android:clipToOutline="true"
             android:contentDescription="@string/logo"
             android:cropToPadding="true"
             android:scaleType="centerCrop"/>
-
-        <ImageView
-            android:id="@+id/camerlogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/camera"
-            android:layout_marginStart="230dp"
-            android:contentDescription="@string/editprofilephoto"
-            android:layout_below="@+id/profilebackground"/>
 
         <TextView
             android:id="@+id/profileName"
@@ -96,15 +87,7 @@
             android:textStyle="bold"
             android:layout_below="@+id/profilepicture"
             android:textSize="18sp"/> <!-- Profile Name -->
-        <ImageView
-            android:id="@+id/verified"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/accept"
-            android:layout_toEndOf="@id/profileName"
-            android:contentDescription="@string/verified"
-            android:layout_below="@id/profilepicture"
-            android:layout_marginStart="10dp"/>
+
         <TextView
             android:id="@+id/profileCategory"
             android:layout_width="wrap_content"
@@ -113,7 +96,6 @@
             android:textColor="@color/darkgrey"
             android:layout_below="@+id/profileName"
             android:text="@string/adv_carpenter"/>
-
 
         <Button
             android:id="@+id/openToButton"

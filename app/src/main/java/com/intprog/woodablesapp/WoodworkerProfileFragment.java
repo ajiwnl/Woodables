@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +19,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class WoodworkerProfileFragment extends Fragment {
     private TextView profileName;
@@ -33,8 +38,11 @@ public class WoodworkerProfileFragment extends Fragment {
     private TextView profileDesc5;
     private TextView profileDesc6;
     private TextView profileDesc7;
+    private ImageView profilePicture;
     private ImageView logoutBtn;
-    private FirebaseAuth mAuth; //FirebaseAuth instance
+    private FirebaseAuth mAuth;
+    private StorageReference storageReference;
+    private String userId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,12 +57,14 @@ public class WoodworkerProfileFragment extends Fragment {
         profileDesc5 = viewRoot.findViewById(R.id.profileDesc5);
         profileDesc6 = viewRoot.findViewById(R.id.profileDesc6);
         profileDesc7 = viewRoot.findViewById(R.id.profileDesc7);
+        profilePicture = viewRoot.findViewById(R.id.profilepicture);
         Button editProfile = viewRoot.findViewById(R.id.editProfile);
         Button openTo = viewRoot.findViewById(R.id.openToButton);
         logoutBtn = viewRoot.findViewById(R.id.logout);
 
         mAuth = FirebaseAuth.getInstance();
-        String userId = mAuth.getCurrentUser().getUid();
+        storageReference = FirebaseStorage.getInstance().getReference();
+        userId = mAuth.getCurrentUser().getUid();
 
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,12 +116,19 @@ public class WoodworkerProfileFragment extends Fragment {
                         profileDesc4.setText(profileDescriptions.getDesc4());
                         profileDesc5.setText(profileDescriptions.getDesc5());
                         profileDesc6.setText(profileDescriptions.getDesc6());
-                        profileDesc7.setText(profileDescriptions.getDesc7());
+                        profileDesc7.setText(getAccountCreationDate());
                     }
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(getContext(), "Failed to load descriptions", Toast.LENGTH_SHORT).show();
                 });
+
+        // Fetch profile picture from Firebase Storage
+        storageReference.child("profile_pictures/" + userId).getDownloadUrl().addOnSuccessListener(uri -> {
+            Glide.with(getContext()).load(uri).into(profilePicture);
+        }).addOnFailureListener(e -> {
+            Toast.makeText(getContext(), "Failed to load profile picture", Toast.LENGTH_SHORT).show();
+        });
 
         return viewRoot;
     }
@@ -119,7 +136,7 @@ public class WoodworkerProfileFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK) {
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
             String fullName = data.getStringExtra("FULL_NAME");
             String desc2 = data.getStringExtra("DESC2");
             String desc3 = data.getStringExtra("DESC3");
@@ -142,6 +159,13 @@ public class WoodworkerProfileFragment extends Fragment {
             profileDesc5.setText(desc5);
             profileDesc6.setText(desc6);
             profileDesc7.setText(desc7);
+
+            // Fetch and display updated profile picture
+            storageReference.child("profile_pictures/" + userId).getDownloadUrl().addOnSuccessListener(uri -> {
+                Glide.with(getContext()).load(uri).into(profilePicture);
+            }).addOnFailureListener(e -> {
+                Toast.makeText(getContext(), "Failed to load updated profile picture", Toast.LENGTH_SHORT).show();
+            });
         }
     }
 
@@ -151,6 +175,14 @@ public class WoodworkerProfileFragment extends Fragment {
         fragmentTransaction.replace(R.id.contentView, frag);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+    }
+
+    private String getAccountCreationDate() {
+        Log.d("ProfileFragment", "getAccountCreationDate() called");
+        long creationTimestamp = FirebaseAuth.getInstance().getCurrentUser().getMetadata().getCreationTimestamp();
+        Date creationDate = new Date(creationTimestamp);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault());
+        return dateFormat.format(creationDate);
     }
 
 }
