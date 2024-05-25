@@ -147,12 +147,12 @@ public class AssessmentActivity extends AppCompatActivity {
                 // Use set with the document ID as the user's UID
                 db.collection("assessment").document(uid).set(assessmentData)
                         .addOnSuccessListener(aVoid -> {
-                            Toast.makeText(AssessmentActivity.this, "Data saved successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AssessmentActivity.this, "You've successfully apply for Skills Assessment, We'll contact you soon!", Toast.LENGTH_SHORT).show();
                             setResult(RESULT_OK);
                             finish();
                         })
                         .addOnFailureListener(e -> {
-                            Toast.makeText(AssessmentActivity.this, "Error saving data", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AssessmentActivity.this, "Cannot apply for SKills Assessment. Try again later", Toast.LENGTH_SHORT).show();
                         });
             });
         } else {
