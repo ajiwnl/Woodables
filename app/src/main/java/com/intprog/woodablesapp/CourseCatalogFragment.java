@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,10 +18,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class CourseCatalogFragment extends Fragment {
 
@@ -109,19 +114,28 @@ public class CourseCatalogFragment extends Fragment {
         buttonCancel.setOnClickListener(v -> dialog.dismiss());
 
         buttonEnroll.setOnClickListener(v -> {
-            Bundle bundle = new Bundle();
-            bundle.putString("courseTitle", title);
-            bundle.putString("courseDescription", details);
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            if (currentUser != null) {
+                String userId = currentUser.getUid();
 
-            LearnCourseFragment learnCourseFragment = new LearnCourseFragment();
-            learnCourseFragment.setArguments(bundle);
+                Map<String, Object> courseData = new HashMap<>();
+                courseData.put("title", title);
+                courseData.put("description", description);
+                courseData.put("details", details);
 
-            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.contentView, learnCourseFragment);
-            fragmentTransaction.commit();
-
-            dialog.dismiss();
+                db.collection("enrolled_courses").document(userId)
+                        .collection("courses")
+                        .add(courseData)
+                        .addOnSuccessListener(documentReference -> {
+                            Toast.makeText(getContext(), "Enrolled successfully!", Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                        })
+                        .addOnFailureListener(e -> {
+                            Toast.makeText(getContext(), "Failed to enroll. Please try again.", Toast.LENGTH_SHORT).show();
+                        });
+            } else {
+                Toast.makeText(getContext(), "User not authenticated. Please log in.", Toast.LENGTH_SHORT).show();
+            }
         });
 
         dialog.show();
