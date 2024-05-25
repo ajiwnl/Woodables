@@ -1,21 +1,23 @@
 package com.intprog.woodablesapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 import android.content.Intent;
-import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.cardview.widget.CardView;
+import androidx.appcompat.app.AlertDialog;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import android.util.Log;
-import androidx.appcompat.app.AlertDialog;
+import java.util.concurrent.TimeUnit;
 
 public class AdminAssesmentActivity extends AppCompatActivity {
     private LinearLayout assessmentLinearLayout;
@@ -56,9 +58,10 @@ public class AdminAssesmentActivity extends AppCompatActivity {
                             String exp_1 = document.getString("exp_1");
                             String exp_2 = document.getString("exp_2");
                             String location = document.getString("location");
+                            String email = document.getString("email");  // Assuming you have an email field
 
                             Log.d("AdminAssesmentActivity", "Adding document to layout: " + documentId);
-                            addDocumentToLayout(documentId, fullName, expertise, desc7, educ, course, exp_1, exp_2, location);
+                            addDocumentToLayout(documentId, fullName, expertise, desc7, educ, course, exp_1, exp_2, location, email);
                         }
                     } else {
                         Log.e("AdminAssesmentActivity", "Error loading documents: ", task.getException());
@@ -67,11 +70,12 @@ public class AdminAssesmentActivity extends AppCompatActivity {
                 });
     }
 
-    private void deleteDocument(String documentId, View documentView) {
+    private void deleteDocument(String documentId, View documentView, String email, String desc7, String fullName) {
         db.collection("assessment").document(documentId)
                 .delete()
                 .addOnSuccessListener(aVoid -> {
                     assessmentLinearLayout.removeView(documentView);
+                    sendDisapprovalEmail(email, desc7, fullName);  // Send email upon successful deletion
                     Toast.makeText(AdminAssesmentActivity.this, "Document deleted.", Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e -> {
@@ -79,10 +83,13 @@ public class AdminAssesmentActivity extends AppCompatActivity {
                 });
     }
 
-    private void approveDocument(String documentId, View documentView) {
+    private void approveDocument(String documentId, View documentView, String email, String desc7, String fullName) {
         db.collection("assessment").document(documentId)
                 .update("status", "approved")
                 .addOnSuccessListener(aVoid -> {
+                    sendApprovalEmail(email, desc7, fullName);  // Send email upon successful approval
+                    disableButtons(documentView);
+                    scheduleDocumentDeletion(documentId);
                     Toast.makeText(AdminAssesmentActivity.this, "Document approved.", Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e -> {
@@ -90,7 +97,28 @@ public class AdminAssesmentActivity extends AppCompatActivity {
                 });
     }
 
-    private void addDocumentToLayout(String documentId, String fullName, String expertise, String desc7, String educ, String course, String exp_1, String exp_2, String location) {
+    private void disableButtons(View documentView) {
+        Button deleteButton = documentView.findViewById(R.id.deleteButton);
+        Button approveButton = documentView.findViewById(R.id.approveButton);
+
+        deleteButton.setEnabled(false);
+        approveButton.setEnabled(false);
+    }
+
+    private void scheduleDocumentDeletion(String documentId) {
+        Data data = new Data.Builder()
+                .putString("documentId", documentId)
+                .build();
+
+        OneTimeWorkRequest deleteRequest = new OneTimeWorkRequest.Builder(DeleteDocumentWorker.class)
+                .setInitialDelay(7, TimeUnit.DAYS)
+                .setInputData(data)
+                .build();
+
+        WorkManager.getInstance(this).enqueue(deleteRequest);
+    }
+
+    private void addDocumentToLayout(String documentId, String fullName, String expertise, String desc7, String educ, String course, String exp_1, String exp_2, String location, String email) {
         // Inflate the item layout
         LayoutInflater inflater = LayoutInflater.from(this);
         View itemView = inflater.inflate(R.layout.admin_item_assessment, assessmentLinearLayout, false);
@@ -114,28 +142,56 @@ public class AdminAssesmentActivity extends AppCompatActivity {
         locationTextView.setText(String.format("Location: %s", location));
 
         // Set the click listeners for the buttons
-        deleteButton.setOnClickListener(v -> showDeleteConfirmationDialog(documentId, itemView));
-        approveButton.setOnClickListener(v -> showApproveConfirmationDialog(documentId, itemView));
+        deleteButton.setOnClickListener(v -> showDeleteConfirmationDialog(documentId, itemView, email, desc7, fullName));
+        approveButton.setOnClickListener(v -> showApproveConfirmationDialog(documentId, itemView, email, desc7, fullName));
 
         // Add the item view to the layout
         assessmentLinearLayout.addView(itemView);
     }
 
-    private void showDeleteConfirmationDialog(String documentId, View documentView) {
+    private void showDeleteConfirmationDialog(String documentId, View documentView, String email, String desc7, String fullName) {
         new AlertDialog.Builder(this)
-                .setTitle("Confirm Delete")
-                .setMessage("Are you sure you want to delete this document?")
-                .setPositiveButton("Yes", (dialog, which) -> deleteDocument(documentId, documentView))
+                .setTitle("Disapproved Assessment")
+                .setMessage("Are you sure you want to disapprove this assessment?")
+                .setPositiveButton("Yes", (dialog, which) -> deleteDocument(documentId, documentView, email, desc7, fullName))
                 .setNegativeButton("No", null)
                 .show();
     }
 
-    private void showApproveConfirmationDialog(String documentId, View documentView) {
+    private void showApproveConfirmationDialog(String documentId, View documentView, String email, String desc7, String fullName) {
         new AlertDialog.Builder(this)
-                .setTitle("Confirm Approve")
-                .setMessage("Are you sure you want to approve this document?")
-                .setPositiveButton("Yes", (dialog, which) -> approveDocument(documentId, documentView))
+                .setTitle("Approved Assessment")
+                .setMessage("Are you sure you want to approve this assessment?")
+                .setPositiveButton("Yes", (dialog, which) -> approveDocument(documentId, documentView, email, desc7, fullName))
                 .setNegativeButton("No", null)
                 .show();
+    }
+
+    private void sendApprovalEmail(String email, String desc7, String fullName) {
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Woodables [Skill Assessment Approved]");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, String.format("We are happy to inform you, %s, that your skill assessment has been approved. Congratulations!\n\nDate of Skill Assessment: %s\n\nPlease communicate with us to comply with the requirements needed.", fullName, desc7));
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send email..."));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(AdminAssesmentActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void sendDisapprovalEmail(String email, String desc7, String fullName) {
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Woodables [Skill Assessment Disapproved]");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, String.format("We are very sorry to inform you, %s, that your skill assessment has been disapproved.\n\nDate of Skill Assessment: %s\n\nPlease contact us for more information.", fullName, desc7));
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send email..."));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(AdminAssesmentActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+        }
     }
 }
