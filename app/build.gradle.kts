@@ -34,11 +34,13 @@ android {
 
 dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation ("androidx.work:work-runtime:2.7.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation ("com.google.android.gms:play-services-auth:20.0.0")
     implementation  ("com.google.firebase:firebase-bom:33.0.0")
     implementation("com.google.firebase:firebase-auth:23.0.0")
+    implementation ("androidx.cardview:cardview:1.0.0")
     implementation ("com.google.firebase:firebase-analytics:22.0.0")
     implementation ("com.google.firebase:firebase-firestore:25.0.0")
     implementation ("com.google.firebase:firebase-storage:21.0.0")

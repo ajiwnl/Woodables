@@ -155,89 +155,18 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/enrolled_courses_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginEnd="30dp"
                 android:orientation="vertical">
 
-                <RelativeLayout
-                    android:id="@+id/inprogressbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@color/white">
-
-                    <ImageButton
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/activestatus"
-                        android:contentDescription="@string/all" />
-
-                    <ImageView
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
-                        android:background="@drawable/activestatus"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_toLeftOf="@id/inprogress"/>
-
-                    <TextView
-                        android:id="@+id/inprogress"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="In Progress"
-                        android:gravity="center"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="10dp"/>
-                </RelativeLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="160dp">
-
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/woodworker"/>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:background="#D6AE80">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="10dp"
-                            android:gravity="center_vertical"
-                            android:textSize="18sp"
-                            android:textColor="@color/white"
-                            android:textStyle="bold"
-                            android:text="Carving Basic"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Lorem Ipsum Dimsum Samsung Lorem Ipsum Dimsum Samsung."
-                            android:paddingStart="15dp"
-                            android:textColor="@color/white"/>
-
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
+                <!-- Dynamically added enrolled courses will go here -->
 
             </LinearLayout>
 
         </ScrollView>
-
-
 
     </LinearLayout>
 
