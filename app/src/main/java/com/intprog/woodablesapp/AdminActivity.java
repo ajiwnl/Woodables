@@ -2,27 +2,33 @@ package com.intprog.woodablesapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
+import android.widget.Toast;
+import androidx.cardview.widget.CardView;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import android.util.Log;
 
 public class AdminActivity extends AppCompatActivity {
-    private LinearLayout adminLinearLayout;
-    private Button listingsButton, assessmentButton, postsButton;
+    private LinearLayout listingsLinearLayout;
     private FirebaseFirestore db;
+
+    private Button listingsButton, assessmentButton, postsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
-        adminLinearLayout = findViewById(R.id.adminLinearLayout);
+        listingsLinearLayout = findViewById(R.id.listingsLinearLayout);
         listingsButton = findViewById(R.id.toListings);
         assessmentButton = findViewById(R.id.toAssessment);
         postsButton = findViewById(R.id.toPosts);
@@ -43,46 +49,73 @@ public class AdminActivity extends AppCompatActivity {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             String documentId = document.getId();
                             String title = document.getString("title");
-                            addDocumentIdToLayout(title, documentId);
+                            String description = document.getString("description");
+
+                            Log.d("AdminActivity", "Adding document to layout: " + documentId);
+                            addDocumentToLayout(documentId, title, description);
                         }
                     } else {
-                        // Handle the error
+                        Log.e("AdminActivity", "Error loading documents: ", task.getException());
+                        Toast.makeText(AdminActivity.this, "Error loading documents.", Toast.LENGTH_SHORT).show();
                     }
                 });
-    }
-
-    private void addDocumentIdToLayout(String title, String documentId) {
-        LinearLayout documentLayout = new LinearLayout(this);
-        documentLayout.setOrientation(LinearLayout.HORIZONTAL);
-        documentLayout.setPadding(8, 8, 8, 8);
-
-        TextView textView = new TextView(this);
-        textView.setText(String.format("%s (ID: %s)", title, documentId));
-        textView.setTextSize(16);
-        textView.setLayoutParams(new LinearLayout.LayoutParams(
-                0,
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                1
-        ));
-
-        Button deleteButton = new Button(this);
-        deleteButton.setText("Delete");
-        deleteButton.setOnClickListener(v -> deleteDocument(documentId, documentLayout));
-
-        documentLayout.addView(textView);
-        documentLayout.addView(deleteButton);
-
-        adminLinearLayout.addView(documentLayout);
     }
 
     private void deleteDocument(String documentId, View documentView) {
         db.collection("listings").document(documentId)
                 .delete()
                 .addOnSuccessListener(aVoid -> {
-                    adminLinearLayout.removeView(documentView);
+                    listingsLinearLayout.removeView(documentView);
+                    Toast.makeText(AdminActivity.this, "Document deleted.", Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e -> {
-                    // Handle the error
+                    Toast.makeText(AdminActivity.this, "Error deleting document.", Toast.LENGTH_SHORT).show();
                 });
+    }
+
+    private void approveDocument(String documentId, View documentView) {
+        db.collection("listings").document(documentId)
+                .update("status", "approved")
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(AdminActivity.this, "Document approved.", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(AdminActivity.this, "Error approving document.", Toast.LENGTH_SHORT).show();
+                });
+    }
+
+    private void addDocumentToLayout(String documentId, String title, String description) {
+        // Inflate the layout for a single document
+        View documentView = getLayoutInflater().inflate(R.layout.admin_listing_activity, listingsLinearLayout, false);
+
+        // Set the document data
+        TextView titleTextView = documentView.findViewById(R.id.titleTextView);
+        TextView descriptionTextView = documentView.findViewById(R.id.descriptionTextView);
+        Button deleteButton = documentView.findViewById(R.id.deleteButton);
+        Button approveButton = documentView.findViewById(R.id.approveButton);
+
+        titleTextView.setText(title);
+        descriptionTextView.setText(description);
+
+        // Set button click listeners
+        deleteButton.setOnClickListener(v -> showConfirmationDialog(documentId, documentView, "delete"));
+        approveButton.setOnClickListener(v -> showConfirmationDialog(documentId, documentView, "approve"));
+
+        // Add the document view to the layout
+        listingsLinearLayout.addView(documentView);
+    }
+
+    private void showConfirmationDialog(String documentId, View documentView, String action) {
+        new AlertDialog.Builder(this)
+                .setMessage("Are you sure you want to " + action + " this document?")
+                .setPositiveButton("Yes", (dialog, which) -> {
+                    if (action.equals("delete")) {
+                        deleteDocument(documentId, documentView);
+                    } else if (action.equals("approve")) {
+                        approveDocument(documentId, documentView);
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
 }

@@ -3,20 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFFFFF"
-    >
+    android:background="#FFFFFF">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/cinnamon"
-        >
+        android:background="@color/cinnamon">
+
         <ImageView
             android:layout_width="52dp"
             android:layout_height="42dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="8dp"
-            android:src="@drawable/woodableslogo"/>
+            android:src="@drawable/woodableslogo" />
 
         <TextView
             android:id="@+id/welcometext"
@@ -26,7 +25,8 @@
             android:textSize="24sp"
             android:padding="10dp"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
+
         <ImageView
             android:id="@+id/logout"
             android:layout_width="32dp"
@@ -34,8 +34,7 @@
             android:src="@drawable/logout"
             android:layout_toEndOf="@+id/welcometext"
             android:layout_marginLeft="60dp"
-            android:layout_marginTop="10dp"
-            />
+            android:layout_marginTop="10dp" />
     </RelativeLayout>
 
     <TextView
@@ -46,16 +45,15 @@
         android:textColor="@color/darkgrey"
         android:textSize="18sp"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp" />
 
     <LinearLayout
-        android:id="@+id/adminLinearLayout"
+        android:id="@+id/listingsLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:padding="10dp">
-    </LinearLayout>
+        android:padding="10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -85,4 +83,5 @@
             android:layout_height="wrap_content"
             android:text="Posts" />
     </LinearLayout>
+
 </LinearLayout>

@@ -1,8 +1,10 @@
 package com.intprog.woodablesapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -12,29 +14,33 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 public class AdminPostActivity extends AppCompatActivity {
-    private LinearLayout postLinearLayout;
+    private LinearLayout postsLinearLayout;
     private FirebaseFirestore db;
+
     private Button listingsButton, assessmentButton, postsButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_post);
 
-        postLinearLayout = findViewById(R.id.postLinearLayout);
+        postsLinearLayout = findViewById(R.id.postsLinearLayout);
         listingsButton = findViewById(R.id.toListings);
         assessmentButton = findViewById(R.id.toAssessment);
         postsButton = findViewById(R.id.toPosts);
         db = FirebaseFirestore.getInstance();
 
-        loadDocumentIds();
+
+
+        loadPosts();
 
         listingsButton.setOnClickListener(v -> startActivity(new Intent(AdminPostActivity.this, AdminActivity.class)));
         assessmentButton.setOnClickListener(v -> startActivity(new Intent(AdminPostActivity.this, AdminAssesmentActivity.class)));
         postsButton.setOnClickListener(v -> startActivity(new Intent(AdminPostActivity.this, AdminPostActivity.class)));
     }
 
-    private void loadDocumentIds() {
+    private void loadPosts() {
         db.collection("posts")
                 .get()
                 .addOnCompleteListener(task -> {
@@ -42,48 +48,72 @@ public class AdminPostActivity extends AppCompatActivity {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             String documentId = document.getId();
                             String title = document.getString("title");
-                            addDocumentIdToLayout(title, documentId);
+                            String message = document.getString("message");
+                            String userName = document.getString("userName");
+
+                            Log.d("AdminPostActivity", "Adding document to layout: " + documentId);
+                            addPostToLayout(documentId, title, message, userName);
                         }
                     } else {
-                        // Handle the error
+                        Log.e("AdminPostActivity", "Error loading documents: ", task.getException());
                         Toast.makeText(AdminPostActivity.this, "Error loading documents.", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
-    private void addDocumentIdToLayout(String title, String documentId) {
-        LinearLayout documentLayout = new LinearLayout(this);
-        documentLayout.setOrientation(LinearLayout.HORIZONTAL);
-        documentLayout.setPadding(8, 8, 8, 8);
-
-        TextView textView = new TextView(this);
-        textView.setText(String.format("%s (ID: %s)", title, documentId));
-        textView.setTextSize(16);
-        textView.setLayoutParams(new LinearLayout.LayoutParams(
-                0,
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                1
-        ));
-
-        Button deleteButton = new Button(this);
-        deleteButton.setText("Delete");
-        deleteButton.setOnClickListener(v -> deleteDocument(documentId, documentLayout));
-
-        documentLayout.addView(textView);
-        documentLayout.addView(deleteButton);
-
-        postLinearLayout.addView(documentLayout);
-    }
-
-    private void deleteDocument(String documentId, View documentView) {
+    private void deletePost(String documentId, View postView) {
         db.collection("posts").document(documentId)
                 .delete()
                 .addOnSuccessListener(aVoid -> {
-                    postLinearLayout.removeView(documentView);
-                    Toast.makeText(AdminPostActivity.this, "Document deleted.", Toast.LENGTH_SHORT).show();
+                    postsLinearLayout.removeView(postView);
+                    Toast.makeText(AdminPostActivity.this, "Post deleted.", Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e -> {
-                    Toast.makeText(AdminPostActivity.this, "Error deleting document.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminPostActivity.this, "Error deleting post.", Toast.LENGTH_SHORT).show();
                 });
+    }
+
+    private void approvePost(String documentId) {
+        db.collection("posts").document(documentId)
+                .update("status", "approved")
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(AdminPostActivity.this, "Post approved.", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(AdminPostActivity.this, "Error approving post.", Toast.LENGTH_SHORT).show();
+                });
+    }
+
+    private void addPostToLayout(String documentId, String title, String message, String userName) {
+        View postView = getLayoutInflater().inflate(R.layout.admin_post_item, postsLinearLayout, false);
+
+        TextView titleTextView = postView.findViewById(R.id.titleTextView);
+        TextView messageTextView = postView.findViewById(R.id.messageTextView);
+        TextView userNameTextView = postView.findViewById(R.id.userNameTextView);
+        Button deleteButton = postView.findViewById(R.id.deleteButton);
+        Button approveButton = postView.findViewById(R.id.approveButton);
+
+        titleTextView.setText(title);
+        messageTextView.setText(message);
+        userNameTextView.setText(userName);
+
+        deleteButton.setOnClickListener(v -> showConfirmationDialog(documentId, postView, "delete"));
+        approveButton.setOnClickListener(v -> showConfirmationDialog(documentId, postView, "approve"));
+
+        postsLinearLayout.addView(postView);
+    }
+
+    private void showConfirmationDialog(String documentId, View postView, String action) {
+        new AlertDialog.Builder(this)
+                .setMessage("Are you sure you want to " + action + " this post?")
+                .setPositiveButton("Yes", (dialog, which) -> {
+                    if (action.equals("delete")) {
+                        deletePost(documentId, postView);
+                    } else if (action.equals("approve")) {
+                        approvePost(documentId);
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
 }

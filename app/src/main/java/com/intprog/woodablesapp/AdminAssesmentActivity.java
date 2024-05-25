@@ -1,11 +1,11 @@
 package com.intprog.woodablesapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -14,6 +14,8 @@ import android.widget.Toast;
 import androidx.cardview.widget.CardView;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import android.util.Log;
+import androidx.appcompat.app.AlertDialog;
 
 public class AdminAssesmentActivity extends AppCompatActivity {
     private LinearLayout assessmentLinearLayout;
@@ -55,10 +57,11 @@ public class AdminAssesmentActivity extends AppCompatActivity {
                             String exp_2 = document.getString("exp_2");
                             String location = document.getString("location");
 
+                            Log.d("AdminAssesmentActivity", "Adding document to layout: " + documentId);
                             addDocumentToLayout(documentId, fullName, expertise, desc7, educ, course, exp_1, exp_2, location);
                         }
                     } else {
-                        // Handle the error
+                        Log.e("AdminAssesmentActivity", "Error loading documents: ", task.getException());
                         Toast.makeText(AdminAssesmentActivity.this, "Error loading documents.", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -88,97 +91,51 @@ public class AdminAssesmentActivity extends AppCompatActivity {
     }
 
     private void addDocumentToLayout(String documentId, String fullName, String expertise, String desc7, String educ, String course, String exp_1, String exp_2, String location) {
-        // Create a CardView
-        CardView cardView = new CardView(this);
-        LinearLayout.LayoutParams cardViewParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        cardViewParams.height = 500;
-        cardViewParams.setMargins(8, 8, 8, 8);
-        cardView.setLayoutParams(cardViewParams);
-        cardView.setRadius(15); // Set corner radius
-        cardView.setCardBackgroundColor(Color.WHITE); // Set card background color
-        cardView.setCardElevation(8); // Set card elevation
+        // Inflate the item layout
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View itemView = inflater.inflate(R.layout.admin_item_assessment, assessmentLinearLayout, false);
 
-        // Create a LinearLayout inside the CardView
-        LinearLayout cardContentLayout = new LinearLayout(this);
-        cardContentLayout.setOrientation(LinearLayout.VERTICAL);
-        cardContentLayout.setPadding(16, 16, 16, 16);
+        // Get references to the views in the inflated layout
+        TextView fullNameTextView = itemView.findViewById(R.id.fullNameTextView);
+        TextView educTextView = itemView.findViewById(R.id.educTextView);
+        TextView courseTextView = itemView.findViewById(R.id.courseTextView);
+        TextView exp1TextView = itemView.findViewById(R.id.exp1TextView);
+        TextView exp2TextView = itemView.findViewById(R.id.exp2TextView);
+        TextView locationTextView = itemView.findViewById(R.id.locationTextView);
+        Button deleteButton = itemView.findViewById(R.id.deleteButton);
+        Button approveButton = itemView.findViewById(R.id.approveButton);
 
-
-        TextView fullNameTextView = new TextView(this);
+        // Set the text for the views
         fullNameTextView.setText(String.format("%s %s\n%s", fullName, expertise, desc7));
-        fullNameTextView.setTextSize(18);
-        fullNameTextView.setTextColor(Color.BLACK);
-
-        TextView educTextView = new TextView(this);
         educTextView.setText(String.format("Education: %s", educ));
-        educTextView.setTextColor(Color.BLACK);
-
-        TextView courseTextView = new TextView(this);
         courseTextView.setText(String.format("Course: %s", course));
-        courseTextView.setTextColor(Color.BLACK);
-
-        TextView exp1TextView = new TextView(this);
         exp1TextView.setText(String.format("Experience 1: %s", exp_1));
-        exp1TextView.setTextColor(Color.BLACK);
-
-        TextView exp2TextView = new TextView(this);
         exp2TextView.setText(String.format("Experience 2: %s", exp_2));
-        exp2TextView.setTextColor(Color.BLACK);
-
-        TextView locationTextView = new TextView(this);
         locationTextView.setText(String.format("Location: %s", location));
-        locationTextView.setTextColor(Color.BLACK);
 
-        // Create a LinearLayout for buttons
-        LinearLayout buttonLayout = new LinearLayout(this);
-        buttonLayout.setOrientation(LinearLayout.HORIZONTAL);
-        buttonLayout.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        ));
-        buttonLayout.setGravity(Gravity.CENTER);
+        // Set the click listeners for the buttons
+        deleteButton.setOnClickListener(v -> showDeleteConfirmationDialog(documentId, itemView));
+        approveButton.setOnClickListener(v -> showApproveConfirmationDialog(documentId, itemView));
 
-        Button deleteButton = new Button(this);
-        deleteButton.setText("Delete");
-        deleteButton.setTextColor(Color.WHITE);
-        deleteButton.setBackgroundColor(Color.RED);
-        deleteButton.setOnClickListener(v -> deleteDocument(documentId, cardView));
-
-        Button approveButton = new Button(this);
-        approveButton.setText("Approve");
-        approveButton.setTextColor(Color.WHITE);
-        approveButton.setBackgroundColor(Color.BLUE);
-        approveButton.setOnClickListener(v -> approveDocument(documentId, cardView));
-
-        // Add buttons to buttonLayout
-        LinearLayout.LayoutParams buttonParams = new LinearLayout.LayoutParams(
-                0,
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                1
-        );
-        deleteButton.setLayoutParams(buttonParams);
-        approveButton.setLayoutParams(buttonParams);
-
-        // Add buttons to buttonLayout
-        buttonLayout.addView(deleteButton);
-        buttonLayout.addView(approveButton);
-
-        // Add views to cardContentLayout
-        cardContentLayout.addView(fullNameTextView);
-        cardContentLayout.addView(educTextView);
-        cardContentLayout.addView(courseTextView);
-        cardContentLayout.addView(exp1TextView);
-        cardContentLayout.addView(exp2TextView);
-        cardContentLayout.addView(locationTextView);
-
-        // Add cardContentLayout to CardView
-        cardView.addView(cardContentLayout);
-
-        // Add CardView to assessmentLinearLayout
-        assessmentLinearLayout.addView(cardView);
+        // Add the item view to the layout
+        assessmentLinearLayout.addView(itemView);
     }
 
+    private void showDeleteConfirmationDialog(String documentId, View documentView) {
+        new AlertDialog.Builder(this)
+                .setTitle("Confirm Delete")
+                .setMessage("Are you sure you want to delete this document?")
+                .setPositiveButton("Yes", (dialog, which) -> deleteDocument(documentId, documentView))
+                .setNegativeButton("No", null)
+                .show();
+    }
+
+    private void showApproveConfirmationDialog(String documentId, View documentView) {
+        new AlertDialog.Builder(this)
+                .setTitle("Confirm Approve")
+                .setMessage("Are you sure you want to approve this document?")
+                .setPositiveButton("Yes", (dialog, which) -> approveDocument(documentId, documentView))
+                .setNegativeButton("No", null)
+                .show();
+    }
 }
