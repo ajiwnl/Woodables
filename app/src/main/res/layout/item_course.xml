@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     app:cardCornerRadius="8dp"
     app:cardElevation="4dp"
+    android:backgroundTint="@color/babyblue"
     android:layout_margin="8dp">
 
     <LinearLayout
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp"
-        android:background="@android:color/white">
+        >
 
         <TextView
             android:id="@+id/course_title"
