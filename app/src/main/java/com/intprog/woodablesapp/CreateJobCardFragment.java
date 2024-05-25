@@ -96,7 +96,7 @@ public class CreateJobCardFragment extends Fragment {
                     clearFields();
                 })
                 .addOnFailureListener(e -> {
-                    Toast.makeText(getActivity(), "Error creating job listing", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Error creating job listing: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
 
