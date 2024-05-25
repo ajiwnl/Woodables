@@ -1,64 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    tools:context=".AdminMainScreen">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:background="@color/cinnamon">
 
         <ImageView
-            android:layout_width="52dp"
-            android:layout_height="42dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="7dp"
+            android:layout_marginStart="10dp"
             android:src="@drawable/woodableslogo" />
 
         <TextView
             android:id="@+id/welcometext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center"
             android:text="Welcome, Admin!"
             android:textSize="24sp"
-            android:padding="10dp"
-            android:layout_centerHorizontal="true"
             android:textColor="@color/white" />
 
         <ImageView
             android:id="@+id/logout"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp"
             android:src="@drawable/logout"
-            android:layout_toEndOf="@+id/welcometext"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="10dp" />
-    </RelativeLayout>
+            android:layout_marginEnd="10dp"/>
+    </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Posts"
-        android:textStyle="bold"
-        android:textColor="@color/darkgrey"
-        android:textSize="18sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp" />
-
-    <ScrollView
+    <FrameLayout
+        android:id="@+id/contentViewAdmin"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="10dp">
+        android:layout_weight="1"/>
 
-        <LinearLayout
-            android:id="@+id/postsLinearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -88,5 +77,6 @@
             android:layout_height="wrap_content"
             android:text="Posts" />
     </LinearLayout>
+
 
 </LinearLayout>

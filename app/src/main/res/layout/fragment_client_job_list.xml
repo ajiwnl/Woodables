@@ -3,22 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".JobListingFragment">
+    tools:context=".ClientJobListFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@color/white">
-
-
-
         <LinearLayout
             android:id="@+id/searchbargroup"
             android:layout_width="match_parent"
             android:background="@color/cinnamon"
             android:layout_height="55dp"
             android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/backbutton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:layout_weight="0.45"
+                android:background="@color/cinnamon"
+                android:src="@drawable/leftarrow" />
 
             <SearchView
                 android:id="@+id/searchBarProfile"
@@ -52,13 +58,6 @@
 
         </LinearLayout>
 
-        <View
-            android:id="@+id/breaklinetop"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_below="@+id/searchbargroup"
-            android:background="@color/white" />
-
         <RelativeLayout
 
             android:layout_width="match_parent"
@@ -76,7 +75,7 @@
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/spartan_bold"
                 android:paddingTop="4dp"
-                android:text="@string/listing_view"
+                android:text="My Job Cards"
                 android:textAlignment="center"
                 android:textColor="@color/darkgrey"
                 android:textSize="20sp" />
@@ -91,25 +90,20 @@
                 android:src="@drawable/filterwhite" />
         </RelativeLayout>
 
-
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="3">
+            android:layout_height="match_parent"
+            android:layout_below="@+id/adminLabel">
 
             <LinearLayout
-                android:id="@+id/listingContainer"
+                android:id="@+id/joblistingsLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/white">
+                android:orientation="vertical"/>
 
-            </LinearLayout>
         </ScrollView>
 
-
     </LinearLayout>
-
 
 
 

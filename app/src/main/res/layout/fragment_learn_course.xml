@@ -24,15 +24,6 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/backbutton"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.50"
-                android:background="@color/cinnamon"
-                android:padding="10dp"
-                android:src="@drawable/leftarrow" />
-
-            <ImageView
                 android:id="@+id/applogo"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
