@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class LearnCourseFragment extends Fragment {
 
@@ -26,6 +27,19 @@ public class LearnCourseFragment extends Fragment {
 
         toAssess = viewRoot.findViewById(R.id.skillassess);
         toCatalog = viewRoot.findViewById(R.id.browsecoursecatalog);
+
+        // Retrieve the course details from the bundle
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            String courseTitle = bundle.getString("courseTitle");
+            String courseDescription = bundle.getString("courseDescription");
+
+            // Display the course details
+            TextView courseTitleView = viewRoot.findViewById(R.id.course_title);
+            TextView courseDescriptionView = viewRoot.findViewById(R.id.course_description);
+            courseTitleView.setText(courseTitle);
+            courseDescriptionView.setText(courseDescription);
+        }
 
         toCatalog.setOnClickListener(v -> {
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();

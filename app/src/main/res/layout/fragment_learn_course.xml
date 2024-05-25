@@ -204,6 +204,7 @@
                         android:background="@drawable/woodworker"/>
 
                     <LinearLayout
+                        android:id="@+id/enrolledcourse"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -211,21 +212,19 @@
                         android:background="#D6AE80">
 
                         <TextView
+                            android:id="@+id/course_title"
                             android:layout_width="wrap_content"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="10dp"
-                            android:gravity="center_vertical"
+                            android:layout_height="wrap_content"
                             android:textSize="18sp"
-                            android:textColor="@color/white"
                             android:textStyle="bold"
-                            android:text="Carving Basic"/>
+                            android:layout_margin="10dp" />
 
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Lorem Ipsum Dimsum Samsung Lorem Ipsum Dimsum Samsung."
-                            android:paddingStart="15dp"
-                            android:textColor="@color/white"/>
+                            android:id="@+id/course_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:layout_margin="10dp" />
 
 
                     </LinearLayout>
