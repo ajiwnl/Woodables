@@ -2,6 +2,8 @@ package com.intprog.woodablesapp;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -83,7 +86,7 @@ public class JobListingFragment extends Fragment {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
-        layoutParams.setMargins(40, 40, 40, 40); // Add bottom margin for gap
+        layoutParams.setMargins(40, 40, 40, 40); // Add margins if needed
         listingView.setLayoutParams(layoutParams);
         listingContainer.addView(listingView);
     }
@@ -91,13 +94,24 @@ public class JobListingFragment extends Fragment {
     public void retrieveListings() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        db.collectionGroup("user_jobs").get().addOnSuccessListener(queryDocumentSnapshots -> {
-            for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                Listing listing = documentSnapshot.toObject(Listing.class);
-                renderListing(listing);
-            }
-        }).addOnFailureListener(e -> {
-            Toast.makeText(getContext(), "Failed to retrieve listings: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-        });
+        db.collectionGroup("user_jobs")
+                .whereEqualTo("status", "approved")
+                .orderBy("jobTitle", Query.Direction.ASCENDING)
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    if (queryDocumentSnapshots.isEmpty()) {
+                        Toast.makeText(getContext(), "No approved listings found.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                            Listing listing = documentSnapshot.toObject(Listing.class);
+                            renderListing(listing);
+                        }
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("JobListingFragment", "Failed to retrieve listings", e);
+                    Toast.makeText(getContext(), "Failed to retrieve listings: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+
     }
 }
