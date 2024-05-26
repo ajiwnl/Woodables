@@ -97,6 +97,16 @@
             android:textColor="@color/darkgrey"
             android:textSize="12sp" />
 
+        <TextView
+            android:id="@+id/benefits_post"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"
+            android:fontFamily="@font/spartan_medium"
+            android:textColor="@color/darkgrey"
+            android:textSize="12sp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
