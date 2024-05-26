@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -119,7 +120,7 @@ public class LearnCourseFragment extends Fragment {
 
         TextView dialogTitle = dialogView.findViewById(R.id.dialog_course_title);
         TextView dialogDetails = dialogView.findViewById(R.id.dialog_course_details);
-        Button buttonCancel = dialogView.findViewById(R.id.button_cancel);
+        ImageView buttonCancel = dialogView.findViewById(R.id.button_cancel);
         Button buttonDropCourse = dialogView.findViewById(R.id.button_drop);
         Button buttonLaunchCourse = dialogView.findViewById(R.id.button_launch);
 
