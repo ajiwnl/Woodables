@@ -104,12 +104,13 @@ public class CreateJobCardFragment extends Fragment {
         jobListing.put("requirements2", requirementsStr2);
         jobListing.put("requirements3", requirementsStr3);
         jobListing.put("hasBenefits", hasBenefits);
+        jobListing.put("status", "pending");  // Set status to pending
 
         // Save the job listing in the main "job_listings" collection with the user's UID as a sub-collection
         db.collection("job_listings").document(uid).collection("user_jobs")
                 .add(jobListing)
                 .addOnSuccessListener(documentReference -> {
-                    Toast.makeText(getActivity(), "Job listing created, Wait for Admin Approval", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Job listing created, wait for Admin Approval", Toast.LENGTH_SHORT).show();
                     // Clear input fields or navigate to another fragment/activity
                     clearFields();
                 })
