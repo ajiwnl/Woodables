@@ -1,17 +1,18 @@
 package com.intprog.woodablesapp;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -24,14 +25,15 @@ public class JobListingFragment extends Fragment {
     private FirebaseAuth mAuth;
     private StorageReference storageReference;
     private String userId;
+    private FirebaseFirestore db;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_job_listing, container, false);
 
         mAuth = FirebaseAuth.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
+        db = FirebaseFirestore.getInstance();
 
         if (mAuth.getCurrentUser() == null) {
             Toast.makeText(getContext(), "User not authenticated", Toast.LENGTH_SHORT).show();
@@ -56,12 +58,10 @@ public class JobListingFragment extends Fragment {
         });
     }
 
-    public void renderListing(Listing listing) {
-        // Inflate your listing item layout dynamically
+    private void renderListing(Listing listing, String ownerEmail) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View listingView = inflater.inflate(R.layout.post_listing, null);
 
-        // Populate views with listing data
         TextView companyNameTextView = listingView.findViewById(R.id.company_name_post);
         TextView jobTitleTextView = listingView.findViewById(R.id.title_post);
         TextView payRangeTextView = listingView.findViewById(R.id.pay_range_post);
@@ -70,6 +70,7 @@ public class JobListingFragment extends Fragment {
         TextView requirements2TextView = listingView.findViewById(R.id.requirements2_post);
         TextView requirements3TextView = listingView.findViewById(R.id.requirements3_post);
         TextView hasBenefitsTextView = listingView.findViewById(R.id.benefits_post);
+        Button applyButton = listingView.findViewById(R.id.apply_button);
 
         companyNameTextView.setText("Company Name/Individual Name: " + listing.getCompanyName());
         jobTitleTextView.setText("Job Title: " + listing.getJobTitle());
@@ -80,20 +81,37 @@ public class JobListingFragment extends Fragment {
         requirements3TextView.setText("Requirements 3: " + listing.getRequirements3());
         hasBenefitsTextView.setText("Has Benefits: " + listing.getHasBenefits());
 
-        // Add the listing view to your LinearLayout with appropriate margins
+        applyButton.setOnClickListener(v -> sendEmail(listing.getJobTitle(), ownerEmail));
+
         LinearLayout listingContainer = getView().findViewById(R.id.listingContainer);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
-        layoutParams.setMargins(40, 40, 40, 40); // Add margins if needed
+        layoutParams.setMargins(40, 40, 40, 40);
         listingView.setLayoutParams(layoutParams);
         listingContainer.addView(listingView);
     }
 
-    public void retrieveListings() {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private void sendEmail(String jobTitle, String ownerEmail) {
+        String currentUserEmail = mAuth.getCurrentUser().getEmail();
+        String subject = "Application for " + jobTitle;
+        String body = "Dear Sir/Madam,\n\nI am interested in applying for the position of " + jobTitle + ". Please find my application attached.\n\nRegards,\n" + currentUserEmail;
 
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        emailIntent.setData(Uri.parse("mailto:")); // Only email apps should handle this
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{ownerEmail});
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, body);
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send email using..."));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(getContext(), "No email client found", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void retrieveListings() {
         db.collectionGroup("user_jobs")
                 .whereEqualTo("status", "approved")
                 .orderBy("jobTitle", Query.Direction.ASCENDING)
@@ -104,7 +122,8 @@ public class JobListingFragment extends Fragment {
                     } else {
                         for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                             Listing listing = documentSnapshot.toObject(Listing.class);
-                            renderListing(listing);
+                            String ownerId = documentSnapshot.getReference().getParent().getParent().getId();
+                            fetchOwnerEmail(ownerId, listing);
                         }
                     }
                 })
@@ -112,6 +131,19 @@ public class JobListingFragment extends Fragment {
                     Log.e("JobListingFragment", "Failed to retrieve listings", e);
                     Toast.makeText(getContext(), "Failed to retrieve listings: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
+    }
 
+    private void fetchOwnerEmail(String ownerId, Listing listing) {
+        db.collection("users").document(ownerId).get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        String ownerEmail = documentSnapshot.getString("email");
+                        renderListing(listing, ownerEmail);
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("JobListingFragment", "Failed to fetch owner email", e);
+                    Toast.makeText(getContext(), "Failed to fetch owner email: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
     }
 }
