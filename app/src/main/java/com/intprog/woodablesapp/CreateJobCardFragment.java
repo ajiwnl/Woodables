@@ -25,7 +25,7 @@ public class CreateJobCardFragment extends Fragment {
 
     private EditText compName, jobTitle, payRange, details, requirements1, requirements2, requirements3;
     private Button createButton;
-    ImageView burgmenu;
+    private ImageView burgmenu;
     private FirebaseFirestore db;
     private FirebaseAuth auth;
 
@@ -33,10 +33,6 @@ public class CreateJobCardFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View viewRoot = inflater.inflate(R.layout.fragment_create_job_card, container, false);
-
-        burgmenu = viewRoot.findViewById(R.id.burgermenucreate);
-
-
 
         // Initialize Firestore and FirebaseAuth
         db = FirebaseFirestore.getInstance();
@@ -51,7 +47,9 @@ public class CreateJobCardFragment extends Fragment {
         requirements2 = viewRoot.findViewById(R.id.requirements2);
         requirements3 = viewRoot.findViewById(R.id.requirements3);
         createButton = viewRoot.findViewById(R.id.createButton);
+        burgmenu = viewRoot.findViewById(R.id.burgermenucreate);
 
+        // Set onClickListener for the burger menu
         burgmenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,7 +109,7 @@ public class CreateJobCardFragment extends Fragment {
                     clearFields();
                 })
                 .addOnFailureListener(e -> {
-                    Toast.makeText(getActivity(), "Error creating job listing", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Error creating job listing: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
 
