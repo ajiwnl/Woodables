@@ -44,13 +44,11 @@
 
         </LinearLayout>
 
-
-
         <ImageView
             android:id="@+id/profilebackground"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:src="@drawable/woodworker"
+            android:background="@color/peach"
             android:scaleType="fitXY"
             android:contentDescription="@string/profilebg"
             android:layout_below="@id/searchbargroup" />
@@ -78,7 +76,7 @@
             android:textColor="@color/darkgrey"
             android:textStyle="bold"
             android:layout_below="@+id/profilepicture"
-            android:textSize="18sp"/> <!-- Profile Name -->
+            android:textSize="18sp"/>
 
         <TextView
             android:id="@+id/profileCategory"
@@ -130,8 +128,6 @@
 
         </LinearLayout>
 
-
-
         <View
             android:id="@+id/breakline"
             android:layout_width="match_parent"
@@ -181,6 +177,7 @@
             android:src="@drawable/cintools"
             android:layout_below="@id/profileDesc2"
             android:layout_marginStart="10dp"/>
+
         <TextView
             android:id="@+id/profileDesc3"
             android:layout_width="wrap_content"
@@ -190,6 +187,7 @@
             android:textColor="@color/darkgrey"
             android:text="@string/former_carpenter"
             android:layout_below="@id/profileDesc2"/>
+
         <ImageView
             android:id="@+id/graduationcap"
             android:layout_width="16dp"
@@ -212,6 +210,7 @@
             android:layout_toEndOf="@+id/graduationcap"
             android:text="@string/studied_in"
             android:textColor="@color/darkgrey" />
+
         <ImageView
             android:id="@+id/paperdocu"
             android:layout_width="16dp"
@@ -221,6 +220,7 @@
             android:contentDescription="@string/studied_in"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"/>
+
         <TextView
             android:id="@+id/profileDesc5"
             android:layout_width="wrap_content"
@@ -242,8 +242,8 @@
             android:src="@drawable/cinloc"
             android:contentDescription="@string/City_b"
             android:layout_marginTop="15dp"
-            android:layout_marginStart="10dp"
-            />
+            android:layout_marginStart="10dp"/>
+
         <TextView
             android:id="@+id/profileDesc6"
             android:layout_width="wrap_content"
@@ -254,6 +254,7 @@
             android:layout_toEndOf="@+id/locationlogo"
             android:text="@string/City_b"
             android:layout_below="@id/profileDesc5"/>
+
         <ImageView
             android:id="@+id/clock"
             android:layout_width="wrap_content"
@@ -263,6 +264,7 @@
             android:layout_marginTop="10dp"
             android:contentDescription="@string/joined"
             android:layout_marginStart="10dp"/>
+
         <TextView
             android:id="@+id/profileDesc7"
             android:layout_width="wrap_content"
@@ -274,7 +276,6 @@
             android:text="@string/joined"
             android:layout_below="@id/profileDesc6"/>
 
-
         <View
             android:id="@+id/BreakLine"
             android:layout_width="match_parent"
@@ -282,8 +283,6 @@
             android:layout_height="2dp"
             android:layout_below="@id/profileDesc7"
             android:background="@color/darkgrey"/>
+
     </RelativeLayout>
-
-
-
 </FrameLayout>
