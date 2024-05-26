@@ -3,6 +3,7 @@ package com.intprog.woodablesapp;
 import static android.app.Activity.RESULT_OK;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -22,6 +24,9 @@ import androidx.fragment.app.Fragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.bumptech.glide.Glide;
+
+
 
 public class ClientProfileFragment extends Fragment {
 
@@ -58,8 +63,17 @@ public class ClientProfileFragment extends Fragment {
         profileDesc6 = viewRoot.findViewById(R.id.profileDesc6);
         profileDesc7 = viewRoot.findViewById(R.id.profileDesc7);
         profilePicture = viewRoot.findViewById(R.id.profilepicture);
-        Button editProfile = viewRoot.findViewById(R.id.editProfile);
         Button openTo = viewRoot.findViewById(R.id.openToButton);
+
+        Button editProfile = viewRoot.findViewById(R.id.editProfile);
+
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(viewRoot.getContext(), EditProfileClientActivity.class);
+                startActivityForResult(intent, 1);
+            }
+        });
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -84,7 +98,64 @@ public class ClientProfileFragment extends Fragment {
             }
         });
 
+        // Retrieve full name and role from Intent or SharedPreferences
+        Intent intent = getActivity().getIntent();
+        String fullName = intent.getStringExtra("FullName");
+        String role = intent.getStringExtra("ROLE");
+        if (fullName == null || role == null) {
+            SharedPreferences preferences = getActivity().getSharedPreferences("user_info", getActivity().MODE_PRIVATE);
+            fullName = preferences.getString("fullname", "Default Name");
+            role = preferences.getString("role", "Default Role");
+        }
+        profileName.setText(fullName);
+        woodworkerRole.setText(role);
+
+        storageReference.child("profile_pictures/" + userId).getDownloadUrl().addOnSuccessListener(uri -> {
+            Glide.with(getContext()).load(uri).into(profilePicture);
+        }).addOnFailureListener(e -> {
+            Toast.makeText(getContext(), "Failed to load profile picture", Toast.LENGTH_SHORT).show();
+        });
+
+        // Fetch profile picture from Firebase Storage using ProfilePictureManager
+        ProfilePictureManager.fetchProfilePicture(getContext(), profilePicture);
+
         return viewRoot;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
+            String fullName = data.getStringExtra("FULL_NAME");
+            String desc2 = data.getStringExtra("DESC2");
+            String desc3 = data.getStringExtra("DESC3");
+            String desc4 = data.getStringExtra("DESC4");
+            String desc5 = data.getStringExtra("DESC5");
+            String desc6 = data.getStringExtra("DESC6");
+            String desc7 = data.getStringExtra("DESC7");
+
+            if (fullName != null) {
+                profileName.setText(fullName);
+                SharedPreferences preferences = getActivity().getSharedPreferences("user_info", getActivity().MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("fullname", fullName);
+                editor.apply();
+            }
+
+            profileDesc2.setText(desc2);
+            profileDesc3.setText(desc3);
+            profileDesc4.setText(desc4);
+            profileDesc5.setText(desc5);
+            profileDesc6.setText(desc6);
+            profileDesc7.setText(desc7);
+
+            // Fetch and display updated profile picture
+            storageReference.child("profile_pictures/" + userId).getDownloadUrl().addOnSuccessListener(uri -> {
+                Glide.with(getContext()).load(uri).into(profilePicture);
+            }).addOnFailureListener(e -> {
+                Toast.makeText(getContext(), "Failed to load updated profile picture", Toast.LENGTH_SHORT).show();
+            });
+        }
     }
 
 //Reuse for something
