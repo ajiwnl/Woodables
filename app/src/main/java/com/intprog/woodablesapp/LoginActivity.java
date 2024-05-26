@@ -1,5 +1,6 @@
 package com.intprog.woodablesapp;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.content.Intent;
@@ -30,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
@@ -72,16 +74,25 @@ public class LoginActivity extends AppCompatActivity {
                                                     String role = documentSnapshot.getString("Role");
                                                     Log.d("LoginActivity", "First Name: " + firstname + ", Middle Name: " + middlename + ", Role: " + role);
 
-                                                    Intent toUserProfile = new Intent(LoginActivity.this, MainScreenActivity.class);
-                                                    String fullName = firstname + " " + middlename + " " + lastname;
-                                                    toUserProfile.putExtra("ROLE", role); // Add the role to the intent
-                                                    toUserProfile.putExtra("FullName", fullName);
-                                                    SharedPreferences preferences = getSharedPreferences("user_info", MODE_PRIVATE);
-                                                    SharedPreferences.Editor editor = preferences.edit();
-                                                    editor.putString("fullname", fullName);
-                                                    editor.putString("role", role);
-                                                    editor.apply();
-                                                    startActivity(toUserProfile);
+                                                    if ("admin".equals(role)) {
+                                                        Intent adminActivityIntent = new Intent(LoginActivity.this, AdminMainScreen.class);
+                                                        startActivity(adminActivityIntent);
+                                                    }else
+                                                    {
+                                                        Intent toUserProfile = new Intent(LoginActivity.this, MainScreenActivity.class);
+                                                        String fullName = firstname + " " + middlename + " " + lastname;
+                                                        toUserProfile.putExtra("ROLE", role); // Add the role to the intent
+                                                        toUserProfile.putExtra("FullName", fullName);
+                                                        SharedPreferences preferences = getSharedPreferences("user_info", MODE_PRIVATE);
+                                                        SharedPreferences.Editor editor = preferences.edit();
+                                                        editor.putString("fullname", fullName);
+                                                        editor.putString("role", role);
+                                                        editor.apply();
+                                                        startActivity(toUserProfile);
+                                                    }
+
+
+
                                                     Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_LONG).show();
                                                 } else {
                                                     Log.d("LoginActivity", "User document does not exist");

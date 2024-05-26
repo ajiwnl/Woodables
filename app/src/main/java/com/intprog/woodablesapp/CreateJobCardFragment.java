@@ -6,10 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,6 +25,7 @@ public class CreateJobCardFragment extends Fragment {
 
     private EditText compName, jobTitle, payRange, details, requirements1, requirements2, requirements3;
     private Button createButton;
+    private ImageView burgmenu;
     private FirebaseFirestore db;
     private FirebaseAuth auth;
 
@@ -43,6 +47,15 @@ public class CreateJobCardFragment extends Fragment {
         requirements2 = viewRoot.findViewById(R.id.requirements2);
         requirements3 = viewRoot.findViewById(R.id.requirements3);
         createButton = viewRoot.findViewById(R.id.createButton);
+        burgmenu = viewRoot.findViewById(R.id.burgermenucreate);
+
+        // Set onClickListener for the burger menu
+        burgmenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new ClientJobListFragment());
+            }
+        });
 
         // Set onClickListener for the button
         createButton.setOnClickListener(new View.OnClickListener() {
@@ -108,5 +121,13 @@ public class CreateJobCardFragment extends Fragment {
         requirements1.setText("");
         requirements2.setText("");
         requirements3.setText("");
+    }
+
+    private void replaceFragment(Fragment frag) {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_out_right, R.anim.slide_in_left);
+        fragmentTransaction.replace(R.id.contentView, frag);
+        fragmentTransaction.commit();
     }
 }

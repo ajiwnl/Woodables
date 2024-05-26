@@ -19,14 +19,6 @@
             android:gravity="center_vertical">
 
             <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:padding="10dp"
-                android:layout_weight="0.50"
-                android:src="@drawable/leftarrow"
-                android:contentDescription="@string/left_arrow" />
-
-            <ImageView
                 android:id="@+id/profilepicture"
                 android:layout_height="35dp"
                 android:layout_width="35dp"
