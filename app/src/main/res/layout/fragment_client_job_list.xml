@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@color/white">
+
         <LinearLayout
             android:id="@+id/searchbargroup"
             android:layout_width="match_parent"
@@ -23,6 +24,8 @@
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:layout_weight="0.45"
+                android:clickable="true"
+                android:focusable="true"
                 android:background="@color/cinnamon"
                 android:src="@drawable/leftarrow" />
 
@@ -36,9 +39,7 @@
                 android:background="@drawable/textbox_4curvedcorners"
                 android:backgroundTint="@color/white"
                 android:layout_marginStart="15dp"
-                android:layout_marginEnd="5dp"/>
-
-
+                android:layout_marginEnd="5dp" />
 
             <ImageView
                 android:id="@+id/profilepicture"
@@ -49,17 +50,14 @@
                 android:layout_marginEnd="10dp"
                 android:src="@drawable/default_profile"
                 android:background="@drawable/profile_corners"
-                android:layout_centerVertical="true"
                 android:scaleType="centerCrop"
                 android:contentDescription="@string/pfp"
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
                 android:clipToOutline="true" />
-
         </LinearLayout>
 
         <RelativeLayout
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
@@ -67,7 +65,6 @@
             android:orientation="horizontal">
 
             <TextView
-
                 android:layout_width="300dp"
                 android:layout_height="40dp"
                 android:layout_centerInParent="true"
@@ -99,12 +96,7 @@
                 android:id="@+id/joblistingsLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"/>
-
+                android:orientation="vertical" />
         </ScrollView>
-
     </LinearLayout>
-
-
-
 </FrameLayout>

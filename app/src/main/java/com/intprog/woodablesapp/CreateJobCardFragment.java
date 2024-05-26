@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ import java.util.Map;
 public class CreateJobCardFragment extends Fragment {
 
     private EditText compName, jobTitle, payRange, details, requirements1, requirements2, requirements3;
+    private CheckBox benefitsCheckBox;
     private Button createButton;
     private ImageView burgmenu;
     private FirebaseFirestore db;
@@ -46,6 +48,7 @@ public class CreateJobCardFragment extends Fragment {
         requirements1 = viewRoot.findViewById(R.id.requirements1);
         requirements2 = viewRoot.findViewById(R.id.requirements2);
         requirements3 = viewRoot.findViewById(R.id.requirements3);
+        benefitsCheckBox = viewRoot.findViewById(R.id.benefitsCheckBox);
         createButton = viewRoot.findViewById(R.id.createButton);
         burgmenu = viewRoot.findViewById(R.id.burgermenucreate);
 
@@ -76,6 +79,7 @@ public class CreateJobCardFragment extends Fragment {
         String requirementsStr1 = requirements1.getText().toString().trim();
         String requirementsStr2 = requirements2.getText().toString().trim();
         String requirementsStr3 = requirements3.getText().toString().trim();
+        String hasBenefits = benefitsCheckBox.isChecked() ? "yes" : "no";
 
         if (compNameStr.isEmpty() || jobTitleStr.isEmpty() || payRangeStr.isEmpty() || detailsStr.isEmpty() || requirementsStr1.isEmpty()) {
             Toast.makeText(getActivity(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
@@ -99,12 +103,14 @@ public class CreateJobCardFragment extends Fragment {
         jobListing.put("requirements1", requirementsStr1);
         jobListing.put("requirements2", requirementsStr2);
         jobListing.put("requirements3", requirementsStr3);
+        jobListing.put("hasBenefits", hasBenefits);
+        jobListing.put("status", "pending");  // Set status to pending
 
         // Save the job listing in the main "job_listings" collection with the user's UID as a sub-collection
         db.collection("job_listings").document(uid).collection("user_jobs")
                 .add(jobListing)
                 .addOnSuccessListener(documentReference -> {
-                    Toast.makeText(getActivity(), "Job listing created, Wait for Admin Approval", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Job listing created, wait for Admin Approval", Toast.LENGTH_SHORT).show();
                     // Clear input fields or navigate to another fragment/activity
                     clearFields();
                 })
@@ -121,6 +127,7 @@ public class CreateJobCardFragment extends Fragment {
         requirements1.setText("");
         requirements2.setText("");
         requirements3.setText("");
+        benefitsCheckBox.setChecked(false);
     }
 
     private void replaceFragment(Fragment frag) {

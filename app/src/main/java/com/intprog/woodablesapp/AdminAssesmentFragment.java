@@ -61,10 +61,11 @@ public class AdminAssesmentFragment extends Fragment {
                             String exp_1 = document.getString("exp_1");
                             String exp_2 = document.getString("exp_2");
                             String location = document.getString("location");
-                            String email = document.getString("email");  // Assuming you have an email field
+                            String email = document.getString("email");
+                            String status = document.getString("status"); // Fetch the status
 
                             Log.d("AdminAssesmentActivity", "Adding document to layout: " + documentId);
-                            addDocumentToLayout(documentId, fullName, expertise, desc7, educ, course, exp_1, exp_2, location, email);
+                            addDocumentToLayout(documentId, fullName, expertise, desc7, educ, course, exp_1, exp_2, location, email, status); // Pass the status
                         }
                     } else {
                         Log.e("AdminAssesmentActivity", "Error loading documents: ", task.getException());
@@ -121,7 +122,7 @@ public class AdminAssesmentFragment extends Fragment {
         WorkManager.getInstance(getContext()).enqueue(deleteRequest);
     }
 
-    private void addDocumentToLayout(String documentId, String fullName, String expertise, String desc7, String educ, String course, String exp_1, String exp_2, String location, String email) {
+    private void addDocumentToLayout(String documentId, String fullName, String expertise, String desc7, String educ, String course, String exp_1, String exp_2, String location, String email, String status) {
         // Inflate the item layout
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View itemView = inflater.inflate(R.layout.admin_item_assessment, assessmentLinearLayout, false);
@@ -148,10 +149,15 @@ public class AdminAssesmentFragment extends Fragment {
         deleteButton.setOnClickListener(v -> showDeleteConfirmationDialog(documentId, itemView, email, desc7, fullName));
         approveButton.setOnClickListener(v -> showApproveConfirmationDialog(documentId, itemView, email, desc7, fullName));
 
+        // Disable buttons if the document is already approved
+        if ("approved".equals(status)) {
+            deleteButton.setEnabled(false);
+            approveButton.setEnabled(false);
+        }
+
         // Add the item view to the layout
         assessmentLinearLayout.addView(itemView);
     }
-
     private void showDeleteConfirmationDialog(String documentId, View documentView, String email, String desc7, String fullName) {
         new AlertDialog.Builder(getContext())
                 .setTitle("Disapproved Assessment")

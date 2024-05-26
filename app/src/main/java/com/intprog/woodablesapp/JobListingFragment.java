@@ -2,6 +2,8 @@ package com.intprog.woodablesapp;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -66,14 +69,16 @@ public class JobListingFragment extends Fragment {
         TextView requirements1TextView = listingView.findViewById(R.id.requirements1_post);
         TextView requirements2TextView = listingView.findViewById(R.id.requirements2_post);
         TextView requirements3TextView = listingView.findViewById(R.id.requirements3_post);
+        TextView hasBenefitsTextView = listingView.findViewById(R.id.benefits_post);
 
-        companyNameTextView.setText(listing.getCompanyName());
-        jobTitleTextView.setText(listing.getJobTitle());
-        payRangeTextView.setText(listing.getPayRange());
-        detailsTextView.setText(listing.getDetails());
-        requirements1TextView.setText(listing.getRequirements1());
-        requirements2TextView.setText(listing.getRequirements2());
-        requirements3TextView.setText(listing.getRequirements3());
+        companyNameTextView.setText("Company Name/Individual Name: " + listing.getCompanyName());
+        jobTitleTextView.setText("Job Title: " + listing.getJobTitle());
+        payRangeTextView.setText("Pay Range: " + listing.getPayRange());
+        detailsTextView.setText("Details: " + listing.getDetails());
+        requirements1TextView.setText("Requirements 1: " + listing.getRequirements1());
+        requirements2TextView.setText("Requirements 2: " + listing.getRequirements2());
+        requirements3TextView.setText("Requirements 3: " + listing.getRequirements3());
+        hasBenefitsTextView.setText("Has Benefits: " + listing.getHasBenefits());
 
         // Add the listing view to your LinearLayout with appropriate margins
         LinearLayout listingContainer = getView().findViewById(R.id.listingContainer);
@@ -81,7 +86,7 @@ public class JobListingFragment extends Fragment {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
-        layoutParams.setMargins(40, 40, 40, 40); // Add bottom margin for gap
+        layoutParams.setMargins(40, 40, 40, 40); // Add margins if needed
         listingView.setLayoutParams(layoutParams);
         listingContainer.addView(listingView);
     }
@@ -89,13 +94,24 @@ public class JobListingFragment extends Fragment {
     public void retrieveListings() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        db.collectionGroup("user_jobs").get().addOnSuccessListener(queryDocumentSnapshots -> {
-            for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                Listing listing = documentSnapshot.toObject(Listing.class);
-                renderListing(listing);
-            }
-        }).addOnFailureListener(e -> {
-            Toast.makeText(getContext(), "Failed to retrieve listings: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-        });
+        db.collectionGroup("user_jobs")
+                .whereEqualTo("status", "approved")
+                .orderBy("jobTitle", Query.Direction.ASCENDING)
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    if (queryDocumentSnapshots.isEmpty()) {
+                        Toast.makeText(getContext(), "No approved listings found.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                            Listing listing = documentSnapshot.toObject(Listing.class);
+                            renderListing(listing);
+                        }
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("JobListingFragment", "Failed to retrieve listings", e);
+                    Toast.makeText(getContext(), "Failed to retrieve listings: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+
     }
 }
