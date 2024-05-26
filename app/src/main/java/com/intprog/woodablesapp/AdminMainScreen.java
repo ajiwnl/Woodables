@@ -1,8 +1,10 @@
 package com.intprog.woodablesapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,9 +15,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class AdminMainScreen extends AppCompatActivity {
 
-    Button tolisting, toassessment,topost;
+    Button tolisting, toassessment, topost;
+    ImageView logoutimg;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +35,13 @@ public class AdminMainScreen extends AppCompatActivity {
             return insets;
         });
 
+        // Initialize FirebaseAuth
+        mAuth = FirebaseAuth.getInstance();
 
         tolisting = findViewById(R.id.toListings);
         toassessment = findViewById(R.id.toAssessment);
         topost = findViewById(R.id.toPosts);
+        logoutimg = findViewById(R.id.logout); // Initialize the logout image view
 
         replaceFragment(new AdminListingFragment());
 
@@ -57,6 +66,19 @@ public class AdminMainScreen extends AppCompatActivity {
             }
         });
 
+        logoutimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Sign out from Firebase
+                mAuth.signOut();
+                // Navigate back to the LoginActivity and clear the back stack
+                Intent intent = new Intent(AdminMainScreen.this, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                // finish the current activity
+                finish();
+            }
+        });
     }
 
     private void replaceFragment(Fragment frag) {
