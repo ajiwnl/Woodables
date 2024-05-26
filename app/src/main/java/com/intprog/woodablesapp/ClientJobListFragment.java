@@ -3,6 +3,9 @@ package com.intprog.woodablesapp;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,9 +43,12 @@ public class ClientJobListFragment extends Fragment {
         loadUserJobList();
 
         bkbutton.setOnClickListener(v -> {
-            if (getActivity() != null && getActivity().getSupportFragmentManager().getBackStackEntryCount() > 0) {
-                getActivity().getSupportFragmentManager().popBackStack();
-            }
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            CreateJobCardFragment createjobfrag = new CreateJobCardFragment();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.anim.slide_out_right, R.anim.slide_in_left);
+            fragmentTransaction.replace(R.id.contentView, createjobfrag);
+            fragmentTransaction.commit();
         });
 
         return viewRoot;

@@ -53,6 +53,7 @@ public class CourseCatalogFragment extends Fragment {
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             LearnCourseFragment learnFragment = new LearnCourseFragment();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.anim.slide_out_right, R.anim.slide_in_left);
             fragmentTransaction.replace(R.id.contentView, learnFragment);
             fragmentTransaction.commit();
         });
