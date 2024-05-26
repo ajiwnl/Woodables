@@ -66,14 +66,16 @@ public class JobListingFragment extends Fragment {
         TextView requirements1TextView = listingView.findViewById(R.id.requirements1_post);
         TextView requirements2TextView = listingView.findViewById(R.id.requirements2_post);
         TextView requirements3TextView = listingView.findViewById(R.id.requirements3_post);
+        TextView hasBenefitsTextView = listingView.findViewById(R.id.benefits_post);
 
-        companyNameTextView.setText(listing.getCompanyName());
-        jobTitleTextView.setText(listing.getJobTitle());
-        payRangeTextView.setText(listing.getPayRange());
-        detailsTextView.setText(listing.getDetails());
-        requirements1TextView.setText(listing.getRequirements1());
-        requirements2TextView.setText(listing.getRequirements2());
-        requirements3TextView.setText(listing.getRequirements3());
+        companyNameTextView.setText("Company Name/Individual Name: " + listing.getCompanyName());
+        jobTitleTextView.setText("Job Title: " + listing.getJobTitle());
+        payRangeTextView.setText("Pay Range: " + listing.getPayRange());
+        detailsTextView.setText("Details: " + listing.getDetails());
+        requirements1TextView.setText("Requirements 1: " + listing.getRequirements1());
+        requirements2TextView.setText("Requirements 2: " + listing.getRequirements2());
+        requirements3TextView.setText("Requirements 3: " + listing.getRequirements3());
+        hasBenefitsTextView.setText("Has Benefits: " + listing.getHasBenefits());
 
         // Add the listing view to your LinearLayout with appropriate margins
         LinearLayout listingContainer = getView().findViewById(R.id.listingContainer);
