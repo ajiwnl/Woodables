@@ -54,12 +54,13 @@ public class CreatePostActivity extends AppCompatActivity {
                 SharedPreferences preferences = getSharedPreferences("user_info", MODE_PRIVATE);
                 String name = "w/" + preferences.getString("name", "");
                 String role = preferences.getString("role", "");
+                String status = "pending";
 
 
                 // Check if title and content are not empty
                 if (!postTitle.isEmpty() && !postContent.isEmpty()) {
                     // Call the uploadPost method to store the post in Firestore
-                    uploadPost(postTitle, postContent, name);
+                    uploadPost(postTitle, postContent, name, status);
 
                     // Clear EditText fields
                     title.getText().clear();
@@ -106,9 +107,9 @@ public class CreatePostActivity extends AppCompatActivity {
         });
     }
 
-    public void uploadPost(String title, String message, String userName) {
+    public void uploadPost(String title, String message, String userName, String status) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        Post post = new Post(title, message, userName);
+        Post post = new Post(title, message, userName, status);
 
         db.collection("posts")
                 .add(post)

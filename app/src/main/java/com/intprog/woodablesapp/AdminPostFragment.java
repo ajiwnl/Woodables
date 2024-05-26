@@ -69,16 +69,24 @@ public class AdminPostFragment extends Fragment {
                 });
     }
 
-    private void approvePost(String documentId) {
+    private void approvePost(String documentId, View postView) {
         db.collection("posts").document(documentId)
                 .update("status", "approved")
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(getContext(), "Post approved.", Toast.LENGTH_SHORT).show();
+                    // Hide the approve button after successful approval
+                    Button approveButton = postView.findViewById(R.id.approveButton);
+                    if (approveButton != null) {
+                        approveButton.setVisibility(View.GONE);
+                    }
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(getContext(), "Error approving post.", Toast.LENGTH_SHORT).show();
                 });
     }
+
+
+
 
     private void addPostToLayout(String documentId, String title, String message, String userName) {
         View postView = getLayoutInflater().inflate(R.layout.admin_post_item, postsLinearLayout, false);
@@ -106,7 +114,7 @@ public class AdminPostFragment extends Fragment {
                     if (action.equals("delete")) {
                         deletePost(documentId, postView);
                     } else if (action.equals("approve")) {
-                        approvePost(documentId);
+                        approvePost(documentId, postView);
                     }
                 })
                 .setNegativeButton("No", null)

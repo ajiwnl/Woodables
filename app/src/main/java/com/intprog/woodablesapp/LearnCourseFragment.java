@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,12 +56,20 @@ public class LearnCourseFragment extends Fragment {
             startActivityForResult(toAssess, ASSESSMENT_REQUEST_CODE);
         });
 
-        refreshButton.setOnClickListener(v -> loadEnrolledCourses());
+        refreshButton.setOnClickListener(v -> refreshFragment());
 
         loadEnrolledCourses();
 
         return viewRoot;
     }
+
+    private void refreshFragment() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.contentView, new LearnCourseFragment());
+        fragmentTransaction.commit();
+    }
+
 
     private void loadEnrolledCourses() {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -106,12 +115,14 @@ public class LearnCourseFragment extends Fragment {
     private void showCourseDetailsDialog(String title, String description, String details) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.dialog_course_details, null);
+        View dialogView = inflater.inflate(R.layout.dialog_learncourse_details, null);
         builder.setView(dialogView);
 
         TextView dialogTitle = dialogView.findViewById(R.id.dialog_course_title);
         TextView dialogDetails = dialogView.findViewById(R.id.dialog_course_details);
-        Button buttonCancel = dialogView.findViewById(R.id.button_cancel);
+        ImageView buttonCancel = dialogView.findViewById(R.id.button_cancel);
+        Button buttonDropCourse = dialogView.findViewById(R.id.button_drop);
+        Button buttonLaunchCourse = dialogView.findViewById(R.id.button_launch);
 
         dialogTitle.setText(title);
         dialogDetails.setText(details);
@@ -120,7 +131,49 @@ public class LearnCourseFragment extends Fragment {
 
         buttonCancel.setOnClickListener(v -> dialog.dismiss());
 
+        buttonDropCourse.setOnClickListener(v -> {
+            // Logic to drop the course
+            dropCourse(title);
+            dialog.dismiss();
+        });
+
+        buttonLaunchCourse.setOnClickListener(v -> {
+            // Logic to launch the course
+            launchCourse(title);
+            dialog.dismiss();
+        });
+
         dialog.show();
+    }
+
+    private void dropCourse(String title) {
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
+            db.collection("enrolled_courses").document(userId).collection("courses")
+                    .whereEqualTo("title", title)
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful() && !task.getResult().isEmpty()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                document.getReference().delete()
+                                        .addOnSuccessListener(aVoid -> {
+                                            Toast.makeText(getContext(), "Course dropped successfully.", Toast.LENGTH_SHORT).show();
+                                            loadEnrolledCourses(); // Reload the courses to update UI
+                                        })
+                                        .addOnFailureListener(e -> Toast.makeText(getContext(), "Failed to drop course.", Toast.LENGTH_SHORT).show());
+                            }
+                        } else {
+                            Toast.makeText(getContext(), "Course not found.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
+    }
+
+    private void launchCourse(String title) {
+        // Logic to launch the course
+        Toast.makeText(getContext(), "Launching course: " + title, Toast.LENGTH_SHORT).show();
+        // Implement your launch course logic here
     }
 
     @Override
