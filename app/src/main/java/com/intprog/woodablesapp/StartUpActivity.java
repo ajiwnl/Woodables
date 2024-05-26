@@ -1,5 +1,6 @@
 package com.intprog.woodablesapp;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,6 +15,7 @@ public class StartUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_start_up);
         loginbtn = findViewById(R.id.loginBtn);
         regbtn = findViewById(R.id.regBtn);

@@ -1,45 +1,43 @@
 package com.intprog.woodablesapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Gravity;
+
+import androidx.fragment.app.Fragment;
+
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.cardview.widget.CardView;
+
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import android.util.Log;
 
-public class AdminActivity extends AppCompatActivity {
+
+public class AdminListingFragment extends Fragment {
+
     private LinearLayout listingsLinearLayout;
     private FirebaseFirestore db;
 
-    private Button listingsButton, assessmentButton, postsButton;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View viewRoot = inflater.inflate(R.layout.fragment_admin_listing, container, false);
 
-        listingsLinearLayout = findViewById(R.id.listingsLinearLayout);
-        listingsButton = findViewById(R.id.toListings);
-        assessmentButton = findViewById(R.id.toAssessment);
-        postsButton = findViewById(R.id.toPosts);
+        listingsLinearLayout = viewRoot.findViewById(R.id.listingsLinearLayoutAdmin);
+
         db = FirebaseFirestore.getInstance();
 
         loadDocumentIds();
 
-        listingsButton.setOnClickListener(v -> startActivity(new Intent(AdminActivity.this, AdminActivity.class)));
-        assessmentButton.setOnClickListener(v -> startActivity(new Intent(AdminActivity.this, AdminAssesmentActivity.class)));
-        postsButton.setOnClickListener(v -> startActivity(new Intent(AdminActivity.this, AdminPostActivity.class)));
+        return viewRoot;
     }
+
 
     private void loadDocumentIds() {
         db.collection("listings")
@@ -56,7 +54,7 @@ public class AdminActivity extends AppCompatActivity {
                         }
                     } else {
                         Log.e("AdminActivity", "Error loading documents: ", task.getException());
-                        Toast.makeText(AdminActivity.this, "Error loading documents.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Error loading documents.", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -66,10 +64,10 @@ public class AdminActivity extends AppCompatActivity {
                 .delete()
                 .addOnSuccessListener(aVoid -> {
                     listingsLinearLayout.removeView(documentView);
-                    Toast.makeText(AdminActivity.this, "Document deleted.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Document deleted.", Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e -> {
-                    Toast.makeText(AdminActivity.this, "Error deleting document.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Error deleting document.", Toast.LENGTH_SHORT).show();
                 });
     }
 
@@ -77,10 +75,10 @@ public class AdminActivity extends AppCompatActivity {
         db.collection("listings").document(documentId)
                 .update("status", "approved")
                 .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(AdminActivity.this, "Document approved.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Document approved.", Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e -> {
-                    Toast.makeText(AdminActivity.this, "Error approving document.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Error approving document.", Toast.LENGTH_SHORT).show();
                 });
     }
 
@@ -106,7 +104,7 @@ public class AdminActivity extends AppCompatActivity {
     }
 
     private void showConfirmationDialog(String documentId, View documentView, String action) {
-        new AlertDialog.Builder(this)
+        new AlertDialog.Builder(getContext())
                 .setMessage("Are you sure you want to " + action + " this document?")
                 .setPositiveButton("Yes", (dialog, which) -> {
                     if (action.equals("delete")) {

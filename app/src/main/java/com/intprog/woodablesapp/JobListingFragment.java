@@ -29,6 +29,12 @@ public class JobListingFragment extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
+
+        if (mAuth.getCurrentUser() == null) {
+            Toast.makeText(getContext(), "User not authenticated", Toast.LENGTH_SHORT).show();
+            return rootView;
+        }
+
         userId = mAuth.getCurrentUser().getUid();
 
         ImageView profilePicture = rootView.findViewById(R.id.profilepicture);
@@ -53,11 +59,21 @@ public class JobListingFragment extends Fragment {
         View listingView = inflater.inflate(R.layout.post_listing, null);
 
         // Populate views with listing data
-        TextView titleTextView = listingView.findViewById(R.id.title_post);
-        TextView descriptionTextView = listingView.findViewById(R.id.desc_post);
+        TextView companyNameTextView = listingView.findViewById(R.id.company_name_post);
+        TextView jobTitleTextView = listingView.findViewById(R.id.title_post);
+        TextView payRangeTextView = listingView.findViewById(R.id.pay_range_post);
+        TextView detailsTextView = listingView.findViewById(R.id.details_post);
+        TextView requirements1TextView = listingView.findViewById(R.id.requirements1_post);
+        TextView requirements2TextView = listingView.findViewById(R.id.requirements2_post);
+        TextView requirements3TextView = listingView.findViewById(R.id.requirements3_post);
 
-        titleTextView.setText(listing.getTitle());
-        descriptionTextView.setText(listing.getDescription());
+        companyNameTextView.setText(listing.getCompanyName());
+        jobTitleTextView.setText(listing.getJobTitle());
+        payRangeTextView.setText(listing.getPayRange());
+        detailsTextView.setText(listing.getDetails());
+        requirements1TextView.setText(listing.getRequirements1());
+        requirements2TextView.setText(listing.getRequirements2());
+        requirements3TextView.setText(listing.getRequirements3());
 
         // Add the listing view to your LinearLayout with appropriate margins
         LinearLayout listingContainer = getView().findViewById(R.id.listingContainer);
@@ -73,13 +89,13 @@ public class JobListingFragment extends Fragment {
     public void retrieveListings() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        db.collection("listings").get().addOnSuccessListener(queryDocumentSnapshots -> {
+        db.collectionGroup("user_jobs").get().addOnSuccessListener(queryDocumentSnapshots -> {
             for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                 Listing listing = documentSnapshot.toObject(Listing.class);
                 renderListing(listing);
             }
         }).addOnFailureListener(e -> {
-            // Handle failure
+            Toast.makeText(getContext(), "Failed to retrieve listings: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         });
     }
 }
