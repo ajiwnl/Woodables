@@ -10,12 +10,13 @@ public class Listing {
     private String requirements3;
     private String hasBenefits;
     private String userId;  // New field
+    private String creatorEmail;
 
     public Listing() {
         // Default constructor required for Firestore
     }
 
-    public Listing(String companyName, String jobTitle, String payRange, String details, String requirements1, String requirements2, String requirements3, String hasBenefits, String userId) {
+    public Listing(String companyName, String jobTitle, String payRange, String details, String requirements1, String requirements2, String requirements3, String hasBenefits, String userId, String creatorEmail) {
         this.companyName = companyName;
         this.jobTitle = jobTitle;
         this.payRange = payRange;
@@ -25,6 +26,7 @@ public class Listing {
         this.requirements3 = requirements3;
         this.hasBenefits = hasBenefits;
         this.userId = userId;
+        this.creatorEmail = creatorEmail;
     }
 
     public String getCompanyName() {
@@ -98,4 +100,8 @@ public class Listing {
     public void setUserId(String userId) {
         this.userId = userId;
     }
+
+    public String getCreatorEmail() {return creatorEmail;}
+
+    public void setCreatorEmail(String creatorEmail) {this.creatorEmail = creatorEmail;}
 }

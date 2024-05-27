@@ -93,6 +93,7 @@ public class CreateJobCardFragment extends Fragment {
         }
 
         String uid = currentUser.getUid();
+        String userEmail = currentUser.getEmail();
 
         // Create a new job listing map
         Map<String, Object> jobListing = new HashMap<>();
@@ -105,6 +106,7 @@ public class CreateJobCardFragment extends Fragment {
         jobListing.put("requirements3", requirementsStr3);
         jobListing.put("hasBenefits", hasBenefits);
         jobListing.put("status", "pending");  // Set status to pending
+        jobListing.put("creatorEmail", userEmail);
 
         // Save the job listing in the main "job_listings" collection with the user's UID as a sub-collection
         db.collection("job_listings").document(uid).collection("user_jobs")
