@@ -26,6 +26,7 @@ public class JobListingFragment extends Fragment {
     private StorageReference storageReference;
     private String userId;
     private FirebaseFirestore db;
+    private String userFullName; // Add a variable to store the user's full name
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class JobListingFragment extends Fragment {
         ImageView profilePicture = rootView.findViewById(R.id.profilepicture);
         fetchProfilePicture(profilePicture);
 
+        retrieveUserFullName(); // Fetch the user's full name
         retrieveListings();
 
         return rootView;
@@ -56,6 +58,27 @@ public class JobListingFragment extends Fragment {
         }).addOnFailureListener(e -> {
             Toast.makeText(getContext(), "Failed to load profile picture", Toast.LENGTH_SHORT).show();
         });
+    }
+
+    private void retrieveUserFullName() {
+        db.collection("users").document(userId).get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        String firstName = documentSnapshot.getString("First Name");
+                        String middleName = documentSnapshot.getString("Middle Name");
+                        String lastName = documentSnapshot.getString("Last Name");
+
+                        // Concatenate the fields to form the full name
+                        userFullName = String.format("%s %s %s", firstName, middleName, lastName).trim();
+
+                        // Log or use the full name as needed
+                        Log.d("JobListingFragment", "User Full Name: " + userFullName);
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("JobListingFragment", "Failed to fetch user full name", e);
+                    Toast.makeText(getContext(), "Failed to fetch user full name: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
     }
 
     private void renderListing(Listing listing, String ownerEmail) {
@@ -94,9 +117,8 @@ public class JobListingFragment extends Fragment {
     }
 
     private void sendEmail(String jobTitle, String ownerEmail) {
-        String currentUserEmail = mAuth.getCurrentUser().getEmail();
         String subject = "Application for " + jobTitle;
-        String body = "Dear Sir/Madam,\n\nI am interested in applying for the position of " + jobTitle + ". Please find my application attached.\n\nRegards,\n" + currentUserEmail;
+        String body = "Dear Sir/Madam,\n\nI am interested in applying for the position of " + jobTitle + ". Can you fill me in with the details and requirements.\n\nBest regards,\n" + userFullName;
 
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
         emailIntent.setData(Uri.parse("mailto:")); // Only email apps should handle this
@@ -111,6 +133,28 @@ public class JobListingFragment extends Fragment {
         }
     }
 
+//    public void retrieveListings() {
+//        db.collectionGroup("user_jobs")
+//                .whereEqualTo("status", "approved")
+//                .orderBy("jobTitle", Query.Direction.ASCENDING)
+//                .get()
+//                .addOnSuccessListener(queryDocumentSnapshots -> {
+//                    if (queryDocumentSnapshots.isEmpty()) {
+//                        Toast.makeText(getContext(), "No approved listings found.", Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+//                            Listing listing = documentSnapshot.toObject(Listing.class);
+//                            String ownerId = documentSnapshot.getReference().getParent().getParent().getId();
+//                            fetchOwnerEmail(ownerId, listing);
+//                        }
+//                    }
+//                })
+//                .addOnFailureListener(e -> {
+//                    Log.e("JobListingFragment", "Failed to retrieve listings", e);
+//                    Toast.makeText(getContext(), "Failed to retrieve listings: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+//                });
+//    }
+
     public void retrieveListings() {
         db.collectionGroup("user_jobs")
                 .whereEqualTo("status", "approved")
@@ -122,8 +166,9 @@ public class JobListingFragment extends Fragment {
                     } else {
                         for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                             Listing listing = documentSnapshot.toObject(Listing.class);
-                            String ownerId = documentSnapshot.getReference().getParent().getParent().getId();
-                            fetchOwnerEmail(ownerId, listing);
+                            // Fetch the creator's email directly from the listing document
+                            String ownerEmail = documentSnapshot.getString("creatorEmail");
+                            renderListing(listing, ownerEmail);
                         }
                     }
                 })
@@ -132,6 +177,7 @@ public class JobListingFragment extends Fragment {
                     Toast.makeText(getContext(), "Failed to retrieve listings: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
+
 
     private void fetchOwnerEmail(String ownerId, Listing listing) {
         db.collection("users").document(ownerId).get()
