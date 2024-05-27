@@ -1,6 +1,7 @@
 package com.intprog.woodablesapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -70,7 +70,6 @@ public class LearnCourseFragment extends Fragment {
         fragmentTransaction.commit();
     }
 
-
     private void loadEnrolledCourses() {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser != null) {
@@ -86,7 +85,8 @@ public class LearnCourseFragment extends Fragment {
                                     String title = document.getString("title");
                                     String description = document.getString("description");
                                     String details = document.getString("details");
-                                    addEnrolledCourseToUI(title, description, details);
+                                    String link = document.getString("link");
+                                    addEnrolledCourseToUI(title, description, details, link);
                                 }
                             }
                         } else {
@@ -98,7 +98,7 @@ public class LearnCourseFragment extends Fragment {
         }
     }
 
-    private void addEnrolledCourseToUI(String title, String description, String details) {
+    private void addEnrolledCourseToUI(String title, String description, String details, @Nullable String link) {
         View courseItem = LayoutInflater.from(getContext()).inflate(R.layout.item_enrolled_course, enrolledCoursesContainer, false);
 
         TextView courseTitle = courseItem.findViewById(R.id.course_title);
@@ -107,12 +107,12 @@ public class LearnCourseFragment extends Fragment {
         courseTitle.setText(title);
         courseDescription.setText(description);
 
-        courseItem.setOnClickListener(v -> showCourseDetailsDialog(title, description, details));
+        courseItem.setOnClickListener(v -> showCourseDetailsDialog(title, description, details, link));
 
         enrolledCoursesContainer.addView(courseItem);
     }
 
-    private void showCourseDetailsDialog(String title, String description, String details) {
+    private void showCourseDetailsDialog(String title, String description, String details, @Nullable String link) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_learncourse_details, null);
@@ -120,6 +120,7 @@ public class LearnCourseFragment extends Fragment {
 
         TextView dialogTitle = dialogView.findViewById(R.id.dialog_course_title);
         TextView dialogDetails = dialogView.findViewById(R.id.dialog_course_details);
+        TextView dialogLink = dialogView.findViewById(R.id.dialog_course_link);
         ImageView buttonCancel = dialogView.findViewById(R.id.button_cancel);
         Button buttonDropCourse = dialogView.findViewById(R.id.button_drop);
         Button buttonLaunchCourse = dialogView.findViewById(R.id.button_launch);
@@ -127,19 +128,31 @@ public class LearnCourseFragment extends Fragment {
         dialogTitle.setText(title);
         dialogDetails.setText(details);
 
+        if (link != null) {
+            dialogLink.setText(link);
+            dialogLink.setVisibility(View.VISIBLE);
+            buttonLaunchCourse.setEnabled(true);
+        } else {
+            dialogLink.setVisibility(View.GONE);
+            buttonLaunchCourse.setEnabled(false);
+        }
+
         AlertDialog dialog = builder.create();
 
         buttonCancel.setOnClickListener(v -> dialog.dismiss());
 
         buttonDropCourse.setOnClickListener(v -> {
-            // Logic to drop the course
             dropCourse(title);
             dialog.dismiss();
         });
 
         buttonLaunchCourse.setOnClickListener(v -> {
-            // Logic to launch the course
-            launchCourse(title);
+            if (link != null) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+                startActivity(browserIntent);
+            } else {
+                Toast.makeText(getContext(), "No link available for this course.", Toast.LENGTH_SHORT).show();
+            }
             dialog.dismiss();
         });
 
@@ -168,12 +181,6 @@ public class LearnCourseFragment extends Fragment {
                         }
                     });
         }
-    }
-
-    private void launchCourse(String title) {
-        // Logic to launch the course
-        Toast.makeText(getContext(), "Launching course: " + title, Toast.LENGTH_SHORT).show();
-        // Implement your launch course logic here
     }
 
     @Override
