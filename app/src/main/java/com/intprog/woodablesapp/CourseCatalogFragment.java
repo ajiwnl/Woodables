@@ -73,7 +73,8 @@ public class CourseCatalogFragment extends Fragment {
                                 String title = document.getString("title");
                                 String description = document.getString("description");
                                 String details = document.getString("details");
-                                addCourseToUI(title, description, details);
+                                String link = document.getString("link");
+                                addCourseToUI(title, description, details, link);
                             }
                         }
                     } else {
@@ -82,7 +83,7 @@ public class CourseCatalogFragment extends Fragment {
                 });
     }
 
-    private void addCourseToUI(String title, String description, String details) {
+    private void addCourseToUI(String title, String description, String details, String link) {
         View courseItem = LayoutInflater.from(getContext()).inflate(R.layout.item_course, courseListContainer, false);
 
         TextView courseTitle = courseItem.findViewById(R.id.course_title);
@@ -91,12 +92,12 @@ public class CourseCatalogFragment extends Fragment {
         courseTitle.setText(title);
         courseDescription.setText(description);
 
-        courseItem.setOnClickListener(v -> showCourseDetailsDialog(title, description, details));
+        courseItem.setOnClickListener(v -> showCourseDetailsDialog(title, description, details, link));
 
         courseListContainer.addView(courseItem);
     }
 
-    private void showCourseDetailsDialog(String title, String description, String details) {
+    private void showCourseDetailsDialog(String title, String description, String details, String link) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_course_details, null);
@@ -104,11 +105,13 @@ public class CourseCatalogFragment extends Fragment {
 
         TextView dialogTitle = dialogView.findViewById(R.id.dialog_course_title);
         TextView dialogDetails = dialogView.findViewById(R.id.dialog_course_details);
+        TextView dialogLink = dialogView.findViewById(R.id.dialog_course_link);
         Button buttonCancel = dialogView.findViewById(R.id.button_cancel);
         Button buttonEnroll = dialogView.findViewById(R.id.button_enroll);
 
         dialogTitle.setText(title);
         dialogDetails.setText(details);
+        dialogLink.setText(link);
 
         AlertDialog dialog = builder.create();
 
@@ -123,6 +126,7 @@ public class CourseCatalogFragment extends Fragment {
                 courseData.put("title", title);
                 courseData.put("description", description);
                 courseData.put("details", details);
+                courseData.put("link", link);
 
                 db.collection("enrolled_courses").document(userId)
                         .collection("courses")

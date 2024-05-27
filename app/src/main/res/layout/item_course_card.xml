@@ -35,5 +35,16 @@
             android:textSize="16sp"
             android:layout_marginTop="8dp" />
 
+        <TextView
+            android:id="@+id/dialog_course_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Course Link"
+            android:textColor="@color/darkgrey"
+            android:autoLink="web"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp" />
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>
